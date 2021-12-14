@@ -1,0 +1,242 @@
+﻿*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    margin: 0;
+    padding: 0;
+}
+
+body,html { width: 100%; height: 100%;
+
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+                              
+
+}
+
+#ui { position: relative; width: 100%; height: 100%; overflow: hidden; }
+div.separator { display: block; clear: both; width: 100%; }
+
+
+
+
+.icon { display: block; position: relative; padding: 10px 8px; margin: 10px 5px 0 5px;width: 40px; height: 40px; border-radius: 100%; border: 2px solid #00000007; box-shadow: 5px 2px 10px #00000043; overflow: hidden; background: rgba(0,0,0,0.35); }
+
+.icon i { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: #ffffff ; z-index: 11; font-size: 15px; }
+.icon img { width: 16px; margin: -3px 0 0 0;  }
+.icon span { display: block; position: absolute; left: 50%; bottom: 0; transform: translate(-50%,0); width: 100%; height: 100%; }
+
+
+.mina { display: block; position: relative; padding: 10px 8px; margin: 10px 5px 0 5px;width: 30px; height: 30px; border-radius: 50%;; overflow: hidden; background: rgba(0,0,0,0.35); } 
+
+.mina i { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: #ffffff ; z-index: 11; font-size: 15px; }
+.mina img { width: 16px; margin: -3px 0 0 0; }
+.mina span { display: block; position: absolute; left: 50%; bottom: 0; transform: translate(-50%,0); width: 100%; height: 100%; }
+/* OVDJE MIJENJAS IKONICE IDIOTE */
+.icon.info { display: block; position: relative; padding: 10px 8px; margin: 10px 3px 0 3px; width: 42px; height: 42px; border-radius: 60%; border: 0px solid #ffffffc5; box-shadow: 5px 2px 10px #00000043; overflow: hidden; background: rgba(41, 41, 41, 0.363); }
+/* OVDJE MIJENJAS IKONICE IDIOTE */
+.icon.info i { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); color: #ffffff ; z-index: 11; font-size: 15px; }
+.icon.info img { width: 16px; margin: -3px 0 0 0; }
+.icon.info span { display: block; position: absolute; left: 50%; bottom: 0; transform: translate(-50%,0); width: 100%; height: 100%; }
+
+
+.icon.text {     display: inline-block;
+    overflow: visible;
+    width: 250px;
+    padding: 0; 
+
+}
+.icon.text i { display: inline-block ; transform: translate(0%,0%); left: 0; top: 0; position: relative; padding: 10px 8px; width: 30px; height: 30px; border-radius: 30%;; border: 0px solid #ffffff; color: #24242460; background: linear-gradient(to left, rgba(4, 162, 17, 0.261) ,#2bff00be 100%); }
+.icon.text i:before { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); }
+.icon.text span { position: relative; width: auto; height: 30px; left: 0; transform: translate(0,0); display: inline-block; font-size: 15px; padding: 4px 5px 0 7px; font-weight: 300; color: #FFF; }
+
+.icon.dying:not(.customstatus) span { animation: trew-status-blink 500ms infinite; }
+.icon.pulse i { animation: trew-pulse 500ms 1; }
+
+
+.info { position: absolute; }
+
+.info.server #server img { max-width: 100%; opacity: 0.75; }
+
+.info.server {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-family: 'GoodTimes', sans-serif;
+    font-weight: normal;
+    overflow: hidden;
+    border-radius: 100%;
+    background-position: center;
+    background-size: 122.5% 115%;
+    background-repeat: no-repeat;
+    border: 0px solid #e5b474;
+    width: 120px;
+    height: 120px;
+    z-index: 7;
+   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+
+.info.playerhealth { 
+    bottom: 0.5%;
+    left: 1.3%;
+    text-align: right;
+}
+
+.info.playerhunger {
+    bottom: 0.5%;
+    left: 4.3%;
+    text-align: right;
+}
+
+.info.playerthirst {
+    bottom: 0.5%;
+    left: 7.3%;
+    text-align: right;
+}
+
+.info.playerstamina {
+    bottom: 0.5%;
+    left:10.3%;
+    text-align: right;
+}
+
+.info.playerarmor {
+    bottom: 0.5%;
+    left: 13.3%;
+    text-align: right;
+}
+
+
+.info.playerthirst #status { clear: both; }
+.info.playerthirst #status ul { margin: 10px 0 0 0; }
+.info.playerthirst #status ul li { float: right;}
+.info.playerhunger #status { clear: both; }
+.info.playerhunger #status ul { margin: 10px 0 0 0; }
+.info.playerhunger #status ul li { float: right;}
+.info.playerhealth #status ul li#health span { background: linear-gradient(180deg, #310909 0%, #ff000094 100%); }
+.info.playerarmor #status ul li#armor span { background: linear-gradient(180deg, #06168d 0%, #0018d094 100%); }
+.info.playerstamina #status ul li#stamina span { background: linear-gradient(180deg, #046356 0%, #03ceb394 100%); }
+.info.playerhunger #status ul li#hunger span { background: linear-gradient(180deg, #490601 0%, #ff721594 100%); }
+.info.playerthirst #status ul li#thirst span { background: linear-gradient(180deg, #021963 0%, #009ae294 100%); }
+.info.playerhealth #status ul li#health.dead { animation: trew-pulse 500ms infinite; }
+.info.playerhealth #status ul li#health.dead span { height: 0 !important; }
+.info.playerhealth #status ul li#health.dead i.fas:before { content: '\f714'; }
+
+.info.vehicle { bottom: 20px; left: 22%; transform: translate(-50%,0); z-index: 11; }
+.info.vehicle.active { opacity: 1; }
+.info.vehicle.inactive { opacity: 0; }
+
+
+.info.vehicle #speedometer { position: relative; width: 270px; height: 130px; }
+.info.vehicle #speedometer svg { position: absolute; bottom: 30px; left: 61.9%; transform: translate(-50%,0) rotate(138deg); width: 110px; }  /* povecavanje brzinomjera */
+
+.info.vehicle #speedometer svg circle { display: block; fill: transparent; stroke-width: 4px; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 75; transform-origin: 50% 50%; }
+.info.vehicle #speedometer svg circle.mask { stroke: rgba(0,0,0,0.35); }
+.info.vehicle #speedometer svg circle.speed { stroke: url(#speed-gradient); stroke-dashoffset: 180; }
+.info.vehicle #speedometer svg:first-child { z-index: 11; }
+
+
+.info.vehicle #speedometer svg circle { transition: all 250ms linear; }
+.info.vehicle #speedometer svg circle.zero { stroke: #73e600; stroke-dashoffset: 235; }
+.info.vehicle #speedometer svg circle.twentyfive { stroke: #b0e600; stroke-dashoffset: 180; }
+.info.vehicle #speedometer svg circle.fifty { stroke: #e6c700;  stroke-dashoffset: 125; }
+.info.vehicle #speedometer svg circle.seventyfive { stroke: #e64d00;  stroke-dashoffset: 75; }
+
+
+.info.vehicle #speedometer #vehicle-speed { position: absolute; top: 35%; left:62%; transform: translate(-50%,-50%); text-align: center; color: #FFF;}
+.info.vehicle #speedometer #vehicle-speed span { display: block; font-weight: 900; font-size: 30px; text-shadow: 0px 1px 1px rgba(0,0,0,0.75); }
+
+ .info.vehicle #speedometer #vehicle-speed strong { display: inline-block; font-size: 10px; font-weight: 900; padding: 2px 5px; border-radius:620px;;  text-shadow: 0px 1px 1px rgba(0,0,0,0.75); transition: all 150ms linear; }
+ .info.vehicle #speedometer #vehicle-speed strong.on { background:#06b30060; }
+
+.info.vehicle #speedometer #vehicle-gear,
+.info.vehicle #speedometer #vehicle-others { display:none ; position: absolute; bottom: 0; left: 50%; width: 0px; transform: translate(-50%,0); margin: auto; border: 0px solid #ffffff; }
+
+.info.vehicle #speedometer #vehicle-gear.pulsing { display:none ; animation: trew-siren 1s infinite; }
+
+.info.vehicle #speedometer #vehicle-gear i {  display:none; top: -2px; }
+.info.vehicle #speedometer #vehicle-gear span {display:none ;  padding: 5px 15px 0 10px; }
+
+
+.info.vehicle #speedometer #vehicle-status-left { position: absolute; bottom: 0; left: 200px; } /* svjetla*/
+.info.vehicle #speedometer #vehicle-status-left ul li { float: left; }
+
+.info.vehicle #speedometer #vehicle-status-right {  position: absolute; bottom: 0; right: 76px; }
+.info.vehicle #speedometer #vehicle-status-right ul li { float: left; }
+
+.info.vehicle #speedometer #vehicle-status-right2 {  position: absolute; bottom: 0; right: 130px; }/* gorivo*/
+.info.vehicle #speedometer #vehicle-status-right2 ul li { float: right; }
+
+.info.vehicle #speedometer li#seatbelt span { background-image: linear-gradient(to right, rgba(0,0,0,0.25),); }
+.info.vehicle #speedometer li#seatbelt.on span { background: linear-gradient(180deg, #00f529 0%, #14800d 100%); }
+
+
+.info.vehicle #speedometer li#fuel span { background: linear-gradient(180deg, #0d034f 0%, #1a03b3 100%); }
+
+.info.vehicle #speedometer li#lights.normal span,
+.info.vehicle #speedometer li#lights.high span { position: absolute; bottom: 0; right: 50; background: linear-gradient(180deg, #3a85a6 0%, #16b3f7 100%); }
+
+.info.vehicle #speedometer li#signals.dying span { background: linear-gradient(180deg, #00f529 0%, #16b3f7 100%); animation: trew-status-blink 750ms infinite; }
+
+
+
+@keyframes trew-siren {
+    0% { border-color: rgba(255,0,0,0); box-shadow: 0 0 10px 10px rgba(255,0,0,0); }
+    50% { border-color: rgba(255,0,0,1); box-shadow: 0 0 10px 10px rgba(255,0,0,0.50); }
+    100% { border-color: rgba(255,0,0,0); box-shadow: 0 0 10px 10px rgba(255,0,0,0); }
+}
+
+@keyframes trew-soundwave {
+    0% { box-shadow: 0 0 0 0px rgba(255,255,255,0.75); }
+    100% { box-shadow: 0 0 0 25px rgba(255,255,255,0); }
+}
+
+@keyframes trew-status-blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes trew-pulse {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@keyframes trew-speed {
+    0% { stroke-dashoffset: 280; }
+    50% { stroke-dashoffset: 75; }
+    100% { stroke-dashoffset: 280; }
+}
+
+@keyframes trew-bullets {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    100% { transform: translate(30px,-60px) rotate(90deg); opacity: 0;}
+}
+
+@keyframes trew-rainbow{
+        100%,
+        0%{ background: rgba(255,0,0,0.70); }
+        8%{ background: rgba(255,127,0,0.70); }
+        16%{ background: rgba(230,205,23,0.70); }
+        25%{ background: rgba(127,255,0,0.70); }
+        33%{ background: rgba(0,255,0,0.70); }
+        41%{ background: rgba(0,255,127,0.70); }
+        50%{ background: rgba(0,255,255,0.70); }
+        58%{ background: rgba(0,127,255,0.70); }
+        66%{ background: rgba(0,0,255,0.70); }
+        75%{ background: rgba(127,0,255,0.70); }
+        83%{ background: rgba(255,0,255,0.70); }
+        91%{ background: rgba(255,0,127,0.70); }
+}
