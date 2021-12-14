@@ -1,0 +1,73 @@
+﻿* {padding: 0; margin: 0; box-sizing: border-box; font-family: montserrat;}
+
+.spectate{
+	position: absolute;
+	color: #fff;
+	border-radius: 10px;
+	border: 2px solid #ffffff;
+	background-color: rgba(0, 0, 0, 0.61);
+	min-width: 400px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+
+}
+
+.spectate .header{
+	padding: 5px;
+	width: 100%;
+}
+
+.header h2{
+	display: inline-block;
+	font-size: 21px;
+	text-align: center;
+	margin-left: 130px;
+}
+
+.header #close{
+	float: right;
+	vertical-align: middle;
+	position: relative;
+	top: 4px;
+	color: #f03a17;
+	font-size: 20px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.spectate .users{
+	padding: 5px;
+	max-height: 700px;
+    overflow: auto;
+
+}
+
+.user{
+	padding: 6px 5px;
+	font-size: 18px;
+
+}
+
+.user .user-name{
+	margin-left: 15px;
+}
+
+.user .user-actions{
+	float: right;
+	position: relative;
+	bottom: 1px;
+}
+
+button{
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 1);
+	color: #000000;
+	padding: 5px 10px;
+	margin-right: 10px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	min-width: 49px;
+}
