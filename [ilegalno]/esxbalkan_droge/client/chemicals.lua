@@ -207,3 +207,13 @@ function GetCoordZChemicals(x, y)
 
 	return 5.9
 end
+
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)
