@@ -22,6 +22,8 @@ SET time_zone = "+00:00";
 -- Database: `esx_mod`
 --
 
+CREATE DATABASE esx_mod;
+USE esx_mod;
 -- --------------------------------------------------------
 
 --
