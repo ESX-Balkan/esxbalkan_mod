@@ -12,6 +12,7 @@ server_scripts {
     'server/antiafk.lua',
     'server/cron.lua',
     'server/proveri-rank.lua',
+    'server/richpresence.lua',
 }
 
 

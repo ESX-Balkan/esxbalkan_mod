@@ -1,0 +1,1 @@
+GlobalState.brojSlotova = GetConvar("sv_maxclients", "8")
