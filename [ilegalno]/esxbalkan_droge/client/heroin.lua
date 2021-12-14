@@ -199,3 +199,12 @@ function GetCoordZHeroin(x, y)
 
 	return 12.64
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)
