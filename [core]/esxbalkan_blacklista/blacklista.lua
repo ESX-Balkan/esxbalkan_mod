@@ -33,6 +33,6 @@ function blacklistalog(name, message)
             ["description"] = message,
         }
       }
-    PerformHttpRequest("https://discord.com/api/webhooks/881329417815744553/k7m86NxXqeB4KWDWPfgA5ivX1AMc_0XxjaWuiaXoIppu4HgdCoHwCdbQv69ZQfkO5HkN", function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
   end
   
