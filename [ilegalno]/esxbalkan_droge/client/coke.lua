@@ -199,3 +199,12 @@ function GetCoordZCoke(x, y)
 
 	return 77
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)
