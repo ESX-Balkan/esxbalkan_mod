@@ -3,7 +3,7 @@ Config.LogoviZaposljavanje = "webhook"
 
 --Kordinate biroa
 Config.Biro = {
-	vector3(-267.3, -957.9,  31.2)
+	vector3(-267.3, -957.9,  30.2)
 }
 
 --NEZAPOSLEN-UNEMPLOYED
