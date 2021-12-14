@@ -22,7 +22,7 @@ function izbaciSve()
     Wait(6000)
     for i=1, #xPlayers, 1 do
         local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-        xPlayer.kick("RESTART SERVERA U TOKU🔄[HUGO ROLEPLAY]")
+        xPlayer.kick("RESTART SERVERA U TOKU🔄[ESX BALKAN MOD]")
     end
 end
 
