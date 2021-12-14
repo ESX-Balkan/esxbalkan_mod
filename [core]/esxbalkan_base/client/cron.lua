@@ -46,8 +46,8 @@ function EnumeratePickups()
   return EnumerateEntities(FindFirstPickup, FindNextPickup, EndFindPickup)
 end
 
-RegisterNetEvent("hugo_brisikola")
-AddEventHandler("hugo_brisikola", function ()
+RegisterNetEvent("esxbalkan_base")
+AddEventHandler("esxbalkan_base", function ()
   local journey = GetHashKey('journey')
     for vehicle in EnumerateVehicles() do
         if GetEntityModel(vehicle) ~= journey then
@@ -64,8 +64,8 @@ AddEventHandler("hugo_brisikola", function ()
     end
 end)
 
-RegisterNetEvent("hugo_brisipeda")
-AddEventHandler("hugo_brisipeda", function ()
+RegisterNetEvent("esxbalkan_base")
+AddEventHandler("esxbalkan_base", function ()
   local ped = PlayerPedId()
     for ped in EnumeratePeds() do
         if (not IsPedAPlayer(GetPedInVehicleSeat(ped, -1))) then 
