@@ -1,0 +1,131 @@
+@font-face {
+	font-family: bankgothic;
+	src: url('../fonts/bankgothic.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto-ThinItalic-webfont.eot');
+    src: url('Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Roboto-ThinItalic-webfont.woff') format('woff'),
+         url('Roboto-ThinItalic-webfont.ttf') format('truetype'),
+         url('Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg'); 
+    font-weight: 50;
+    font-style: italic;
+}
+
+.menu {
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	min-width: 330px;
+	color: #fff;
+	position: absolute;
+	margin-bottom: 10px;
+}
+
+.menu.align-left {
+	right: 40;
+	top: 35%;
+	transform: translate(0, -50%);
+}
+
+.menu.align-top-left {
+	right: 40;
+	top: 35%;
+}
+
+.menu.align-top {
+	right: 40;
+	top: 35%;
+	transform: translate(-50%, 0);
+}
+
+.menu.align-top-right {
+	right: 40;
+	top: 35%;
+}
+
+.menu.align-right {
+	right: 40;
+	top: 35%;
+	transform: translate(0, -50%);
+}
+
+.menu.align-bottom-right {
+	right: 40;
+	top: 50%;
+}
+
+.menu.align-bottom {
+	right: 40;
+	top: 50%;
+	transform: translate(-50%, 0);
+}
+
+.menu.align-bottom-left {
+	right: 40;
+	top: 50%;
+}
+
+.menu.align-center {
+	right: 40;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.menu .head {
+	background-color: #01153dc0;
+	/* background: linear-gradient(to left, #cfb003be ,#01153dc0 70%); */
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 10px;
+	margin-bottom: 7px;
+	width:88%;
+	margin-left:12%;
+	border-top: 2px solid 	#003192c0;
+	border-bottom: 2px solid 	#003192c0;
+
+
+}
+
+.menu .head2 {
+	position: absolute;
+	right:90%;
+	top:0%;
+	background-image:url(https://i.imgur.com/tznMHnq.png); /* ovdje mijenjate logo */
+	height: 35px;
+	border-radius: 10px;
+	width:10%;
+	margin-left:20%;
+	border: 1px solid 	#01153dc0;
+
+}
+
+.menu .menu-items {
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+.menu .menu-items .menu-item {
+	height: 35px;
+	display: block;
+	background-color: #01153dc0;
+	/* background: linear-gradient(to left, #cfb003be ,#01153dc0 70%); */
+	line-height: 32px;
+	color: #ffffff;
+	padding: 1px;
+	text-align: center;
+	border-radius: 10px;
+	margin-bottom: 3px;
+	/* border-top: 2px solid 	#0c40a8;
+	border-bottom: 2px solid		#0c40a8; */
+
+}
+
+.menu .menu-items .menu-item.selected {
+	background-color: #012369c0;
+	border-top: 2px solid 	#1550c7;
+	border-bottom: 2px solid		#1550c7;
+	border-radius: 10px;
+}
