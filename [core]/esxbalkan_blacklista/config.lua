@@ -1,6 +1,6 @@
 Config = {}
 
-
+Config.Webhook = "Ovde Stavljate Vas Webhook"
 Config.PropsWhitelisted = {
 
     "BF400",
