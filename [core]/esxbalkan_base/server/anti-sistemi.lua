@@ -1,10 +1,13 @@
 ----------------SERVER SIDE PROVJERE-------------
+--[[ OVAJ KOD PUNO VUCE!
+
+
 local ukljuciantisuperjump = true
 local antimodifikacijaoruzija = true
 local antinevidljivost = false -- vjerovatno broken..
 CreateThread(function()
     while true do
-        Wait(3000)
+        Wait(5000)
         for k, v in pairs(GetPlayers()) do
             local getajpeda = GetPlayerPed(v)
             if getajpeda ~= 0 then
@@ -33,5 +36,5 @@ CreateThread(function()
             end
         end
     end
-end)
+end)]]
 
