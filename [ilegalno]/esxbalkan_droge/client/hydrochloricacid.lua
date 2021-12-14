@@ -151,3 +151,12 @@ function GetCoordZHydrochloricAcid(x, y)
 
 	return 24.5
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)

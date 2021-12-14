@@ -151,3 +151,12 @@ function GetCoordZSulfuricAcid(x, y)
 
 	return 18.31
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)
