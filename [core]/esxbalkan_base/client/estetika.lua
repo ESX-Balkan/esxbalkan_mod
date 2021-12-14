@@ -69,9 +69,9 @@ function SetData()
 	Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), 'FE_THDR_GTAO', '~b~ESX BALKAN~w~ LEGACY MOD ~t~| ~b~Discord : ~w~ discord.gg/7SK3fGDeHN  ~t~ | ~b~ID: ~w~' .. id)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(1500)
+		Wait(2000)
 		SetData()
 	end
 end)
