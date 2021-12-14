@@ -35,7 +35,7 @@ function komandelog2(name, message)
 			["title"] = "".. name .."",
 			["description"] = message,
 			-- ["footer"] = {
-			-- ["text"] = "Hugo Logovi ⏱️\nVrijeme: " .. vrijeme.hour .. ":" .. vrijeme.min .. ":" .. vrijeme.sec,
+			-- ["text"] = "ESX BALKAN MOD ⏱️\nVrijeme: " .. vrijeme.hour .. ":" .. vrijeme.min .. ":" .. vrijeme.sec,
 			-- },
 		}
 		}
