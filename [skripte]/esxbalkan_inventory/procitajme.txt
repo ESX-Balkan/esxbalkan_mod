@@ -1,0 +1,1 @@
+potrebno je extractat folder img.rar u html folder(u kom se nalazi)
