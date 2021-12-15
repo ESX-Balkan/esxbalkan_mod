@@ -3,11 +3,12 @@ local playersProcessingCocaLeaf = {}
 RegisterServerEvent('esxbalkan_droge:pickedUpCocaLeaf')
 AddEventHandler('esxbalkan_droge:pickedUpCocaLeaf', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local xItem = xPlayer.getInventoryItem('coca_leaf')
 
-	if xPlayer.canCarryItem('coca_leaf', 1) then
-		xPlayer.addInventoryItem('coca_leaf', 1)
-	else
+	if xItem.weight ~= -1 and (xItem.count + 1) > xItem.weight then
 		xPlayer.showNotification(_U('coca_leaf_inventoryfull'))
+	else
+		xPlayer.addInventoryItem(xItem.name, 1)
 	end
 end)
 
