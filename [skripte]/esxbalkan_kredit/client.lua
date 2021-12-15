@@ -49,8 +49,6 @@ CreateThread(function()
         Wait(0)
         local sleep = true
         local distance = #(GetEntityCoords(PlayerPedId()) - Config.Zonakredita)
-        if ESX.PlayerData.job.name == "unemployed" then
-        else
             if distance < 10  then
                 sleep = false
                 DrawMarker(42, 235.5577, 223.0627, 110.28, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0, 0, 120, 100, false, true, 2, true, false, false, false)
@@ -62,7 +60,6 @@ CreateThread(function()
                     KreditMeni()
                 end
             end
-        end
 	if sleep then Wait(1000) end
     end
 end)
