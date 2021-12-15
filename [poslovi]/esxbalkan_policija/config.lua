@@ -80,7 +80,7 @@ Config.PoliceStations = {
 
 }
 
-Config.AuthorizedWeapons = {
+--[[Config.AuthorizedWeapons = {
 	recruit = {
 		{weapon = 'WEAPON_APPISTOL', components = {0, 0, 1000, 4000, nil}, price = 10000},
 		{weapon = 'WEAPON_NIGHTSTICK', price = 0},
@@ -122,7 +122,7 @@ Config.AuthorizedWeapons = {
 		{weapon = 'WEAPON_STUNGUN', price = 500},
 		{weapon = 'WEAPON_FLASHLIGHT', price = 0}
 	}
-}
+}]]
 
 Config.CustomPeds = {
 	shared = {
