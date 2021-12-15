@@ -493,7 +493,6 @@ TriggerEvent('cron:runAt', 22, 00, PayRent)
 
 function sendToDiscord(name,message, color)
 	local vreme = os.date("*t")
-	local DiscordWebHook = "OVDE WEBHOOK"
 	local embeds = {
 		{
 			["title"]=message,
@@ -506,5 +505,5 @@ function sendToDiscord(name,message, color)
 		}
 	} 
 	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(DiscordWebHook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(Config.WebHook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
 end
