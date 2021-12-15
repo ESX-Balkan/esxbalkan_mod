@@ -1,9 +1,3 @@
---
---  LEAKED BY S3NTEX -- 
---  https://discord.gg/aUDWCvM -- 
---  fivemleak.com -- 
---  fkn crew -- 
-
 Config              = {}
 Config.Locale       = 'en'
 Config.Phones       = {
