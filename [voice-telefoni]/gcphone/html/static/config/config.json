@@ -1,0 +1,693 @@
+{
+  "licenseKey": "321",
+  "reseau": "LosSantosCell",
+  "warningMessageCount": 250,
+  "themeColor": "#1f1f1f",
+  "colors": [
+    "#EF5350",
+    "#EC407A",
+    "#AB47BC",
+    "#7E57C2",
+    "#5C6BC0",
+    "#42A5F5",
+    "#29B6F6",
+    "#26C6DA",
+    "#26A69A",
+    "#66BB6A",
+    "#9CCC65",
+    "#D4E157",
+    "#FFCA28",
+    "#FFA726",
+    "#FF7043",
+    "#8D6E63",
+    "#78909C"
+  ],
+
+  "useFormatNumberFrance": true,
+
+  "useTwitterAutoAccount": true,
+
+  "useWebRTCVocal": false,
+  "RTCConfig": {
+    "iceServers": [{
+      "urls": ["turn:barrax.needrp.net"],
+      "username": "gcphone",
+      "credential": "gcphone"
+    }]
+  },
+
+
+  "enableTakePhoto": true,
+  "fileUploadService_Url": "https://discord.com/api/webhooks/891010195147333762/FEVYU9MXM3kmhPIL2qyRj2zaW4o1Emt85jt7u5jsMqEk0qyA9I7VVlxK3nVsBBBfdwyf",
+  "fileUploadService_Field": "files[]",
+
+  "ringtones": {
+    "iPhone Default": "iphonex.mp3",
+    "Astronomia": "astronomia.mp3",
+    "Fersah": "fersah.mp3",
+    "XTENTACION Night": "night.mp3",
+    "Imanbek Roses": "imanbek.mp3",
+    "Cradles": "cradles.mp3"
+  },
+  "ringtone_default": {
+    "label": "iPhone Default",
+    "value": "iphonex.mp3"
+  },
+
+  "background": {
+    "ESX BALKAN": "iphone.jpg",
+    "Custom URL": "URL"
+  },
+  "background_default": {
+    "label": "ESX Balkan Wallpaper",
+    "value": "iphone.jpg"
+  },
+
+
+  "coque": {
+    "Sansumg S8": "s8.png",
+    "Iphone X": "iphonex.png",
+    "Brick Base": "base.png",
+    "Transparent": "transparent.png"
+  },
+  "coque_default": {
+    "label": "iPhone",
+    "value": "iphone.png"
+  },
+
+
+  "serviceCall": [{
+      "display": "Milicija",
+      "icon": "/html/static/img/icons_app/police.png",
+      "subMenu": [{
+          "title": "Pošaljite poruku",
+          "eventName": "esx_addons_gcphone:call",
+          "type": {
+            "number": "police"
+          }
+        },
+        {
+          "title": "Pozovi",
+          "eventName": "gcphone:autoCallNumber",
+          "type": {
+            "number": "police"
+          }
+        }
+      ]
+    },
+    {
+      "display": "Hitna Pomoć",
+      "icon": "/html/static/img/icons_app/ambulance.png",
+      "subMenu": [{
+        "title": "Pošaljite poruku",
+        "eventName": "esx_addons_gcphone:call",
+        "type": {
+          "number": "ambulance"
+        }
+      },
+      {
+          "title": "Pozovi",
+          "eventName": "gcphone:autoCallNumber",
+          "type": {
+            "number": "ambulance"
+       }
+      }
+     ]
+    },
+    {
+      "display": "Taksi",
+      "icon": "/html/static/img/icons_app/taxi.png",
+      "subMenu": [{
+        "title": "Pošaljite poruku",
+        "eventName": "esx_addons_gcphone:call",
+        "type": {
+          "number": "taxi"
+        }
+      },
+      {
+          "title": "Pozovi",
+          "eventName": "gcphone:autoCallNumber",
+          "type": {
+            "number": "taxi"
+       }
+      }
+     ]
+    },
+    {
+      "display": "Mehaničar",
+      "icon": "/html/static/img/icons_app/mechanic.png",
+      "subMenu": [{
+        "title": "Pošaljite poruku",
+        "eventName": "esx_addons_gcphone:call",
+        "type": {
+          "number": "mechanic"
+        }
+      },
+      {
+          "title": "Pozovi",
+          "eventName": "gcphone:autoCallNumber",
+          "type": {
+            "number": "mechanic"
+       }
+      }
+     ]
+    }
+  ],
+
+  "defaultContacts": [{
+      "number": "police",
+      "display": "Policija",
+      "icon": "/html/static/img/icons_app/police.png"
+    },
+    {
+      "number": "ambulance",
+      "display": "Hitna Pomoć",
+      "icon": "/html/static/img/icons_app/ambulance.png"
+    },
+    {
+      "number": "taxi",
+      "display": "Taksi",
+      "icon": "/html/static/img/icons_app/taxi.png"
+    },
+    {
+      "number": "mechanic",
+      "display": "Mehaničar",
+      "icon": "/html/static/img/icons_app/mechanic.png"
+    }
+  ],
+  
+  "apps": [
+    {
+      "name": "Twitter",
+      "en_US__name": "Twitter",
+      "tr_TR__name": "Twitter",
+      "icons": "/html/static/img/icons_app/twitter.png",
+      "routeName": "twitter.splash",
+      "enabled": true
+    },
+    {
+      "name": "Oglasi",
+      "en_US__name": "Oglasi",
+      "tr_TR__name": "Sarı Sayfalar",
+      "icons": "/html/static/img/icons_app/yellow.png",
+      "routeName": "yellow.splash",
+      "enabled": true
+    },
+    {
+      "name": "Pozivi",
+      "en_US__name": "Pozivi",
+      "tr_TR__name": "Telefon",
+      "icons": "/html/static/img/icons_app/call.png",
+      "routeName": "appels",
+      "inHomePage": true
+    },
+    {
+      "name": "Poruke",
+      "en_US__name": "Poruke",
+      "tr_TR__name": "Mesajlar",
+      "icons": "/html/static/img/icons_app/sms.png",
+      "routeName": "messages",
+      "puceRef": "nbMessagesUnread",
+      "enabled": true,
+      "inHomePage": true
+    },
+    {
+      "name": "Kontakti",
+      "en_US__name": "Kontakti",
+      "tr_TR__name": "Rehber",
+      "icons": "/html/static/img/icons_app/contacts.png",
+      "routeName": "contacts",
+      "enabled": true
+    },
+    {
+      "name": "Podesavanja",
+      "en_US__name": "Podesavanja",
+      "tr_TR__name": "Ayarlar",
+      "icons": "/html/static/img/icons_app/settings.png",
+      "routeName": "parametre",
+      "enabled": true
+    },
+    {
+      "name": "Banka",
+      "en_US__name": "Banka",
+      "tr_TR__name": "Banka",
+      "icons": "/html/static/img/icons_app/bank.png",
+      "routeName": "bank",
+      "enabled": true
+    },
+    {
+      "name": "Računi",
+      "en_US__name": "Bills",
+      "tr_TR__name": "Faturalar",
+      "icons": "/html/static/img/icons_app/fatura.png",
+      "routeName": "faturalar",
+      "enabled": false
+    },
+    {
+      "name": "Youtube",
+      "en_US__name": "Youtube",
+      "tr_TR__name": "Youtube",
+      "icons": "/html/static/img/icons_app/youtube.png",
+      "routeName": "youtube",
+      "enabled": true
+    },
+    {
+      "name": "Kamera",
+      "en_US__name": "Camera",
+      "tr_TR__name": "Kamera",
+      "icons": "/html/static/img/icons_app/photo.png",
+      "routeName": "photo",
+      "enabled": true
+    },
+    {
+      "name": "Dark Chat",
+      "en_US__name": "Dark Chat",
+      "tr_TR__name": "Dark Chat",
+      "icons": "/html/static/img/icons_app/tchat.png",
+      "routeName": "tchat",
+      "enabled": true
+    },
+    
+    {
+      "name": "Berza",
+      "en_US__name": "Berza",
+      "tr_TR__name": "Crypto Market",
+      "icons": "/html/static/img/icons_app/bourse.png",
+      "routeName": "bourse",
+      "enabled": false
+    },
+    {
+      "name": "Vijesti",
+      "en_US__name": "Vesti",
+      "tr_TR__name": "Haberler",
+      "icons": "/html/static/img/icons_app/news.png",
+      "routeName": "news",
+      "enabled": false
+    },
+    {
+      "name": "Wanted",
+      "en_US__name": "Wanted",
+      "tr_TR__name": "Arananlar",
+      "icons": "/html/static/img/icons_app/wanted.png",
+      "routeName": "wanted",
+      "enabled": false
+    },
+    {
+      "name": "Uber Eats",
+      "en_US__name": "Uber Eats",
+      "tr_TR__name": "Götür",
+      "icons": "/html/static/img/icons_app/ubere.png",
+      "routeName": "uber",
+      "enabled": false
+    },
+    {
+      "name": "Gallery",
+      "en_US__name": "Gallery",
+      "tr_TR__name": "Galeri",
+      "icons": "/html/static/img/icons_app/gallery.png",
+      "routeName": "gallery",
+      "enabled": false
+    }
+  ],
+  "defaultLanguage": "en_US",
+  "language": {
+    "en_US": {
+      "NAME": "SRPSKI",
+      "PHONE_WARNING_MESSAGE": "trenutak",
+      "PHONE_WARNING_MESSAGE_MESS": "Poruka",
+      "CONFIRM": "Prihvati",
+      "CANCEL": "Otkazi",
+      "APP_RINGTONE": "Melodija",
+      "APP_NEWS": "Vesti",
+      "APP_NEWS_DETAIL": "Detalji o Vestima",
+      "APP_YOUTUBE_TITLE": "Youtube",
+      "APP_YOUTUBE_PRESS_ENTER": "Pritisni Enter Or Click Search Button",
+      "APP_YOUTUBE_SEARCH": "Pretrazi video",
+      "APP_BANK_AMOUNT": "Novac",
+      "APP_BANK_SOCIETY_AMOUNT": "Novac Firme",
+      "APP_BANK_LATEST_HISTORY": "LAST HISTORY",
+      "APP_BANK_SHOW_ALL": "SHOW ALL",
+      "APP_BANK_INCOMING": "INCOMING",
+      "APP_BANK_OUTGOING": "OUTGOING",
+      "APP_BANK_SEND_AMOUNT": "Amount",
+      "APP_BANK_SEND_AMOUNT_EMPTY": "Amount cannot be empty",
+      "APP_BANK_SEND_ID_EMPTY": "IBAN Cannot be empty(User ID)",
+      "APP_HOME_MESSAGES": "Poruke",
+      "APP_CONFIG_TITLE": "Podesavanja",
+      "APP_CONFIG_MY_MUNBER": "Moj Broj",
+      "APP_CONFIG_WALLPAPER": "Pozadina",
+      "APP_CONFIG_CASE": "Maska telefon",
+      "APP_CONFIG_ZOOM": "Zoom",
+      "APP_CONFIG_VOLUME": "Zvuk",
+      "APP_CONFIG_LANGUAGE": "Jezik",
+      "APP_CONFIG_MOUSE_SUPPORT": "Kontrola Misem",
+      "APP_CONFIG_RESET": "Format",
+      "APP_CONFIG_RESET_CONFIRM": "IZBRISI SVE",
+      "APP_PHONE_NAME": "Telefon",
+      "APP_PHONE_CALL": "Poziv",
+      "APP_PHONE_DELETE": "Obrisi",
+      "APP_PHONE_DELETE_ALL": "Obrisi sve.",
+      "APP_PHONE_TITLE": "Broj Telefona",
+      "APP_PHONE_MENU_FAVORITES": "Omiljeno",
+      "APP_PHONE_MENU_RECENTS": "Najnovije",
+      "APP_PHONE_MENU_CONTACTS": "Kontakti",
+      "APP_PHONE_NUMBER_HIDDEN": "Sakriveno",
+      "APP_PHONE_NUMBER_UNKNOWN": "Nepoznato",
+      "APP_PHONE_ENTER_NUMBER": "Unesite broj",
+      "APP_PHONE_SAVE": "Sacuvajte kontakt",
+      "APP_BANK_TITLE": "bench",
+      "APP_BOURSE_TITLE": "Crypto Market",
+      "APP_BOURSE_SUB_TITLE": "Crypto Exchange",
+      "APP_BOURSE_BANK": "Banka",
+      "APP_BOURSE_HAVE": "Imate",
+      "APP_BOURSE_ERROR": "Error",
+      "APP_BOURSE_CORRECT_NUMBER": "Unesite validan broj",
+      "APP_BOURSE_CORRECT_COUNT": "Unesite validnu kolicinu",
+      "APP_BOURSE_BUY": "Kupi",
+      "APP_BOURSE_SELL": "Prodaj",
+      "APP_CONTACT_TITLE": "Kontakti",
+      "APP_CONTACT_SUB_TITLE": "Dodaj Novi kontakt",
+      "APP_CONTACT_NEW": "Novi Kontakt",
+      "APP_CONTACT_EDIT": "Izmeni",
+      "APP_CONTACT_SAVE": "Registruj",
+      "APP_CONTACT_CANCEL": "Otkazi",
+      "APP_CONTACT_DELETE": "Obrisi",
+      "APP_CONTACT_LABEL_NAME": "Ime - Prezime",
+      "APP_CONTACT_LABEL_NUMBER": "Broj",
+      "APP_FATURA_TITLE": "Racuni",
+      "APP_FATURA_PAY": "Pay to bill",
+      "APP_FATURA_AMBULANCE": "EMS",
+      "APP_FATURA_POLICE": "LSPD",
+      "APP_FATURA_CAR_DEALER": "CAR DEALER",
+      "APP_FATURA_MECHANIC": "MECHANİC",
+      "APP_FATURA_UNKNOWN": "UNKNOWN",
+      "APP_MESSAGE_MESS_CALL": "Pozovi",
+      "APP_MESSAGE_TITLE": "Poruke",
+      "APP_MESSAGE_NEW_MESSAGE": "Posalji Poruku",
+      "APP_MESSAGE_MESS_NUMBER": "Broj",
+      "APP_MESSAGE_MESS_SMS": "Posalji poruku",
+      "APP_MESSAGE_MESS_COPY": "Kopiraj poruku",
+      "APP_MESSAGE_ERASE_CONVERSATION": "Obrisi poruku",
+      "APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Obrisi sve poruke",
+      "APP_MESSAGE_SEND_GPS": "Posalji GPS",
+      "APP_MESSAGE_SEND_PHOTO": "Posalji Sliku",
+      "APP_MESSAGE_SET_GPS": "GPS pozicija",
+      "APP_MESSAGE_ZOOM_IMG": "Zumiraj sliku",
+      "APP_MESSAGE_DELETE": "Obrisi",
+      "APP_MESSAGE_SMS": "poruka",
+      "APP_MESSAGE_CONTACT_TITLE": "Kontakti",
+      "APP_MESSAGE_CONTRACT_ENTER_NUMBER": "Unesi broj",
+      "APP_MESSAGE_PLACEHOLDER_ENTER_MESSAGE": "Posalji poruku",
+      "APP_DARKTCHAT_TITLE": "Dark Chat",
+      "APP_DARKTCHAT_NEW_CHANNEL": "Dodaj Kanal",
+      "APP_DARKTCHAT_DELETE_CHANNEL": "Obrisi Kanal",
+      "APP_DARKTCHAT_CANCEL": "Otkazi",
+      "APP_DARKTCHAT_PLACEHOLDER_ENTER_MESSAGE": "Unesi Poruku",
+      "APP_TWITTER_NAME": "Twitter",
+      "APP_TWITTER_VIEW_TWITTER": "Twitter",
+      "APP_TWITTER_VIEW_TOP_TWEETS": "Moji Twitovi",
+      "APP_TWITTER_VIEW_TWEETER": "Tweets",
+      "APP_TWITTER_VIEW_SETTING": "Podesavanja",
+      "APP_TWITTER_NEW_ACCOUNT_USERNAME": "Username (>= 4)",
+      "APP_TWITTER_NEW_ACCOUNT_PASSWORD": "Password (>= 6)",
+      "APP_TWITTER_NEW_ACCOUNT_PASSWORD_CONFIRM": "Potvrdi password",
+      "APP_TWITTER_ACCOUNT_AVATAR": "NE KORISTI OVO",
+      "APP_TWITTER_NEW_ACCOUNT_AVATAR": "URL tvoje slike",
+      "APP_TWITTER_PLACEHOLDER_MESSAGE": "Sta nije uredu sa tobom?",
+      "APP_TWITTER_BUTTON_ACTION_TWEETER": "Tweeter",
+      "APP_TWITTER_ACCOUNT_LOGIN": "Uloguj se na sajt",
+      "APP_TWITTER_ACCOUNT_LOGOUT": "Diskonektuj se",
+      "APP_TWITTER_ACCOUNT_PARAM": "Moj Nalog",
+      "APP_TWITTER_ACCOUNT_USERNAME_CHANGE": "Promeni Username",
+      "APP_TWITTER_ACCOUNT_CHANGE_PASSWORD": "Promeni password",
+      "APP_TWITTER_ACCOUNT_NEW": "Novi Profil",
+      "APP_TWIITER_ACCOUNT_SAVE": "Registracija",
+      "APP_TWIITER_ACCOUNT_CREATE": "Napravi novi profil",
+      "APP_TWIITER_ACCOUNT_CANCEL": "Otkazi",
+      "APP_TWITTER_ACCOUNT_USERNAME": "username",
+      "APP_TWITTER_ACCOUNT_PASSWORD": "password",
+      "APP_TWITTER_NOTIFICATION": "Obavestenja",
+      "APP_TWITTER_NOTIFICATION_WHEN": "To be notified",
+      "APP_TWITTER_NOTIFICATION_ALL": "All News",
+      "APP_TWITTER_NOTIFICATION_MENTION": "Just mention",
+      "APP_TWITTER_NOTIFICATION_NEVER": "Nobody",
+      "APP_TWITTER_NOTIFICATION_SOUND": "Play a sound",
+      "APP_TWITTER_NOTIFICATION_SOUND_YES": "Yes",
+      "APP_TWITTER_NOTIFICATION_SOUND_NO": "No",
+      "APP_TWITTER_NOTIF_ACCOUNT_CREATE_SUCCESS": "Your Twitter account has been created.",
+      "APP_TWITTER_NOTIF_ACCOUNT_CREATE_ERROR": "Your Twitter account could not be created (username already used?)",
+      "APP_TWITTER_NOTIF_LOGIN_SUCCESS": "You are connected to Twitter.",
+      "APP_TWITTER_NOTIF_LOGIN_ERROR": "Invalid account / passwords",
+      "APP_TWITTER_NOTIF_AVATAR_SUCCESS": "Your avatar has been changed!",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_SUCCESS": "Your password has been changed.",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Your password could not be changed.",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_SUCCESS": "Your username has been changed.",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_ERROR": "Oops.... Your username could not be changed.",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Passwords do not match",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Password too short",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_LENGTH_ERROR": "Username too short",
+      "APP_TWITTER_LIKE_UNLIKE": "Like / Unlike",
+      "APP_TWITTER_RETWEET": "Retweet",
+      "APP_TWITTER_NEWTWEET": "New Tweet",
+      "APP_TWITTER_SENDTWEET": "Send Tweet",
+      "APP_YELLOW_TITLE": "Oglasi",
+      "APP_YELLOW_CALL": "Pozovi oglasivaca",
+      "APP_YELLOW_MESSAGE": "Posalji poruku",
+      "APP_YELLOW_SEND_POST": "Posalji tekst",
+      "APP_YELLOW_SEND_POST_IMAGE": "Posalji sliku",
+      "APP_YELLOW_NEW_POST": "Novi Post",
+      "APP_YELLOW_NOTIFICATION_ALL": "Svi postovi",
+      "APP_YELLOW_NOTIFICATION_MENTION": "Post samo za mene",
+      "APP_YELLOW_NOTIFICATION_NEVER": "Niko",
+      "APP_YELLOW_NOTIFICATION_SOUND": "Play a sound",
+      "APP_YELLOW_NOTIFICATION_SOUND_YES": "Da",
+      "APP_YELLOW_NOTIFICATION_SOUND_NO": "Ne",
+      "APP_YELLOW_MYPOSTS": "Moje objave",
+      "MODAL_INPUT": "Sta se desava?",
+      "APP_CHANGE_USERNAME": "Unesi novo ime",
+      "APP_VALET_TITLE": "Valet",
+      "APP_VALE_GET": "Uzmi auto",
+      "APP_VALET_IN_GARAGE": "U garazi",
+      "APP_VALET_OUTSIDE": "Napolju",
+      "APP_UBER_TITLE": "Uber Eats",
+      "APP_UBER_WAIT": "Cekanje porudzbine",
+      "APP_UBER_DELIVERY_ADRESS": "Adresa dostave",
+      "APP_UBER_ORDER": "NArucen item : ",
+      "APP_UBER_SEARCH_DELIVERY": "Dostava aktivna",
+      "APP_UBER_SEARCH_DELIVERY_START": "Click ili Enter da zapocnes potragu",
+
+
+      "SUCCESS_DELETE": "Uspesno obrisano",
+      "SUCCESS_LIKE": "Uspesno lajkovano",
+      "SUCCESS_RETWEET": "Uspesno odgovoreno",
+      "SUCCESS_SEND": "Uspesno poslato",
+      "SUCCESS_AVATAR_CHANGED": "Slika promenjena",
+      "SUCCESS_CHANGE_USERNAME": "Userame promenjen",
+      "SUCCESS_CHANGE_SETTINGS": "Postavke promenjene",
+      "VALET_CALLED": "Uspesno",
+      "VIDEO_SEARCH": "Uspesno",
+      "SUCCESS_MESSAGE": "Transakcija uspesna",
+      "ERROR_MESSAGE": "Neuspela transakcija",
+
+      "TIMEAGO": [
+        "just now",
+        ["%s second ago", "%s sekundi"],
+        ["%s minute ago", "%s minuta"],
+        ["%s hour ago", "%s sati"],
+        ["%s day ago", "%s dana"],
+        ["%s week ago", "%s nedelja"],
+        ["%s month ago", "%s meseci"],
+        ["%s year ago", "%s godina"]
+      ]
+    },
+    "tr_TR": {
+      "NAME": "Türkçe",
+      "PHONE_WARNING_MESSAGE": "Mesaj Kutusu Dolu !",
+      "PHONE_WARNING_MESSAGE_MESS": "Mesajlar",
+      "CONFIRM": "Onayla",
+      "CANCEL": "İptal",
+      "APP_RINGTONE": "Zil Sesi",
+      "APP_NEWS": "Haberler",
+      "APP_NEWS_DETAIL": "Haber Detayı",
+      "APP_YOUTUBE_TITLE": "Youtube",
+      "APP_YOUTUBE_PRESS_ENTER": "Enter veya Butona Tıklayarak Video Ara",
+      "APP_YOUTUBE_SEARCH": "Video Ara",
+      "APP_HOME_MESSAGES": "MESAJLAR",
+      "APP_BANK_AMOUNT": "BAKİYE",
+      "APP_BANK_SOCIETY_AMOUNT": "ŞİRKET BAKİYE",
+      "APP_BANK_LATEST_HISTORY": "SON İŞLEMLER",
+      "APP_BANK_SHOW_ALL": "HEPSİNİ GÖSTER",
+      "APP_BANK_INCOMING": "GELEN",
+      "APP_BANK_OUTGOING": "GİDEN",
+      "APP_BANK_SEND_AMOUNT": "Gönderilecek Tutar",
+      "APP_BANK_SEND_AMOUNT_EMPTY": "Gönderilecek Tutar Boş Olamaz",
+      "APP_BANK_SEND_ID_EMPTY": "Iban Boş Olamaz (Kullanıcı ID sini giriniz)",
+      "APP_CONFIG_TITLE": "Ayarlar",
+      "APP_CONFIG_MY_MUNBER": "Numaram",
+      "APP_CONFIG_WALLPAPER": "Duvar Kağıdı",
+      "APP_CONFIG_CASE": "Telefon Tipi",
+      "APP_CONFIG_ZOOM": "Tefon Boyutu",
+      "APP_CONFIG_VOLUME": "Ses Seviyesi",
+      "APP_CONFIG_LANGUAGE": "Dil Ayarları",
+      "APP_CONFIG_MOUSE_SUPPORT": "Mouse Mod",
+      "APP_CONFIG_RESET": "Telefonu Sıfırla",
+      "APP_CONFIG_RESET_CONFIRM": "Telefonu Sıfırlamayı Onayla",
+      "APP_PHONE_NAME": "Telefon",
+      "APP_PHONE_CALL": "Kişiyi Ara",
+      "APP_PHONE_CALL_ANONYMOUS": "Gizli Arama",
+      "APP_PHONE_DELETE": "Arama Geçmişinden Sil",
+      "APP_PHONE_DELETE_ALL": "Bütün Arama Geçmişini Temizle",
+      "APP_PHONE_TITLE": "Telefon",
+      "APP_PHONE_MENU_FAVORITES": "Favoriler",
+      "APP_PHONE_MENU_RECENTS": "Son Aramalar",
+      "APP_PHONE_MENU_CONTACTS": "Rehber",
+      "APP_PHONE_ENTER_NUMBER": "Numara Girin",
+      "APP_PHONE_NUMBER_HIDDEN": "Gizli Numara",
+      "APP_PHONE_NUMBER_UNKNOWN": "Bilinmiyor",
+      "APP_PHONE_CALL_IGNORE": "Yoksay",
+      "APP_PHONE_SAVE": "Kaydet",
+      "APP_FATURA_TITLE": "Faturalar",
+      "APP_FATURA_PAY": "Faturayı Öde",
+      "APP_FATURA_AMBULANCE": "EMS",
+      "APP_FATURA_POLICE": "LSPD",
+      "APP_FATURA_CAR_DEALER": "GALERİ",
+      "APP_FATURA_MECHANIC": "MEKANİK",
+      "APP_FATURA_UNKNOWN": "BİLİNMİYOR",
+      "APP_BANK_TITLE": "Banka",
+      "APP_BOURSE_TITLE": "Crypto Market",
+      "APP_BOURSE_SUB_TITLE": "Crypto Borsası",
+      "APP_BOURSE_BANK": "Banka",
+      "APP_BOURSE_HAVE": "Mevcut",
+      "APP_BOURSE_ERROR": "Hata",
+      "APP_BOURSE_CORRECT_NUMBER": "Lütfen Geçerli Bir Sayı Giriniz",
+      "APP_BOURSE_CORRECT_COUNT": "Lütfen Geçerli Bir Adet Giriniz",
+      "APP_BOURSE_BUY": "Al",
+      "APP_BOURSE_SELL": "Sat",
+      "APP_CONTACT_TITLE": "Rehber",
+      "APP_CONTACT_SUB_TITLE": "Rehber Yeni Kişi",
+      "APP_CONTACT_NEW": "Kişi Ekle",
+      "APP_CONTACT_EDIT": "Kişiyi Düzenle",
+      "APP_CONTACT_SAVE": "Kaydet",
+      "APP_CONTACT_CANCEL": "İptal Et",
+      "APP_CONTACT_DELETE": "Sil",
+      "APP_CONTACT_LABEL_NAME": "Kişinin Adı",
+      "APP_CONTACT_LABEL_NUMBER": "Numara",
+      "APP_MESSAGE_TITLE": "Mesajlar",
+      "APP_MESSAGE_NEW_MESSAGE": "Mesaj Gönder",
+      "APP_MESSAGE_ERASE_CONVERSATION": "Konuşmayı Sil",
+      "APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Tüm Konuşmaları Sil",
+      "APP_MESSAGE_SEND_GPS": "GPS Koordinatı Gönder",
+      "APP_MESSAGE_SET_GPS": "GPS'e Ayarla",
+      "APP_MESSAGE_SEND_PHOTO": "Fotoğraf gönder",
+      "APP_MESSAGE_ZOOM_IMG": "Resmi Yakınlaştır",
+      "APP_MESSAGE_DELETE": "Sil",
+      "APP_MESSAGE_MESS_NUMBER": "Numara ",
+      "APP_MESSAGE_MESS_SMS": "SMS",
+      "APP_MESSAGE_MESS_CALL": "Ara",
+      "APP_MESSAGE_MESS_COPY": "Mesajı Kopyala",
+      "APP_MESSAGE_CONTACT_TITLE": "Rehber",
+      "APP_MESSAGE_CONTRACT_ENTER_NUMBER": "Numara Gir",
+      "APP_MESSAGE_PLACEHOLDER_ENTER_MESSAGE": "Mesajı Yaz",
+      "APP_DARKTCHAT_TITLE": "Dark Chat",
+      "APP_DARKTCHAT_NEW_CHANNEL": "Yeni Konuşma Başlat",
+      "APP_DARKTCHAT_DELETE_CHANNEL": "Konuşmayı Sil",
+      "APP_DARKTCHAT_CANCEL": "İptal",
+      "APP_DARKTCHAT_PLACEHOLDER_ENTER_MESSAGE": "Mesajı Gir",
+      "APP_TWITTER_NAME": "Twitter",
+      "APP_TWITTER_VIEW_TWITTER": "Twitter",
+      "APP_TWITTER_VIEW_TOP_TWEETS": "Benim Tweetlerim",
+      "APP_TWITTER_VIEW_TWEETER": "Tweetler",
+      "APP_TWITTER_VIEW_SETTING": "Ayarlar",
+      "APP_TWITTER_NEW_ACCOUNT_USERNAME": "Kullanıcı Adı (>= 4)",
+      "APP_TWITTER_NEW_ACCOUNT_PASSWORD": "Şifre (>= 6)",
+      "APP_TWITTER_NEW_ACCOUNT_PASSWORD_CONFIRM": "Şifreyi Onayla",
+      "APP_TWITTER_NEW_ACCOUNT_AVATAR": "Profil resmini değiştir",
+      "APP_TWITTER_PLACEHOLDER_MESSAGE": "Bugün ne düşünüyorsun?",
+      "APP_TWITTER_BUTTON_ACTION_TWEETER": "Tweet At",
+      "APP_TWITTER_ACCOUNT_LOGIN": "Giriş Yap",
+      "APP_TWITTER_ACCOUNT_LOGOUT": "Çıkış Yap",
+      "APP_TWITTER_ACCOUNT_PARAM": "Hesabım",
+      "APP_TWITTER_ACCOUNT_USERNAME_CHANGE": "Kullanıcı Adını Değiştir",
+      "APP_TWITTER_ACCOUNT_CHANGE_PASSWORD": "Şifreyi Değiştir",
+      "APP_TWITTER_ACCOUNT_NEW": "Yeni Hesap Oluştur",
+      "APP_TWIITER_ACCOUNT_SAVE": "Kayıt Ol",
+      "APP_TWIITER_ACCOUNT_CREATE": "Yeni Hesap Oluştur",
+      "APP_TWIITER_ACCOUNT_CANCEL": "İptal",
+      "APP_TWITTER_ACCOUNT_USERNAME": "Kullanıcı adı",
+      "APP_TWITTER_ACCOUNT_PASSWORD": "Şifre",
+      "APP_TWITTER_NOTIFICATION": "Bildirim Ayarları",
+      "APP_TWITTER_NOTIFICATION_WHEN": "Bildirim Ayarları",
+      "APP_TWITTER_NOTIFICATION_ALL": "Bütün tweetler",
+      "APP_TWITTER_NOTIFICATION_MENTION": "Sadece bahsetmeler",
+      "APP_TWITTER_NOTIFICATION_NEVER": "Hiçbir zaman",
+      "APP_TWITTER_NOTIFICATION_SOUND": "Bildirim Sesi",
+      "APP_TWITTER_NOTIFICATION_SOUND_YES": "Açık",
+      "APP_TWITTER_NOTIFICATION_SOUND_NO": "Kapalı",
+      "APP_TWITTER_NOTIF_ACCOUNT_CREATE_SUCCESS": "Twitter hesabınız oluşturuldu.",
+      "APP_TWITTER_NOTIF_ACCOUNT_CREATE_ERROR": "Twitter hesabınız oluşturulamadı (Kullanıcı adı zaten kullanımda?)",
+      "APP_TWITTER_NOTIF_LOGIN_SUCCESS": "Twitter'a bağlandın.",
+      "APP_TWITTER_NOTIF_LOGIN_ERROR": "Hatalı kullanıcı adı / şifre",
+      "APP_TWITTER_NOTIF_AVATAR_SUCCESS": "Profil resmin değiştirildi!",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_SUCCESS": "Şifren değiştirildi.",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Şifren değiştirilemedi.",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_SUCCESS": "Kullanıcı adın başarı ile değiştirildi",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_ERROR": "Oops.... Kullanıcı adın değiştirilemedi.",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Şifre uyuşmuyor",
+      "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Şifre çok kısa",
+      "APP_TWITTER_NOTIF_NEW_USERNAME_LENGTH_ERROR": "Kullanıcı adı çok kısa",
+      "APP_TWITTER_LIKE_UNLIKE": "Beğen / Vazgeç",
+      "APP_TWITTER_RETWEET": "Retweet",
+      "APP_TWITTER_NEWTWEET": "Yeni Tweet",
+      "APP_TWITTER_SENDTWEET": "Tweet Gönder",
+      "APP_MESSAGE_SMS": "Mesaj",
+      "APP_YELLOW_TITLE": "Sarı Sayfalar",
+      "APP_YELLOW_CALL": "Kişiyi Ara",
+      "APP_YELLOW_MESSAGE": "Kişiye Mesaj At",
+      "APP_YELLOW_SEND_POST": "İlan Gönder",
+      "APP_YELLOW_NEW_POST": "Yeni İlan",
+      "APP_YELLOW_SEND_POST_IMAGE": "Resimli İlan Gönder",
+      "APP_YELLOW_NOTIFICATION_ALL": "Tüm İlanlarda",
+      "APP_YELLOW_NOTIFICATION_MENTION": "Sadece Bahsetmelerde",
+      "APP_YELLOW_NOTIFICATION_NEVER": "Hiçbir zaman",
+      "APP_YELLOW_NOTIFICATION_SOUND": "Bildirimlerde ses çalsınmı?",
+      "APP_YELLOW_NOTIFICATION_SOUND_YES": "Evet",
+      "APP_YELLOW_NOTIFICATION_SOUND_NO": "Hayır",
+      "APP_YELLOW_MYPOSTS": "Benim İlanlarım",
+      "MODAL_INPUT": "Neler Oluyor ?",
+      "APP_CHANGE_USERNAME": "Yeni Kullanıcı Adı",
+      "APP_VALET_TITLE": "Vale",
+      "APP_VALE_GET": "Aracı Getir",
+      "APP_VALET_IN_GARAGE": "Garajda",
+      "APP_VALET_OUTSIDE": "Dışarıda",
+      "APP_UBER_TITLE": "Götür",
+      "APP_UBER_WAIT": "Sipariş Aranıyor",
+      "APP_UBER_DELIVERY_ADRESS": "Teslimat Adresi",
+      "APP_UBER_ORDER": "İstenilen Ürün: ",
+      "APP_UBER_SEARCH_DELIVERY": "Şu An Aktif Olarak Sipariş Bekliyorsunuz",
+      "APP_UBER_SEARCH_DELIVERY_START": "Sipariş Aramaya Başlamak İçin Tıklayın",
+
+      "SUCCESS_DELETE": "Silindi",
+      "SUCCESS_LIKE": "Beğenildi",
+      "SUCCESS_RETWEET": "İşlem Başarılı",
+      "SUCCESS_SEND": "Gönderildi",
+      "SUCCESS_AVATAR_CHANGED": "Avatar Güncellendi",
+      "SUCCESS_CHANGE_USERNAME": "K.Adı Güncellendi",
+      "SUCCESS_CHANGE_SETTINGS": "Ayarlar Güncelendi",
+      "VALET_CALLED": "Vale Çağrıldı",
+      "VIDEO_SEARCH": "Başarılı",
+      "SUCCESS_MESSAGE": "İşlem Başarılı",
+      "ERROR_MESSAGE": "İşlem Başarısız",
+      
+      "TIMEAGO": [
+        "Şimdi",
+        ["%s Saniye önce", "%s Saniye önce"],
+        ["%s Dakika önce", "%s Dakika önce"],
+        ["%s Saat önce", "%s Saat önce"],
+        ["%s Gün önce", "%s Gün önce"],
+        ["%s Hafta önce", "%s Hafta önce"],
+        ["%s Ay önce", "%s Ay önce"],
+        ["%s Yıl önce", "%s Yıl önce"]
+      ]
+    }
+  }
+}
