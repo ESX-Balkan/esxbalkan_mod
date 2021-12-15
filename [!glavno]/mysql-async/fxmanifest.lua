@@ -8,7 +8,6 @@ version '3.3.2'
 url 'https://github.com/brouznouf/fivem-mysql-async'
 
 server_script 'mysql-async.js'
-client_script 'mysql-async-client.lua'
 
 files {
   'ui/index.html',
