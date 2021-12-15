@@ -3,11 +3,12 @@ local playersProcessingChemicalsToHydrochloricAcid = {}
 RegisterServerEvent('esxbalkan_droge:pickedUpChemicals')
 AddEventHandler('esxbalkan_droge:pickedUpChemicals', function()
 	local xPlayer = ESX.GetPlayerFromId(source)
+	local xItem = xPlayer.getInventoryItem('chemicals')
 
-	if xPlayer.canCarryItem('chemicals', 1) then
-		xPlayer.addInventoryItem('chemicals', 1)
-	else
+	if xItem.weight ~= -1 and (xItem.count + 1) > xItem.weight then
 		xPlayer.showNotification(_U('Chemicals_inventoryfull'))
+	else
+		xPlayer.addInventoryItem(xItem.name, 1)
 	end
 end)
 
