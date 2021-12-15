@@ -39,5 +39,5 @@ function komandelog2(name, message)
 			-- },
 		}
 		}
-	PerformHttpRequest("https://discord.com/api/webhooks/872076260090707968/CZRKrFApgUePLMiL3L7aILAbXj2yQE1QaTAGFqQADCspYPjjZpKaJzm4JcAz6_n7s71Y", function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
 end

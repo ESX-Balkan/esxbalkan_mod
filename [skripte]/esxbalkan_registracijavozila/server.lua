@@ -3,14 +3,8 @@ ESX = nil
 
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
---------Config mali-----------------------
-
-Config = {}
-
-Config.MestoRegistracije =  vector3(481.2344, -1318.08, 27.790) -- Mesto registracije vozila promenite i u  client strani
 
 
---------------------------
 ESX.RegisterServerCallback('djansr:proverireg', function (source, cb, plate)
 
 
@@ -173,7 +167,7 @@ end
     }
   
       if message == nil or message == '' then return FALSE end
-      PerformHttpRequest("https://discord.com/api/webhooks/915354582039810109/lrtQTbT5WMhZ4plUVID5Z3iYdB5gorgrC4vm-RKpxFLPCjc2oeS-NQ-WA6Eu-R4Zamc0", function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+      PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
     end
   
   RegisterServerEvent('logovi:client')

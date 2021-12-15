@@ -81,5 +81,5 @@ ESXBalkan.Zuta = 16449301
 ESXBalkan.Bijela = 16777215
 ESXBalkan.Crna = 0
 
-ESXBalkan.LogoviHook = 'https://discord.com/api/webhooks/915354582039810109/lrtQTbT5WMhZ4plUVID5Z3iYdB5gorgrC4vm-RKpxFLPCjc2oeS-NQ-WA6Eu-R4Zamc0'
+ESXBalkan.LogoviWebhook   = " "
 ESXBalkan.LogoviMainTekst = 'ESX-Balkan | Glavna - Pljacka Glavne 📜 / Vreme: '

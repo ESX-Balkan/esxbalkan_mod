@@ -21,6 +21,7 @@ EEEEEEEEEEEEEEEEEEEEEE SSSSSSSSSSSSSSS   XXXXXXX       XXXXXXX     BBBBBBBBBBBBB
 
 PranjeKonfig 					= {}
 
+PranjeKonfig.Webhook  = ""
 PranjeKonfig.DrawDistance 	= 30
 PranjeKonfig.Size 			= {x = 0.8, y = 0.8, z = 0.8}
 PranjeKonfig.Color 			= {r = 49, g = 105, b = 235}

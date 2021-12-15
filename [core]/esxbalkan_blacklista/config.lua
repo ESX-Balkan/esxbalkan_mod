@@ -1,5 +1,6 @@
 Config = {}
 
+Config.Webhook = " "
 
 Config.PropsWhitelisted = {
 

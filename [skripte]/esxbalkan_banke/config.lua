@@ -2,7 +2,7 @@
 
 Config = {}
 
-Config.Logovi = "https://discord.com/api/webhooks/908875331199463464/ZZP0AzHFhdVTnAU0SS-QTavIfHufCoxPS-kAs05-8S8LusDRu14XrhTThcz7UzJnl_kX" -- stavi svoj webhook
+Config.Logovi = " " -- stavi svoj webhook
 Config.Zone = {
     ["banke"] = {
         {name="Banka", id=108, x=150.266, y=-1040.203, z=29.374},

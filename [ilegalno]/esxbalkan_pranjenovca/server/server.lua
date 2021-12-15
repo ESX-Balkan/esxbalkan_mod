@@ -45,5 +45,5 @@ function opranePare(name, message)
           },
       }
     }
-  PerformHttpRequest("https://discord.com/api/webhooks/909155860704550964/IfXrdTiTazHmCafCNSxlpdETo1QNzTm43nE5bvhgX1i6lbEuLWGmWuAqffBiL_g5j1wV", function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
+  PerformHttpRequest(PranjeKonfig.Webhook, function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
   end

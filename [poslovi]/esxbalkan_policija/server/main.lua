@@ -480,4 +480,4 @@ function posaljiPolicija(name,message)
 		["text"]= "ESX Balkan Policija",
 	},}}
 	
-if message == nil or message == '' then return FALSE end PerformHttpRequest('WEBHOOK', function(err, text, headers) end, 'POST', json.encode({ username = name,embeds = embeds}), { ['Content-Type'] = 'application/json' }) end	
+if message == nil or message == '' then return FALSE end PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name,embeds = embeds}), { ['Content-Type'] = 'application/json' }) end	

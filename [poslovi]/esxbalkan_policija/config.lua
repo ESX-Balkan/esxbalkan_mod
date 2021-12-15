@@ -1,5 +1,8 @@
 Config                            = {}
 
+
+
+Config.Webhook				      = " "
 Config.DrawDistance               = 10.0 -- Koliko blizu treba da budes da bi video marker (in GTA units).
 Config.MarkerType                 = {Cloakrooms = 20, Armories = 21, BossActions = 22, Vehicles = 36, Helicopters = 34}
 Config.MarkerSize                 = {x = 1.5, y = 1.5, z = 0.5}

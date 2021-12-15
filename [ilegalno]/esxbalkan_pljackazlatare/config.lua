@@ -1,6 +1,8 @@
 Config = {}
 Config.Locale = 'en'
 
+
+Config.Webhook = ""
 Config.DrawDistance = 100
 Config.Pljackanjepolicija = 3 -- koliko treba policajca za pljacku
 Config.Policijazaprodaju = 0 -- koliko treba policajaca za prodaju
