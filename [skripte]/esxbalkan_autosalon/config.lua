@@ -3,8 +3,8 @@ Config.DrawDistance               = 10
 Config.MarkerColor                = {r = 0, g = 220, b = 240}
 Config.EnablePlayerManagement     = false -- Ukljuci ako koristis job autosalona
 Config.ResellPercentage           = 50
-Config.WebHook                    = "WEBHOOk"
 
+Config.Webhook					  = " "
 Config.Locale                     = 'en'
 
 Config.LicenseEnable = false -- Ako je false igracu ne treba dozvola za auto,ako je true treba mu kako bi mogao da kupi

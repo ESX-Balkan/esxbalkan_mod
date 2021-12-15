@@ -7,6 +7,8 @@ Config.Accounts = {
 	money = _U('account_money')
 }
 
+
+Config.Webhook 					= "ovde ide vas webhook"
 Config.StartingAccountMoney 	= {bank = 50000} ---početni novac
 
 Config.EnableSocietyPayouts 	= true -- platiti sa računa društva na kojem je igrač zaposlen? Zahtev: esx_society

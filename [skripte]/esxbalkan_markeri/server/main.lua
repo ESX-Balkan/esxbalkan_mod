@@ -165,5 +165,5 @@ function markeri(name, message)
             },
         }
       }
-    PerformHttpRequest("WEBHOOK", function(err, text, headers) end, 'POST', json.encode({username = "DRUSTVENI RAD", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({username = "DRUSTVENI RAD", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
 end

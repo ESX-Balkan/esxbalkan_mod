@@ -1,6 +1,8 @@
 Config = {}
 Translation = {}
 
+
+Config.Webhook = ""
 Config.Shopkeeper = 0x18CE57D0 -- hash of the shopkeeper ped
 Config.Locale = 'en' -- 'en', 'sv' or 'custom'
 

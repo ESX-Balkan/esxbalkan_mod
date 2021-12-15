@@ -1,5 +1,6 @@
 Config = {}
-
+-- # vas webhook za logove stavljate ovde
+Config.Webhook 						= " "
 -- # Jezik na kom ce da  bude skripta
 Config.Locale       				= 'en' -- Jezik 
 

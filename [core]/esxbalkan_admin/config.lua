@@ -1,4 +1,5 @@
 Config = {}
+Config.Webhook = ""
 Config.Locale = 'en'
 Config.onDutyCooldown = 0 --seconds
 Config.SeeOwnLabel = true

@@ -505,5 +505,7 @@ function sendToDiscord(name,message, color)
 		}
 	} 
 	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(Config.WebHook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
 end
+
+

@@ -620,7 +620,7 @@ end
 
 function sendToDiscord(name,message, color)
 	local vreme = os.date("*t")
-	local DiscordWebHook = "https://discord.com/api/webhooks/915354582039810109/lrtQTbT5WMhZ4plUVID5Z3iYdB5gorgrC4vm-RKpxFLPCjc2oeS-NQ-WA6Eu-R4Zamc0"
+	
 	local embeds = {
 		{
 			["title"]=message,
@@ -633,5 +633,5 @@ function sendToDiscord(name,message, color)
 		}
 	} 
 	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(DiscordWebHook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
 end

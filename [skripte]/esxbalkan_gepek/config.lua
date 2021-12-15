@@ -1,6 +1,8 @@
 
 Config = {}
 
+
+Config.Webhook = " "
 Config.CheckOwnership = false -- Ako je true, samo vlasnik vozila može čuvati stvari u prtljažniku.
 Config.AllowPolice = true -- Ako je true policija moze otvarat gepeke drugih
 
