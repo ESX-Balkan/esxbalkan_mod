@@ -341,7 +341,7 @@ local diedAt
 Citizen.CreateThread(function()
     -- main loop thing
     while true do
-        Citizen.Wait(50)
+        Citizen.Wait(500)
 
         local playerPed = PlayerPedId()
 
