@@ -207,3 +207,14 @@ function GetCoordZWeed(x, y)
 
 	return 53.85
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0)
+	else
+	    Wait(500)
+        end
+    end
+end)

@@ -151,3 +151,12 @@ function GetCoordZSodiumHydroxide(x, y)
 
 	return 100.0
 end
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if isPickingUp then
+            DisableAllControlActions(0);
+        end
+    end
+end)

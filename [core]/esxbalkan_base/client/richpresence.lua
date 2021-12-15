@@ -7,7 +7,7 @@ Citizen.CreateThread(function()
         SetDiscordRichPresenceAssetSmallText('by ESX BALKAN TEAM')
         SetDiscordRichPresenceAction(0, "Nas Discord!", "https://discord.gg/7SK3fGDeHN")
         SetDiscordRichPresenceAction(1, "Connectaj se!", "fivem://connect/178.33.34.113:30120")
-        SetRichPresence("ID: " .. GetPlayerServerId(PlayerId()) .. " | " .. #GetActivePlayers() .. "/8")    
+        SetRichPresence("ID: " .. GetPlayerServerId(PlayerId()) .. " | " .. GlobalState["BrojIgraca"] .. "/" .. GlobalState.brojSlotova)    
 		Citizen.Wait(60000)
 	end
 end)

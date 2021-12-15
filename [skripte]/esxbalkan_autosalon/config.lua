@@ -3,6 +3,7 @@ Config.DrawDistance               = 10
 Config.MarkerColor                = {r = 0, g = 220, b = 240}
 Config.EnablePlayerManagement     = false -- Ukljuci ako koristis job autosalona
 Config.ResellPercentage           = 50
+
 Config.Webhook					  = " "
 Config.Locale                     = 'en'
 
