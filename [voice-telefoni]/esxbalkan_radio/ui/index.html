@@ -1,0 +1,22 @@
+<!doctype HTML>
+<html>
+    <head>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="radio">
+            <img id="radioimage" src="radiooff.png">
+            <button id="onoff" onclick="OnOff()"><span class="hovertext">On/Off</span></button>
+            <button id="volup" onclick="VolUp()"><span class="hovertext">Volume Up</span></button>
+            <button id="voldown" onclick="VolDown()"><span class="hovertext">Volume Down</span></button>
+            <div class="screen">
+                <form id="freqform">
+                    <input id="channel" type="number" onchange="setTwoNumberDecimal()" name="channel" min="1" max="100" step=".01" placeholder="0.00">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
