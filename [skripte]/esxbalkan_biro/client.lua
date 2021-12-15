@@ -61,8 +61,8 @@ Citizen.CreateThread(function()
 		    letSleep = false
 		end
 		
-		if distance < 1 then
-			if (IsControlJustReleased(1, 51)) then
+		if distance <= 2 then
+			if IsControlPressed(0,38) then
 				OtvoriMeniPoslova()
 			end
 		end
