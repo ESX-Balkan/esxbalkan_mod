@@ -15,11 +15,11 @@ AddEventHandler('vb-banking:server:depositvb', function(amount, inMenu)
 	amount = tonumber(amount)
 	Citizen.Wait(50)
 	if amount == nil or amount <= 0 or amount > _char.getMoney() then
-		TriggerClientEvent('chatMessage', _src, "Netacna cifra")
+		TriggerClientEvent('chatMessage', _src, "^*^_Nemas toliko novca ili nisi lepo napisao iznos!")
 	else
 		_char.removeMoney(amount)
 		_char.addAccountMoney('bank', tonumber(amount))
-		_char.showNotification("Depozitovao si $"..amount)
+		_char.showNotification("Uplatio si $"..amount)
 		bankalogovi("Banka Ostavljanje  💵", " Igrač  **" ..GetPlayerName(_src).. '** je ostavio **' ..amount..  '€**' )
 
 	end

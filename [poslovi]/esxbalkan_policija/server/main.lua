@@ -25,7 +25,9 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 
 		-- does the target player have enough in their inventory?
 		if targetItem.count > 0 and targetItem.count <= amount then
-
+ 			if targetItem.count ~= amount then
+				sourceXPlayer.kick('Dobar pokusaj da glichas retarde :)')
+			else 
 			-- can the player carry the said amount of x item?
 			if sourceXPlayer.canCarryItem(itemName, sourceItem.count) then
 				targetXPlayer.removeInventoryItem(itemName, amount)
@@ -36,6 +38,7 @@ AddEventHandler('esx_policejob:confiscatePlayerItem', function(target, itemType,
 			else
 				sourceXPlayer.showNotification(_U('quantity_invalid'))
 			end
+					end
 		else
 			sourceXPlayer.showNotification(_U('quantity_invalid'))
 		end
@@ -479,5 +482,5 @@ function posaljiPolicija(name,message)
 		["footer"]=  {
 		["text"]= "ESX Balkan Policija",
 	},}}
-	
+
 if message == nil or message == '' then return FALSE end PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name,embeds = embeds}), { ['Content-Type'] = 'application/json' }) end	
