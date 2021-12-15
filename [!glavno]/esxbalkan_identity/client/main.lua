@@ -55,7 +55,7 @@ if not Config.UseDeferrals then
 		end, data)
 	end)
 
-	Citizen.CreateThread(function()
+	--[[Citizen.CreateThread(function()
 		while true do
 			Citizen.Wait(5)
 
@@ -83,5 +83,5 @@ if not Config.UseDeferrals then
 			Citizen.Wait(500)
 		end
 	end
-	end)
+	end)]]
 end
