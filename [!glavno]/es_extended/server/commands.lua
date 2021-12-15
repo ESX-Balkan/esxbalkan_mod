@@ -147,21 +147,18 @@ ESX.RegisterCommand('saveall', 'admin', function(xPlayer, args, showError)
 end, true, {help = _U('command_saveall')})
 
 ESX.RegisterCommand('group', {"user", "admin"}, function(xPlayer, args, showError)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	print(xPlayer.getName()..", Ti si sad: ^5".. xPlayer.getGroup())
+	print(xPlayer.getName()..", Grupa: ^5".. xPlayer.getGroup())
 end, true)
 
-ESX.RegisterCommand('posao', {"user", "admin"}, function(source, xPlayer, args, showError)
-	local xPlayer = ESX.GetPlayerFromId(source)
-print(xPlayer.getName()..", Zaposleni ste kao: ^5".. xPlayer.getJob().name.. "^0 - ^5".. xPlayer.getJob().grade_label.. "^0")
+ESX.RegisterCommand('posao', {"user", "admin"}, function(xPlayer, args, showError)
+    print(xPlayer.getName()..", Zaposleni ste kao: ^5".. xPlayer.getJob().name.. "^0 - ^5".. xPlayer.getJob().grade_label)
 end, true)
 
 ESX.RegisterCommand('info', {"user", "admin"}, function(xPlayer, source, args, showError)
 	local job = xPlayer.getJob().name
 	local jobgrade = xPlayer.getJob().grade_name
-	local xPlayer = ESX.GetPlayerFromId(source)
 	print("^2ID : ^5"..xPlayer.source.." ^0| ^2Ime:^5"..xPlayer.getName().." ^0 | ^2Grupa:^5"..xPlayer.getGroup().."^0 | ^2Posao:^5".. job.."")
-	end, true)
+end, true)
 
 ESX.RegisterCommand('coords', "admin", function(xPlayer, args, showError)
 	print("".. xPlayer.getName().. ": ^5".. xPlayer.getCoords(true))
