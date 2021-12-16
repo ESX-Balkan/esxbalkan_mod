@@ -29,10 +29,10 @@ local vetrine = {
 
 ESX = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(100)
+		Wait(100)
 	end
 end)
 
@@ -69,7 +69,7 @@ end)
 function loadAnimDict( dict )  
     while ( not HasAnimDictLoaded( dict ) ) do
         RequestAnimDict( dict )
-        Citizen.Wait( 5 )
+        Wait(5)
     end
 end 
 
@@ -110,7 +110,7 @@ AddEventHandler('esxbalkan_zlatara:robberycomplete', function(robb)
 	incircle = false
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,v in pairs(Stores)do
 		local ve = v.position
 
@@ -144,20 +144,24 @@ end
 
 local borsa = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-	  Citizen.Wait(5000)
+	  Wait(5000)
 	  TriggerEvent('skinchanger:getSkin', function(skin)
 		borsa = skin['bags_1']
 	  end)
-	  Citizen.Wait(5000)
+	  Wait(5000)
 	end
 end)
 
 
-Citizen.CreateThread(function()
-      
+CreateThread(function()
+	Wait(1000)
+	local d = 1000
 	while true do
+		Wait(d)
+			d = 800
+			local spavaj = true
 		local pos = GetEntityCoords(PlayerPedId(), true)
 
 		for k,v in pairs(Stores)do
@@ -165,10 +169,14 @@ Citizen.CreateThread(function()
 
 			if(Vdist(pos.x, pos.y, pos.z, pos2.x, pos2.y, pos2.z) < 15.0)then
 				if not holdingup then
+					spavaj = false 
+					d = 5
 					DrawMarker(27, v.position.x, v.position.y, v.position.z-0.9, 0, 0, 0, 0, 0, 0, 2.001, 2.0001, 0.5001, 255, 0, 0, 200, 0, 0, 0, 0)
 
 					if(Vdist(pos.x, pos.y, pos.z, pos2.x, pos2.y, pos2.z) < 1.0)then
 						if (incircle == false) then
+							spavaj = false 
+							d = 5
 							DisplayHelpText(_U('press_to_rob'))
 						end
 						incircle = true
@@ -201,83 +209,12 @@ Citizen.CreateThread(function()
 						incircle = false
 					end		
 				end
-			else
-				Wait(1000)
 			end
 		end
 
-		--[[if holdingup then
-			drawTxt(0.3, 1.4, 0.45, _U('smash_case') .. ' :~r~ ' .. vetrineRotte .. '/' .. Config.MaxWindows, 185, 185, 185, 255)
-
-			for i,v in pairs(vetrine) do 
-				if(GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 10.0) and not v.isOpen and Config.EnableMarker then 
-					DrawMarker(20, v.x, v.y, v.z, 0, 0, 0, 0, 0, 0, 0.6, 0.6, 0.6, 0, 255, 0, 200, 1, 1, 0, 0)
-				end
-				if(GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 0.75) and not v.isOpen then 
-					DrawText3D(v.x, v.y, v.z, '~w~[~g~E~w~] ' .. _U('press_to_collect'), 0.6)
-					if IsControlJustPressed(0, 38) then
-						animazione = true
-					    SetEntityCoords(PlayerPedId(), v.x, v.y, v.z-0.95)
-					    SetEntityHeading(PlayerPedId(), v.heading)
-						v.isOpen = true 
-						PlaySoundFromCoord(-1, "Glass_Smash", v.x, v.y, v.z, "", 0, 0, 0)
-					    if not HasNamedPtfxAssetLoaded("scr_jewelheist") then
-					    RequestNamedPtfxAsset("scr_jewelheist")
-					    end
-					    while not HasNamedPtfxAssetLoaded("scr_jewelheist") do
-					    Citizen.Wait(0)
-					    end
-					    SetPtfxAssetNextCall("scr_jewelheist")
-					    StartParticleFxLoopedAtCoord("scr_jewel_cab_smash", v.x, v.y, v.z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
-					    loadAnimDict( "missheist_jewel" ) 
-						TaskPlayAnim(PlayerPedId(), "missheist_jewel", "smash_case", 8.0, 1.0, -1, 2, 0, 0, 0, 0 ) 
-						TriggerEvent("mt:missiontext", _U('collectinprogress'), 3000)
-					    --DisplayHelpText(_U('collectinprogress'))
-					    DrawSubtitleTimed(5000, 1)
-					    Citizen.Wait(5000)
-					    ClearPedTasksImmediately(PlayerPedId())
-					    TriggerServerEvent('esxbalkan_zlatara:gioielli')
-					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
-					    vetrineRotte = vetrineRotte+1
-					    animazione = false
-
-						if vetrineRotte == Config.MaxWindows then 
-						    for i,v in pairs(vetrine) do 
-								v.isOpen = false
-								vetrineRotte = 0
-							end
-							TriggerServerEvent('esxbalkan_zlatara:endrob', store)
-						    ESX.ShowNotification(_U('lester'))
-						    holdingup = false
-						    StopSound(soundid)
-						end
-					end
-				end	
-			end
-
-			local pos2 = Stores[store].position
-
-			if (GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), -622.566, -230.183, 38.057, true) > 11.5 ) then
-				TriggerServerEvent('esxbalkan_zlatara:toofar', store)
-				holdingup = false
-				for i,v in pairs(vetrine) do 
-					v.isOpen = false
-					vetrineRotte = 0
-				end
-				StopSound(soundid)
-			end
-
-		end]]
-
-		Citizen.Wait(10)
-	end
-end)
-
-Citizen.CreateThread(function()
-      
-	while true do
-		
 		if holdingup then
+			spavaj = false 
+			d = 5
 			drawTxt(0.3, 1.4, 0.45, _U('smash_case') .. ' :~r~ ' .. vetrineRotte .. '/' .. Config.MaxWindows, 185, 185, 185, 255)
 
 			for i,v in pairs(vetrine) do 
@@ -296,7 +233,7 @@ Citizen.CreateThread(function()
 					    RequestNamedPtfxAsset("scr_jewelheist")
 					    end
 					    while not HasNamedPtfxAssetLoaded("scr_jewelheist") do
-					    Citizen.Wait(0)
+					    Wait(0)
 					    end
 					    SetPtfxAssetNextCall("scr_jewelheist")
 					    StartParticleFxLoopedAtCoord("scr_jewel_cab_smash", v.x, v.y, v.z, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
@@ -305,7 +242,7 @@ Citizen.CreateThread(function()
 						TriggerEvent("mt:missiontext", _U('collectinprogress'), 3000)
 					    --DisplayHelpText(_U('collectinprogress'))
 					    DrawSubtitleTimed(5000, 1)
-					    Citizen.Wait(5000)
+					    Wait(5000)
 					    ClearPedTasksImmediately(PlayerPedId())
 					    TriggerServerEvent('esxbalkan_zlatara:gioielli')
 					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
@@ -338,16 +275,15 @@ Citizen.CreateThread(function()
 				StopSound(soundid)
 			end
 
-
-		else
-			Wait(5000)
-
 		end
-		Citizen.Wait(10)
+
+		if spavaj then d = 4000 end 
 	end
 end)
 
-Citizen.CreateThread(function()
+
+
+CreateThread(function()
       
 	while true do
 		Wait(450)
@@ -377,11 +313,11 @@ end)
 
 blip = false
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	TriggerEvent('lester:createBlip', 77, 706.669, -966.898, 30.413)
 	while true do
 	
-		Citizen.Wait(10)
+		Wait(10)
 	
 			local playerPed = PlayerPedId()
 			local coords    = GetEntityCoords(playerPed)
