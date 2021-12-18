@@ -631,8 +631,9 @@ RegisterNUICallback('setIgnoreFocus', function (data, cb)
   cb()
 end)
 
+esxbalkan = "" -- vas discord weebhook ovde gde ce vam uploadati slike koje se budu postavljale na twitter
 RegisterNUICallback('takePhoto', function(data, cb)
-	CreateMobilePhone(1)
+    CreateMobilePhone(1)
   CellCamActivate(true, true)
   takePhoto = true
   Citizen.Wait(0)
@@ -640,12 +641,12 @@ RegisterNUICallback('takePhoto', function(data, cb)
     SetNuiFocus(false, false)
     hasFocus = false
   end
-	while takePhoto do
+    while takePhoto do
     Citizen.Wait(0)
 
-		if IsControlJustPressed(1, 27) then -- Toogle Mode
-			frontCam = not frontCam
-			CellFrontCamActivate(frontCam)
+        if IsControlJustPressed(1, 27) then -- Toogle Mode
+            frontCam = not frontCam
+            CellFrontCamActivate(frontCam)
     elseif IsControlJustPressed(1, 177) then -- CANCEL
       DestroyMobilePhone()
       CellCamActivate(false, false)
@@ -653,19 +654,27 @@ RegisterNUICallback('takePhoto', function(data, cb)
       takePhoto = false
       break
     elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
-        exports['screenshot-basic']:requestScreenshotUpload("https://discord.com/api/webhooks/891010195147333762/FEVYU9MXM3kmhPIL2qyRj2zaW4o1Emt85jt7u5jsMqEk0qyA9I7VVlxK3nVsBBBfdwyf", "files[]", function(data)
-        local resp = json.decode(data)
-        DestroyMobilePhone()
-        CellCamActivate(false, false)
-        json. encode ({url = resp. files [ 1 ]. url })
+      exports['screenshot-basic']:requestScreenshotUpload(esxbalkan, data.field, function(data)
+        local image = json.decode(data)
+        cb(json.encode({ url = image.attachments[1].proxy_url }))
       end)
+      DestroyMobilePhone()
+      CellCamActivate(false, false)
       takePhoto = false
-		end
-		HideHudComponentThisFrame(7)
-		HideHudComponentThisFrame(8)
-		HideHudComponentThisFrame(9)
-		HideHudComponentThisFrame(6)
-		HideHudComponentThisFrame(19)
+      PhonePlayIn()
+      SendNUIMessage({show = true})
+      -- Loading Image
+      BeginTextCommandBusyString('STRING')
+      AddTextComponentSubstringPlayerName('Slika se postavlja')
+      EndTextCommandBusyString(4)
+      Citizen.Wait(10000)
+      RemoveLoadingPrompt()
+        end
+        HideHudComponentThisFrame(7)
+        HideHudComponentThisFrame(8)
+        HideHudComponentThisFrame(9)
+        HideHudComponentThisFrame(6)
+        HideHudComponentThisFrame(19)
     HideHudAndRadarThisFrame()
   end
   Citizen.Wait(1000)
