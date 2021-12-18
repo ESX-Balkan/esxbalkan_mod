@@ -1,6 +1,6 @@
 Citizen.CreateThread(function()
 	while true do
-	SetDiscordAppId(921851620906643567)
+	SetDiscordAppId(VAS ID OD APLIKACIJE)
 	SetDiscordRichPresenceAsset('esx-balkan-logo')
         SetDiscordRichPresenceAssetText('by ESX BALKAN TEAM')
         SetDiscordRichPresenceAssetSmall('esx-balkan-logo')
