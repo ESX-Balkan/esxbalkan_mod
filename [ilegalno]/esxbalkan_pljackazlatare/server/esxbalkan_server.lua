@@ -112,8 +112,12 @@ RegisterServerEvent('esxbalkan_zlatara:gioielli')
 AddEventHandler('esxbalkan_zlatara:gioielli', function()
 
 	local xPlayer = ESX.GetPlayerFromId(source)
-
-	xPlayer.addInventoryItem('jewels', math.random(Config.MinJewels, Config.MaxJewels))
+        local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(-629.99, -236.542, 38.05))
+       if distanca < 20 then 
+	    xPlayer.addInventoryItem('jewels', math.random(Config.MinJewels, Config.MaxJewels))
+       else
+            DropPlayer(source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
+       end
 end)
 
 RegisterServerEvent('lester:vendita')
@@ -122,12 +126,14 @@ AddEventHandler('lester:vendita', function()
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local reward = math.floor(Config.PriceForOneJewel * Config.MaxJewelsSell)
-
+        local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(706.669, -966.898, 30.413))
+       if distanca < 1.0 then 
 	xPlayer.removeInventoryItem('jewels', Config.MaxJewelsSell)
 	xPlayer.addMoney(reward)
-
 	sendToDiscord('Zlatara Prodaja', GetPlayerName(source) .. ' je prodao nakit za ' .. reward .. '$')
-
+       else
+            DropPlayer(source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
+       end
 end)
 
 ESX.RegisterServerCallback('esxbalkan_zlatara:conteggio', function(source, cb)
