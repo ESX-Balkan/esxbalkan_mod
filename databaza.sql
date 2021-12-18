@@ -445,68 +445,68 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 ('alive_chicken', 'Živa piletina', 50, 0, 1),
-('bandage', 'Zavoji', 2, 0, 1),
-('blowpipe', 'Cijev', 2, 0, 1),
+('bandage', 'Zavoji', 1, 0, 1),
+('blowpipe', 'Cijev', 1, 0, 1),
 ('bread', 'Kruh', 1, 0, 1),
-('cannabis', 'Kanabis', 50, 0, 1),
+('cannabis', 'Kanabis', 0.1, 0, 1),
 ('carokit', 'Mehanicarski Dio 1', 3, 0, 1),
 ('carotool', 'Mehanicarski Dio 2', 2, 0, 1),
 ('chemicals', 'hemikalije', 51, 0, 1),
-('clothe', 'Odeća', 50, 0, 1),
+('clothe', 'Odeća', 1, 0, 1),
 ('coca_leaf', 'Coca Leaf', 50, 0, 1),
-('coke', 'Kokain', 50, 0, 1),
-('copper', 'Bakar', 50, 0, 1),
-('cutted_wood', 'Iseceno drvo', 50, 0, 1),
-('diamond', 'Dijamant', 50, 0, 1),
-('disc_ammo_pistol', 'Pistol Ammo', 10, 0, 1),
-('disc_ammo_pistol_large', 'Pistol Ammo Large', -10, 0, 1),
-('disc_ammo_rifle', 'Rifle Ammo', 10, 0, 1),
-('disc_ammo_rifle_large', 'Rifle Ammo Large', 10, 0, 1),
-('disc_ammo_shotgun', 'Shotgun Shells', 10, 0, 1),
-('disc_ammo_shotgun_large', 'Shotgun Shells Large', 10, 0, 1),
-('disc_ammo_smg', 'SMG Ammo', 10, 0, 1),
-('disc_ammo_smg_large', 'SMG Ammo Large', 10, 0, 1),
-('disc_ammo_snp', 'Sniper Ammo', 10, 0, 1),
-('disc_ammo_snp_large', 'Sniper Ammo Large', 10, 0, 1),
-('drill', 'Busilica', 3, 0, 1),
-('essence', 'Benzin', 50, 0, 1),
-('fabric', 'Tkivo', 50, 0, 1),
-('fish', 'Riba', 50, 0, 1),
+('coke', 'Kokain', 1, 0, 1),
+('copper', 'Bakar', 1, 0, 1),
+('cutted_wood', 'Iseceno drvo', 1, 0, 1),
+('diamond', 'Dijamant', 1, 0, 1),
+('disc_ammo_pistol', 'Pistol Ammo', 0.01, 0, 1),
+('disc_ammo_pistol_large', 'Pistol Ammo Large', 0.01, 0, 1),
+('disc_ammo_rifle', 'Rifle Ammo', 0.01, 0, 1),
+('disc_ammo_rifle_large', 'Rifle Ammo Large', 0.01, 0, 1),
+('disc_ammo_shotgun', 'Shotgun Shells', 0.01, 0, 1),
+('disc_ammo_shotgun_large', 'Shotgun Shells Large', 0.01, 0, 1),
+('disc_ammo_smg', 'SMG Ammo', 0.01, 0, 1),
+('disc_ammo_smg_large', 'SMG Ammo Large', 0.01, 0, 1),
+('disc_ammo_snp', 'Sniper Ammo', 0.01, 0, 1),
+('disc_ammo_snp_large', 'Sniper Ammo Large', 0.01, 0, 1),
+('drill', 'Busilica', 10, 0, 1),
+('essence', 'Benzin', 10, 0, 1),
+('fabric', 'Tkivo', 0.01, 0, 1),
+('fish', 'Riba', 0.01, 0, 1),
 ('fixkit', 'Alat za popravku', 3, 0, 1),
 ('fixtool', 'Mehanicarski Dio 3', 2, 0, 1),
 ('flashlight', 'Flashlight', 2, 0, 1),
 ('gazbottle', 'Mehanicarski Dio 4', 2, 0, 1),
 ('gljive', 'Gljive', 3, 0, 1),
-('gold', 'Zlato', 50, 0, 1),
-('gold_bar', 'Zlatna Poluga', 50, 0, 1),
+('gold', 'Zlato', 0.1, 0, 1),
+('gold_bar', 'Zlatna Poluga', 0.1, 0, 1),
 ('grip', 'Grip', 2, 0, 1),
-('heroin', 'Heroin', 50, 0, 1),
-('hydrochloric_acid', 'Hlorovodonična kiselina', 50, 0, 1),
-('iron', 'Metal', 50, 0, 1),
-('jewels', 'Jewels', 1, 0, 1),
+('heroin', 'Heroin', 0.01, 0, 1),
+('hydrochloric_acid', 'Hlorovodonična kiselina', 0.01, 0, 1),
+('iron', 'Metal', 0.1, 0, 1),
+('jewels', 'Jewels', 0.01, 0, 1),
 ('laptop_h', 'Laptop za Hakovanje', 3, 0, 1),
-('listkoke', 'List Koke', 3, 0, 1),
-('lsa', 'LSA', 50, 0, 1),
-('lsd', 'LSD', 50, 0, 1),
-('marijuana', 'Marijuana', 50, 0, 1),
+('listkoke', 'List Koke', 0.01, 0, 1),
+('lsa', 'LSA', 0.01, 0, 1),
+('lsd', 'LSD', 0.01, 0, 1),
+('marijuana', 'Marijuana', 0.01, 0, 1),
 ('medikit', 'Prva Pomoc', 2, 0, 1),
-('meth', 'Meth', 50, 0, 1),
-('packaged_chicken', 'Piletina u poslužavniku', 50, 0, 1),
-('packaged_plank', 'Paket ploča', 50, 0, 1),
-('petrol', 'ulje', 50, 0, 1),
-('petrol_raffin', 'Rafinisana nafta', 50, 0, 1),
+('meth', 'Meth', 0.01, 0, 1),
+('packaged_chicken', 'Piletina u poslužavniku', 0.01, 0, 1),
+('packaged_plank', 'Paket ploča', 0.01, 0, 1),
+('petrol', 'ulje', 0.01, 0, 1),
+('petrol_raffin', 'Rafinisana nafta', 1, 0, 1),
 ('phone', 'Mobilni Telefon', 1, 0, 1),
-('poppyresin', 'Poppi Resin', 50, 0, 1),
+('poppyresin', 'Poppi Resin', 1, 0, 1),
 ('scope', 'Scope', 2, 0, 1),
 ('skin', 'Skin', 2, 0, 1),
-('slaughtered_chicken', 'Zaklana piletina', 50, 0, 1),
-('sodium_hydroxide', 'Natrijum hidroksid', 50, 0, 1),
-('stone', 'Kamen', 50, 0, 1),
-('sulfuric_acid', 'Sumporna kiselina', 50, 0, 1),
+('slaughtered_chicken', 'Zaklana piletina', 1, 0, 1),
+('sodium_hydroxide', 'Natrijum hidroksid', 1, 0, 1),
+('stone', 'Kamen', 1, 0, 1),
+('sulfuric_acid', 'Sumporna kiselina', 1, 0, 1),
 ('supressor', 'Suppressor', 2, 0, 1),
 ('thermal_charge', 'Bomba', 3, 0, 1),
-('thionyl_chloride', 'Thionil Chloride', 50, 0, 1),
-('washed_stone', 'Oprani Kamen', 50, 0, 1),
+('thionyl_chloride', 'Thionil Chloride', 1, 0, 1),
+('washed_stone', 'Oprani Kamen', 1, 0, 1),
 ('water', 'Voda', 1, 0, 1),
 ('WEAPON_ADVANCEDRIFLE', 'Advanced Rifle', 1, 0, 1),
 ('WEAPON_APPISTOL', 'AP Pistol', 1, 0, 1),
@@ -586,24 +586,14 @@ INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES
 ('WEAPON_VINTAGEPISTOL', 'Vintage Pistol', 1, 0, 1),
 ('WEAPON_WRENCH', 'Wrench', 1, 0, 1),
 ('whitehaze', 'White Haze', 3, 0, 1),
-('wood', 'Drvo', 50, 0, 1),
-('wool', 'Vuna', 50, 0, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `jobs`
---
+('wood', 'Drvo', 1, 0, 1),
+('wool', 'Vuna', 0.1, 0, 1);
 
 CREATE TABLE `jobs` (
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `label` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `whitelisted` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `jobs`
---
 
 INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 ('ambulance', 'Hitna', 0),
@@ -633,12 +623,6 @@ INSERT INTO `jobs` (`name`, `label`, `whitelisted`) VALUES
 ('yakuza', 'Yakuza', 1),
 ('zemunski', 'Zemunski Klan', 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `job_grades`
---
-
 CREATE TABLE `job_grades` (
   `id` int(11) NOT NULL,
   `job_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -649,10 +633,6 @@ CREATE TABLE `job_grades` (
   `skin_male` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `skin_female` longtext COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `job_grades`
---
 
 INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, `skin_male`, `skin_female`) VALUES
 (1, 'unemployed', 0, 'unemployed', 'Nezaposlen', 200, '{}', '{}'),
@@ -738,31 +718,16 @@ INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, 
 (88, 'miner', 0, 'employee', 'Rudar', 0, '{\"tshirt_2\":1,\"ears_1\":8,\"glasses_1\":15,\"torso_2\":0,\"ears_2\":2,\"glasses_2\":3,\"shoes_2\":1,\"pants_1\":75,\"shoes_1\":51,\"bags_1\":0,\"helmet_2\":0,\"pants_2\":7,\"torso_1\":71,\"tshirt_1\":59,\"arms\":2,\"bags_2\":0,\"helmet_1\":0}', '{}'),
 (89, 'slaughterer', 0, 'employee', 'Mesar', 0, '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}', '{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `kredit`
---
-
 CREATE TABLE `kredit` (
   `igrac` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `preostalo` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `licenses`
---
 
 CREATE TABLE `licenses` (
   `type` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `label` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `licenses`
---
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
 ('dmv', 'Teorijski Ispit'),
@@ -770,12 +735,6 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 ('drive_bike', 'A Kategorija'),
 ('drive_truck', 'C Kategorija'),
 ('weapon', 'Dozvola za Vatreno Oruzje');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `owned_vehicles`
---
 
 CREATE TABLE `owned_vehicles` (
   `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -788,24 +747,12 @@ CREATE TABLE `owned_vehicles` (
   `vehiclename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `phone_app_chat`
---
-
 CREATE TABLE `phone_app_chat` (
   `id` int(11) NOT NULL,
   `channel` varchar(20) NOT NULL,
   `message` varchar(255) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `phone_calls`
---
 
 CREATE TABLE `phone_calls` (
   `id` int(11) NOT NULL,
@@ -816,18 +763,8 @@ CREATE TABLE `phone_calls` (
   `accepts` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `phone_calls`
---
-
 INSERT INTO `phone_calls` (`id`, `owner`, `num`, `incoming`, `time`, `accepts`) VALUES
 (16336, '3103607', 'police', 1, '2021-12-12 14:54:10', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `phone_messages`
---
 
 CREATE TABLE `phone_messages` (
   `id` int(11) NOT NULL,
@@ -839,12 +776,6 @@ CREATE TABLE `phone_messages` (
   `owner` int(11) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `phone_users_contacts`
---
-
 CREATE TABLE `phone_users_contacts` (
   `id` int(11) NOT NULL,
   `identifier` varchar(60) CHARACTER SET utf8mb4 DEFAULT NULL,
@@ -852,22 +783,10 @@ CREATE TABLE `phone_users_contacts` (
   `display` varchar(64) CHARACTER SET utf8mb4 NOT NULL DEFAULT '-1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `registracija`
---
-
 CREATE TABLE `registracija` (
   `tablice` longtext DEFAULT NULL,
   `izvadio` varchar(30) DEFAULT '30'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rented_vehicles`
---
 
 CREATE TABLE `rented_vehicles` (
   `vehicle` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -878,21 +797,9 @@ CREATE TABLE `rented_vehicles` (
   `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `report`
---
-
 CREATE TABLE `report` (
   `z` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `society_moneywash`
---
 
 CREATE TABLE `society_moneywash` (
   `id` int(11) NOT NULL,
@@ -901,24 +808,12 @@ CREATE TABLE `society_moneywash` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `trunk_inventory`
---
-
 CREATE TABLE `trunk_inventory` (
   `id` int(11) NOT NULL,
   `plate` varchar(8) NOT NULL,
   `data` text NOT NULL,
   `owned` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `twitter_accounts`
---
 
 CREATE TABLE `twitter_accounts` (
   `id` int(11) NOT NULL,
@@ -928,23 +823,11 @@ CREATE TABLE `twitter_accounts` (
   `identifier` varchar(50) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `twitter_likes`
---
-
 CREATE TABLE `twitter_likes` (
   `id` int(11) NOT NULL,
   `authorId` int(11) DEFAULT NULL,
   `tweetId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `twitter_tweets`
---
 
 CREATE TABLE `twitter_tweets` (
   `id` int(11) NOT NULL,
@@ -955,12 +838,6 @@ CREATE TABLE `twitter_tweets` (
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
   `likes` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 
 CREATE TABLE `users` (
   `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -982,31 +859,14 @@ CREATE TABLE `users` (
   `is_dead` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `users`
---
--- --------------------------------------------------------
-
---
--- Table structure for table `users_banovi`
---
-
 CREATE TABLE `users_banovi` (
   `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `users_banovi`
---
 
 INSERT INTO `users_banovi` (`identifier`) VALUES
 ('steam:11000010fc3019c');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user_licenses`
---
 
 CREATE TABLE `user_licenses` (
   `id` int(11) NOT NULL,
@@ -1014,18 +874,10 @@ CREATE TABLE `user_licenses` (
   `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `user_licenses`
---
 
 INSERT INTO `user_licenses` (`id`, `type`, `owner`) VALUES
 (4, 'dmv', 'f21bd8b2d7faceb4c14abaf7dce6c3f103d4c642');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `vehicles`
---
 
 CREATE TABLE `vehicles` (
   `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1034,9 +886,6 @@ CREATE TABLE `vehicles` (
   `category` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `vehicles`
---
 
 INSERT INTO `vehicles` (`name`, `model`, `price`, `category`) VALUES
 ('Adder', 'adder', 900000, 'super'),
@@ -1817,6 +1666,3 @@ ALTER TABLE `yellowpages_posts`
   ADD CONSTRAINT `FK_yellowpages_posts_twitter_accounts` FOREIGN KEY (`authorId`) REFERENCES `twitter_accounts` (`id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
