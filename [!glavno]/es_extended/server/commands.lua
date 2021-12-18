@@ -66,39 +66,39 @@ end, true, {help = _U('command_giveitem'), validate = true, arguments = {
 	{name = 'count', help = _U('command_giveitem_count'), type = 'number'}
 }})
 
-ESX.RegisterCommand('giveweapon', 'admin', function(xPlayer, args, showError)
-	if args.playerId.hasWeapon(args.weapon) then
-		showError(_U('command_giveweapon_hasalready'))
-	else
-		args.playerId.addWeapon(args.weapon, args.ammo)
-	end
-end, true, {help = _U('command_giveweapon'), validate = true, arguments = {
-	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
-	{name = 'weapon', help = _U('command_giveweapon_weapon'), type = 'weapon'},
-	{name = 'ammo', help = _U('command_giveweapon_ammo'), type = 'number'}
-}})
+-- ESX.RegisterCommand('giveweapon', 'admin', function(xPlayer, args, showError)
+-- 	if args.playerId.hasWeapon(args.weapon) then
+-- 		showError(_U('command_giveweapon_hasalready'))
+-- 	else
+-- 		args.playerId.addWeapon(args.weapon, args.ammo)
+-- 	end
+-- end, true, {help = _U('command_giveweapon'), validate = true, arguments = {
+-- 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
+-- 	{name = 'weapon', help = _U('command_giveweapon_weapon'), type = 'weapon'},
+-- 	{name = 'ammo', help = _U('command_giveweapon_ammo'), type = 'number'}
+-- }})
 
-ESX.RegisterCommand('giveweaponcomponent', 'admin', function(xPlayer, args, showError)
-	if args.playerId.hasWeapon(args.weaponName) then
-		local component = ESX.GetWeaponComponent(args.weaponName, args.componentName)
+-- ESX.RegisterCommand('giveweaponcomponent', 'admin', function(xPlayer, args, showError)
+-- 	if args.playerId.hasWeapon(args.weaponName) then
+-- 		local component = ESX.GetWeaponComponent(args.weaponName, args.componentName)
 
-		if component then
-			if args.playerId.hasWeaponComponent(args.weaponName, args.componentName) then
-				showError(_U('command_giveweaponcomponent_hasalready'))
-			else
-				args.playerId.addWeaponComponent(args.weaponName, args.componentName)
-			end
-		else
-			showError(_U('command_giveweaponcomponent_invalid'))
-		end
-	else
-		showError(_U('command_giveweaponcomponent_missingweapon'))
-	end
-end, true, {help = _U('command_giveweaponcomponent'), validate = true, arguments = {
-	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
-	{name = 'weaponName', help = _U('command_giveweapon_weapon'), type = 'weapon'},
-	{name = 'componentName', help = _U('command_giveweaponcomponent_component'), type = 'string'}
-}})
+-- 		if component then
+-- 			if args.playerId.hasWeaponComponent(args.weaponName, args.componentName) then
+-- 				showError(_U('command_giveweaponcomponent_hasalready'))
+-- 			else
+-- 				args.playerId.addWeaponComponent(args.weaponName, args.componentName)
+-- 			end
+-- 		else
+-- 			showError(_U('command_giveweaponcomponent_invalid'))
+-- 		end
+-- 	else
+-- 		showError(_U('command_giveweaponcomponent_missingweapon'))
+-- 	end
+-- end, true, {help = _U('command_giveweaponcomponent'), validate = true, arguments = {
+-- 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'},
+-- 	{name = 'weaponName', help = _U('command_giveweapon_weapon'), type = 'weapon'},
+-- 	{name = 'componentName', help = _U('command_giveweaponcomponent_component'), type = 'string'}
+-- }})
 
 ESX.RegisterCommand({'clear', 'cls'}, 'user', function(xPlayer, args, showError)
 	xPlayer.triggerEvent('chat:clear')
@@ -118,13 +118,13 @@ end, true, {help = _U('command_clearinventory'), validate = true, arguments = {
 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('clearloadout', 'admin', function(xPlayer, args, showError)
-	for i=#args.playerId.loadout, 1, -1 do
-		args.playerId.removeWeapon(args.playerId.loadout[i].name)
-	end
-end, true, {help = _U('command_clearloadout'), validate = true, arguments = {
-	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
-}})
+-- ESX.RegisterCommand('clearloadout', 'admin', function(xPlayer, args, showError)
+-- 	for i=#args.playerId.loadout, 1, -1 do
+-- 		args.playerId.removeWeapon(args.playerId.loadout[i].name)
+-- 	end
+-- end, true, {help = _U('command_clearloadout'), validate = true, arguments = {
+-- 	{name = 'playerId', help = _U('commandgeneric_playerid'), type = 'player'}
+-- }})
 
 ESX.RegisterCommand('setgroup', 'admin', function(xPlayer, args, showError)
 	if not args.playerId then args.playerId = xPlayer.source end
