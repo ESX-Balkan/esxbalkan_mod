@@ -223,10 +223,21 @@ function OpenArmoryMenu(station)
 		elseif data.current.value == 'buy_weapons' then
 			OpenBuyWeaponsMenu()
 		elseif data.current.value == 'put_stock' then
-			OpenPutStocksMenu()
+                if closestPlayer ~= -1 and closestDistance > 3.0 then
+                OpenPutStocksMenu()
+                elseif GetNumberOfPlayers() == 1 then
+                OpenPutStocksMenu()
+                else
+                ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
+                end
 		elseif data.current.value == 'get_stock' then
-			OpenGetStocksMenu()
-		end
+                if closestPlayer ~= -1 and closestDistance > 3.0 then
+                OpenGetStocksMenu()
+                elseif GetNumberOfPlayers() == 1 then
+                OpenGetStocksMenu()
+                else
+                ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
+                end
 
 	end, function(data, menu)
 		menu.close()
