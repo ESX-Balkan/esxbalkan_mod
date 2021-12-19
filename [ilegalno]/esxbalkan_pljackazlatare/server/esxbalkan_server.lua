@@ -68,18 +68,13 @@ end)
 
 RegisterServerEvent('esxbalkan_zlatara:rob')
 AddEventHandler('esxbalkan_zlatara:rob', function(robb)
-
 	local source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local xPlayers = ESX.GetPlayers()
-	
 	if Stores[robb] then
-
 		local store = Stores[robb]
-
 		if (os.time() - store.lastrobbed) < Config.SecBetwNextRob and store.lastrobbed ~= 0 then
-
-            TriggerClientEvent('esxbalkan_zlatara:togliblip', source)
+			TriggerClientEvent('esxbalkan_zlatara:togliblip', source)
 			TriggerClientEvent('esx:showNotification', source, _U('already_robbed') .. (Config.SecBetwNextRob - (os.time() - store.lastrobbed)) .. _U('seconds'))
 			return
 		end
@@ -108,32 +103,28 @@ AddEventHandler('esxbalkan_zlatara:rob', function(robb)
 	end
 end)
 
-RegisterServerEvent('esxbalkan_zlatara:gioielli')
-AddEventHandler('esxbalkan_zlatara:gioielli', function()
-
-	local xPlayer = ESX.GetPlayerFromId(source)
-        local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(-629.99, -236.542, 38.05))
-       if distanca < 20 then 
-	    xPlayer.addInventoryItem('jewels', math.random(Config.MinJewels, Config.MaxJewels))
-       else
-            DropPlayer(source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
-       end
-end)
-
-RegisterServerEvent('lester:vendita')
-AddEventHandler('lester:vendita', function()
-
+ESX.RegisterServerCallback('esxbalkan_zlatara:gioielli', function(source)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
+	local distanca = #(GetEntityCoords(GetPlayerPed(_source)) - vector3(-629.99, -236.542, 38.05))
+	if distanca < 20 then 
+		xPlayer.addInventoryItem('jewels', math.random(Config.MinJewels, Config.MaxJewels))
+	else
+		DropPlayer(_source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
+	end
+end)
+
+ESX.RegisterServerCallback('esxbalkan_zlatara:dajkurac', function(source)
+	local xPlayer = ESX.GetPlayerFromId(source)
 	local reward = math.floor(Config.PriceForOneJewel * Config.MaxJewelsSell)
-        local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(706.669, -966.898, 30.413))
-       if distanca < 1.0 then 
-	xPlayer.removeInventoryItem('jewels', Config.MaxJewelsSell)
-	xPlayer.addMoney(reward)
-	sendToDiscord('Zlatara Prodaja', GetPlayerName(source) .. ' je prodao nakit za ' .. reward .. '$')
-       else
-            DropPlayer(source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
-       end
+	local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(706.669, -966.898, 30.413))
+	if distanca < 2.0 then
+		xPlayer.removeInventoryItem('jewels', Config.MaxJewelsSell)
+		xPlayer.addMoney(reward)
+		sendToDiscord('Zlatara Prodaja', GetPlayerName(source) .. ' je prodao nakit za ' .. reward .. '$')
+	else
+		DropPlayer(source, 'Kevi pa cituj:) Protected by ESX-BALKAN')
+	end
 end)
 
 ESX.RegisterServerCallback('esxbalkan_zlatara:conteggio', function(source, cb)
