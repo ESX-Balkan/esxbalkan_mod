@@ -59,11 +59,13 @@ end
     
         
     end)
-    RegisterNetEvent("meni")
-	AddEventHandler("meni", function()
-		OtvoriDokumentMenii()
-	
-	end)
+RegisterNetEvent("meni")
+AddEventHandler("meni", function()
+   local distance = #(GetEntityCoords(PlayerPedId()) - Config.MestoRegistracije)
+        if distance < 2 then
+          OtvoriDokumentMenii()
+        end
+end)
 
 
     function OtvoriDokumentMenii(data)
