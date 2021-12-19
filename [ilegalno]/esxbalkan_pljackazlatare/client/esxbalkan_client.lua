@@ -244,7 +244,8 @@ CreateThread(function()
 					    DrawSubtitleTimed(5000, 1)
 					    Wait(5000)
 					    ClearPedTasksImmediately(PlayerPedId())
-					    TriggerServerEvent('esxbalkan_zlatara:gioielli')
+						ESX.TriggerServerCallback('esxbalkan_zlatara:gioielli', function()
+						end)
 					    PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
 					    vetrineRotte = vetrineRotte+1
 					    animazione = false
@@ -336,7 +337,8 @@ CreateThread(function()
 										TriggerEvent('mt:missiontext', _U('goldsell'), 10000)
 										Wait(10000)
 										FreezeEntityPosition(playerPed, false)
-										TriggerServerEvent('lester:vendita')
+										ESX.TriggerServerCallback('esxbalkan_zlatara:dajkurac', function()
+										end)
 										blip = false
 									else
 										blip = false
