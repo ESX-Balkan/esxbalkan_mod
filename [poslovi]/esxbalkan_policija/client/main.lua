@@ -216,29 +216,29 @@ function OpenArmoryMenu(station)
 		elements = elements
 	}, function(data, menu)
 
-		if data.current.value == 'get_weapon' then
-			OpenGetWeaponMenu()
-		elseif data.current.value == 'put_weapon' then
-			OpenPutWeaponMenu()
-		elseif data.current.value == 'buy_weapons' then
-			OpenBuyWeaponsMenu()
-		elseif data.current.value == 'put_stock' then
-                if closestPlayer ~= -1 and closestDistance > 3.0 then
-                OpenPutStocksMenu()
-                elseif GetNumberOfPlayers() == 1 then
-                OpenPutStocksMenu()
-                else
-                ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
-                end
-		elseif data.current.value == 'get_stock' then
-                if closestPlayer ~= -1 and closestDistance > 3.0 then
-                OpenGetStocksMenu()
-                elseif GetNumberOfPlayers() == 1 then
-                OpenGetStocksMenu()
-                else
-                ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
-                end
-            end
+	if data.current.value == 'get_weapon' then
+    		OpenGetWeaponMenu()
+	elseif data.current.value == 'put_weapon' then
+    		OpenPutWeaponMenu()
+	elseif data.current.value == 'buy_weapons' then
+    		OpenBuyWeaponsMenu()
+	elseif data.current.value == 'put_stock' then
+    		if closestPlayer ~= -1 and closestDistance > 3.0 then
+        		OpenPutStocksMenu()
+    		elseif GetNumberOfPlayers() == 1 then
+        		OpenPutStocksMenu()
+   		else
+        		ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
+    		end
+	elseif data.current.value == 'get_stock' then
+		 if closestPlayer ~= -1 and closestDistance > 3.0 then
+        		OpenGetStocksMenu()
+    		 elseif GetNumberOfPlayers() == 1 then
+        		OpenGetStocksMenu()
+    		 else
+        		ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
+    		end
+	end
 	end, function(data, menu)
 		menu.close()
 
