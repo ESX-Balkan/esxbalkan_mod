@@ -250,7 +250,7 @@ AEH('esxGlavna:mrtvoHakovanje2', function()
             brojPanela = 2
             hakovanje(lokacija2)
 
-            pozoviServer('esxGlavna:pushajLog', '💵 esxGlavna | Pacific Heist' .. GetPlayerName(source) .. ' je zapoceo hakovanje 2. panela!\nLokacija Panela: (' .. lokacija2.x, lokacija22.y, lokacija2.z ..')\nLokacija Igraca (' .. GetEntityCoords(PlayerPedId()) .. ')', ESXBalkan.Zelena)
+            pozoviServer('esxGlavna:pushajLog', '💵 esxGlavna | Pacific Heist' .. GetPlayerName(source) .. ' je zapoceo hakovanje 2. panela!\nLokacija Panela: (' .. lokacija2.x, lokacija2.y, lokacija2.z ..')\nLokacija Igraca (' .. GetEntityCoords(PlayerPedId()) .. ')', ESXBalkan.Zelena)
 
         else
             notifikacija('Potreban vam je laptop za hakovanje!')
