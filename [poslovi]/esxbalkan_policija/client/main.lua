@@ -238,7 +238,7 @@ function OpenArmoryMenu(station)
                 else
                 ESX.ShowNotification('~y~Ne mozete pristupiti sefu, ~r~recite ljudima da se odmaknu malo od sefa!')
                 end
-
+            end
 	end, function(data, menu)
 		menu.close()
 
