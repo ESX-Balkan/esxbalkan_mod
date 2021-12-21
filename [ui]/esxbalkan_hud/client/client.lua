@@ -290,6 +290,21 @@ RegisterCommand('+pojas', function()
     end
 end, false)
 
+-----------FIX POJAS---------------
+CreateThread(function()
+    while true do
+        if seatbeltIsOn then
+			DisableControlAction(0, 75)
+			if IsDisabledControlJustPressed(0, 75) then
+				ESX.ShowNotification("Prvo odvezi pojas da izadjes...", true, false, 90)
+			end
+        else
+            Wait(1500)
+        end
+        Wait(9)
+    end
+end)
+
 
 
 
