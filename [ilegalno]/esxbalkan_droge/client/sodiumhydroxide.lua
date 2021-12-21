@@ -157,6 +157,8 @@ CreateThread(function()
         Wait(0)
         if isPickingUp then
             DisableAllControlActions(0);
+	else
+	    Wait(800)
         end
     end
 end)
