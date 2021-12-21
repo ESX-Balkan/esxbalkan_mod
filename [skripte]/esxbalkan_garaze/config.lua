@@ -1,7 +1,7 @@
 Config = {}
 
 Config.VehicleMenu = true -- enable this if you wan't a vehicle menu.
-Config.VehicleMenuButton = 303 -- change this to the key you want to open the menu with. buttons: https://docs.fivem.net/game-references/controls/
+Config.VehicleMenuButton = 'U' -- change this to the key you want to open the menu with. buttons: https://docs.fivem.net/game-references/controls/
 Config.RangeCheck = 25.0 -- this is the change you will be able to control the vehicle.
 
 Config.Garages = {
