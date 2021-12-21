@@ -522,8 +522,28 @@ end
 ESX.Game.GetVehicleProperties = function(vehicle)
 	if DoesEntityExist(vehicle) then
 		local colorPrimary, colorSecondary = GetVehicleColours(vehicle)
+		local svijetlaColor = GetVehicleXenonLightsColour(vehicle) -- novo kastm
 		local pearlescentColor, wheelColor = GetVehicleExtraColours(vehicle)
-		local extras = {}
+		local dashboardColor = GetVehicleDashboardColour(vehicle);
+		local interiorColor = GetVehicleInteriorColour(vehicle);
+		local vehicleModel = GetEntityModel(vehicle)
+		local vehicleLabel, extras = GetLabelText(GetDisplayNameFromVehicleModel(vehicleModel)), {}
+
+		local hasCustomPrimaryColor = GetIsVehiclePrimaryColourCustom(vehicle)
+		local customPrimaryColor = nil
+		if hasCustomPrimaryColor then
+			local r, g, b = GetVehicleCustomPrimaryColour(vehicle)
+			customPrimaryColor = { r, g, b }
+		end
+
+		local hasCustomSecondaryColor = GetIsVehicleSecondaryColourCustom(vehicle)
+		local customSecondaryColor = nil
+		if hasCustomSecondaryColor then
+			local r, g, b = GetVehicleCustomSecondaryColour(vehicle)
+			customSecondaryColor = { r, g, b }
+		end
+
+		if vehicleLabel == 'NULL' then vehicleLabel = GetDisplayNameFromVehicleModel(vehicleModel) end
 
 		for extraId=0, 12 do
 			if DoesExtraExist(vehicle, extraId) then
@@ -531,40 +551,41 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 				extras[tostring(extraId)] = state
 			end
 		end
-
 		return {
-			model             = GetEntityModel(vehicle),
+			model = vehicleModel,
+			label = vehicleLabel,
 
-			plate             = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)),
-			plateIndex        = GetVehicleNumberPlateTextIndex(vehicle),
+			plate = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)),
+			plateIndex = GetVehicleNumberPlateTextIndex(vehicle),
 
-			bodyHealth        = ESX.Math.Round(GetVehicleBodyHealth(vehicle), 1),
-			engineHealth      = ESX.Math.Round(GetVehicleEngineHealth(vehicle), 1),
-			tankHealth        = ESX.Math.Round(GetVehiclePetrolTankHealth(vehicle), 1),
+			bodyHealth = ESX.Math.Round(GetVehicleBodyHealth(vehicle), 1),
+			engineHealth  = ESX.Math.Round(GetVehicleEngineHealth(vehicle), 1),
+			tankHealth = ESX.Math.Round(GetVehiclePetrolTankHealth(vehicle), 1),
 
-			fuelLevel         = ESX.Math.Round(GetVehicleFuelLevel(vehicle), 1),
-			dirtLevel         = ESX.Math.Round(GetVehicleDirtLevel(vehicle), 1),
-			color1            = colorPrimary,
-			color2            = colorSecondary,
+			fuelLevel = ESX.Math.Round(GetVehicleFuelLevel(vehicle), 1),
+			dirtLevel = ESX.Math.Round(GetVehicleDirtLevel(vehicle), 1),
+			color1    = colorPrimary,
+			color2    = colorSecondary,
+			customPrimaryColor = customPrimaryColor,
+			customSecondaryColor = customSecondaryColor,
+			color1Custom  = table.pack(GetVehicleCustomPrimaryColour(vehicle)),
+			color2Custom = table.pack(GetVehicleCustomSecondaryColour(vehicle)),
+			color1Type = GetVehicleModColor_1(vehicle),
+			color2Type  = GetVehicleModColor_2(vehicle),
 
-			pearlescentColor  = pearlescentColor,
-			wheelColor        = wheelColor,
+			pearlescentColor = pearlescentColor,
+			dashboardColor = dashboardColor,
+		    interiorColor = interiorColor,
+			wheelColor = wheelColor,
+			svijetlaColor = svijetlaColor,
 
-			wheels            = GetVehicleWheelType(vehicle),
-			windowTint        = GetVehicleWindowTint(vehicle),
-			xenonColor        = GetVehicleXenonLightsColour(vehicle),
-
-			neonEnabled       = {
-				IsVehicleNeonLightEnabled(vehicle, 0),
-				IsVehicleNeonLightEnabled(vehicle, 1),
-				IsVehicleNeonLightEnabled(vehicle, 2),
-				IsVehicleNeonLightEnabled(vehicle, 3)
-			},
-
+			wheels = GetVehicleWheelType(vehicle),
+			windowTint = GetVehicleWindowTint(vehicle),
+			xenonColor = GetVehicleXenonLightsColour(vehicle),
+			neonEnabled = {IsVehicleNeonLightEnabled(vehicle, 0),IsVehicleNeonLightEnabled(vehicle, 1),IsVehicleNeonLightEnabled(vehicle, 2),IsVehicleNeonLightEnabled(vehicle, 3)},
 			neonColor         = table.pack(GetVehicleNeonLightsColour(vehicle)),
 			extras            = extras,
 			tyreSmokeColor    = table.pack(GetVehicleTyreSmokeColor(vehicle)),
-
 			modSpoilers       = GetVehicleMod(vehicle, 0),
 			modFrontBumper    = GetVehicleMod(vehicle, 1),
 			modRearBumper     = GetVehicleMod(vehicle, 2),
@@ -576,21 +597,17 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 			modFender         = GetVehicleMod(vehicle, 8),
 			modRightFender    = GetVehicleMod(vehicle, 9),
 			modRoof           = GetVehicleMod(vehicle, 10),
-
 			modEngine         = GetVehicleMod(vehicle, 11),
 			modBrakes         = GetVehicleMod(vehicle, 12),
 			modTransmission   = GetVehicleMod(vehicle, 13),
 			modHorns          = GetVehicleMod(vehicle, 14),
 			modSuspension     = GetVehicleMod(vehicle, 15),
 			modArmor          = GetVehicleMod(vehicle, 16),
-
 			modTurbo          = IsToggleModOn(vehicle, 18),
 			modSmokeEnabled   = IsToggleModOn(vehicle, 20),
 			modXenon          = IsToggleModOn(vehicle, 22),
-
 			modFrontWheels    = GetVehicleMod(vehicle, 23),
 			modBackWheels     = GetVehicleMod(vehicle, 24),
-
 			modPlateHolder    = GetVehicleMod(vehicle, 25),
 			modVanityPlate    = GetVehicleMod(vehicle, 26),
 			modTrimA          = GetVehicleMod(vehicle, 27),
@@ -613,7 +630,11 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 			modTrimB          = GetVehicleMod(vehicle, 44),
 			modTank           = GetVehicleMod(vehicle, 45),
 			modWindows        = GetVehicleMod(vehicle, 46),
-			modLivery         = GetVehicleLivery(vehicle)
+			modDoorR          = GetVehicleMod(vehicle, 47),
+			modStandardLivery = GetVehicleMod(vehicle, 48),
+			modLightbar       = GetVehicleMod(vehicle, 49),
+			modLivery         = GetVehicleLivery(vehicle),
+			bulletProofTyres  = not GetVehicleTyresCanBurst(vehicle)
 		}
 	else
 		return
@@ -625,17 +646,29 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		local colorPrimary, colorSecondary = GetVehicleColours(vehicle)
 		local pearlescentColor, wheelColor = GetVehicleExtraColours(vehicle)
 		SetVehicleModKit(vehicle, 0)
-
+		SetVehicleAutoRepairDisabled(vehicle, true)
 		if props.plate then SetVehicleNumberPlateText(vehicle, props.plate) end
 		if props.plateIndex then SetVehicleNumberPlateTextIndex(vehicle, props.plateIndex) end
 		if props.bodyHealth then SetVehicleBodyHealth(vehicle, props.bodyHealth + 0.0) end
 		if props.engineHealth then SetVehicleEngineHealth(vehicle, props.engineHealth + 0.0) end
 		if props.tankHealth then SetVehiclePetrolTankHealth(vehicle, props.tankHealth + 0.0) end
-		if props.fuelLevel then SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0) end
+		--if props.fuelLevel then SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0) end
+		if props.fuelLevel then--##FIXANO TINKY
+			SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0)
+			DecorSetFloat(vehicle, "_FUEL_LEVEL", props.fuelLevel + 0.0)
+		end
 		if props.dirtLevel then SetVehicleDirtLevel(vehicle, props.dirtLevel + 0.0) end
+		if props.customPrimaryColor then SetVehicleCustomPrimaryColour(vehicle, props.customPrimaryColor[1], props.customPrimaryColor[2], props.customPrimaryColor[3]) end 
+		if props.customSecondaryColor then SetVehicleCustomSecondaryColour(vehicle, props.customSecondaryColor[1], props.customSecondaryColor[2], props.customSecondaryColor[3]) end
 		if props.color1 then SetVehicleColours(vehicle, props.color1, colorSecondary) end
 		if props.color2 then SetVehicleColours(vehicle, props.color1 or colorPrimary, props.color2) end
+		if props.color1Custom then SetVehicleCustomPrimaryColour(vehicle, props.color1Custom[1], props.color1Custom[2], props.color1Custom[3]) end
+		if props.color2Custom then SetVehicleCustomSecondaryColour(vehicle, props.color2Custom[1], props.color2Custom[2], props.color2Custom[3]) end
+		if props.color1Type then SetVehicleModColor_1(vehicle, props.color1Type) end
+		if props.color2Type then SetVehicleModColor_2(vehicle, props.color2Type) end
 		if props.pearlescentColor then SetVehicleExtraColours(vehicle, props.pearlescentColor, wheelColor) end
+		if props.dashboardColor then SetVehicleDashboardColour(vehicle, props.dashboardColor) end
+		if props.interiorColor then SetVehicleInteriorColour(vehicle, props.interiorColor) end
 		if props.wheelColor then SetVehicleExtraColours(vehicle, props.pearlescentColor or pearlescentColor, props.wheelColor) end
 		if props.wheels then SetVehicleWheelType(vehicle, props.wheels) end
 		if props.windowTint then SetVehicleWindowTint(vehicle, props.windowTint) end
@@ -647,17 +680,14 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 			SetVehicleNeonLightEnabled(vehicle, 3, props.neonEnabled[4])
 		end
 
-		if props.extras then
+	    if props.extras then
 			for extraId,enabled in pairs(props.extras) do
-				if enabled then
-					SetVehicleExtra(vehicle, tonumber(extraId), 0)
-				else
-					SetVehicleExtra(vehicle, tonumber(extraId), 1)
-				end
+				SetVehicleExtra(vehicle, tonumber(extraId), enabled and 0 or 1)
 			end
 		end
-
-		if props.neonColor then SetVehicleNeonLightsColour(vehicle, props.neonColor[1], props.neonColor[2], props.neonColor[3]) end
+		
+		if props.bulletProofTyres ~= nil then SetVehicleTyresCanBurst(vehicle, not props.bulletProofTyres) end
+	    if props.neonColor then SetVehicleNeonLightsColour(vehicle, props.neonColor[1], props.neonColor[2], props.neonColor[3]) end
 		if props.xenonColor then SetVehicleXenonLightsColour(vehicle, props.xenonColor) end
 		if props.modSmokeEnabled then ToggleVehicleMod(vehicle, 20, true) end
 		if props.tyreSmokeColor then SetVehicleTyreSmokeColor(vehicle, props.tyreSmokeColor[1], props.tyreSmokeColor[2], props.tyreSmokeColor[3]) end
@@ -682,6 +712,8 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		if props.modXenon then ToggleVehicleMod(vehicle,  22, props.modXenon) end
 		if props.modFrontWheels then SetVehicleMod(vehicle, 23, props.modFrontWheels, false) end
 		if props.modBackWheels then SetVehicleMod(vehicle, 24, props.modBackWheels, false) end
+		if props.modFrontTyres then SetVehicleMod(vehicle, 23, props.modFrontTyres, true) end
+		if props.modBackTyres then SetVehicleMod(vehicle, 24, props.modBackTyres, true) end
 		if props.modPlateHolder then SetVehicleMod(vehicle, 25, props.modPlateHolder, false) end
 		if props.modVanityPlate then SetVehicleMod(vehicle, 26, props.modVanityPlate, false) end
 		if props.modTrimA then SetVehicleMod(vehicle, 27, props.modTrimA, false) end
@@ -704,14 +736,17 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		if props.modTrimB then SetVehicleMod(vehicle, 44, props.modTrimB, false) end
 		if props.modTank then SetVehicleMod(vehicle, 45, props.modTank, false) end
 		if props.modWindows then SetVehicleMod(vehicle, 46, props.modWindows, false) end
-
+		if props.svijetlaColor then SetVehicleHeadlightsColour(vehicle, props.svijetlaColor) end
+		-----NOVO LIVERY FIX---
+		--if props.modLivery then SetVehicleLivery(vehicle, props.modLivery) end
+		if props.modDoorR then SetVehicleMod(vehicle, 47, props.modDoorR, false) end
+		if props.modStandardLivery then SetVehicleMod(vehicle, 48, props.modStandardLivery, false) end
+		if props.modLightbar then SetVehicleMod(vehicle, 49, props.modLightbar, false) end
 		if props.modLivery then
 			SetVehicleMod(vehicle, 48, props.modLivery, false)
-			SetVehicleLivery(vehicle, props.modLivery)
 		end
 	end
 end
-
 ESX.Game.Utils.DrawText3D = function(coords, text, size, font)
 	local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
 
