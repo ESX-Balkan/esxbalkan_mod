@@ -1,26 +1,30 @@
-ESX = nil
+local ESX = nil
+local cachedData = {}
+local CT = CreateThread
 
-cachedData = {}
-
-Citizen.CreateThread(function()
+CT(function()
 	while not ESX do
-		--Fetching esx library, due to new to esx using this.
-
-		TriggerEvent("esx:getSharedObject", function(library) 
-			ESX = library 
-		end)
-
-		Citizen.Wait(0)
+		TriggerEvent("esx:getSharedObject", function(library) ESX = library end)
+		Wait(100)
 	end
 
-	if Config.VehicleMenu then
-		while true do
-			Citizen.Wait(5)
+	if Config.VehicleMenu then -- ako je ukljeceno onda aktiviraj
+        RegisterKeyMapping('+menigaraze', 'Policijski meni', 'keyboard', Config.VehicleMenuButton)
+        RegisterCommand('+menigaraze', function()
+	    if not IsEntityDead(PlayerPedId()) then
+            OpenVehicleMenu()
+	    end
+    end, false)
+    RegisterCommand('-menigaraze', function()
+	    ---mora biti prazno :)
+    end, false)
+		--[[while true do
+			Wait(5)
 
 			if IsControlJustPressed(0, Config.VehicleMenuButton) then
 				OpenVehicleMenu()
 			end
-		end
+		end]]
 	end
 end)
 
@@ -34,7 +38,7 @@ AddEventHandler("esx:setJob", function(newJob)
 	ESX.PlayerData["job"] = newJob
 end)
 
-Citizen.CreateThread(function()
+CT(function()
 	local CanDraw = function(action)
 		if action == "vehicle" then
 			if IsPedInAnyVehicle(PlayerPedId()) then
@@ -55,13 +59,11 @@ Citizen.CreateThread(function()
 
 	local GetDisplayText = function(action, garage)
 		if not Config.Labels[action] then Config.Labels[action] = action end
-
 		return string.format(Config.Labels[action], action == "vehicle" and GetLabelText(GetDisplayNameFromVehicleModel(GetEntityModel(GetVehiclePedIsUsing(PlayerPedId())))) or garage)
 	end
 
 	for garage, garageData in pairs(Config.Garages) do
 		local garageBlip = AddBlipForCoord(garageData["positions"]["menu"]["position"])
-
 		SetBlipSprite(garageBlip, 357)
 		SetBlipDisplay(garageBlip, 4)
 		SetBlipScale (garageBlip, 0.8)
@@ -73,7 +75,7 @@ Citizen.CreateThread(function()
 	end
 
 	while true do
-		local sleepThread = 500
+		local sleepThread = 1500
 
 		local ped = PlayerPedId()
 		local pedCoords = GetEntityCoords(ped)
@@ -83,7 +85,7 @@ Citizen.CreateThread(function()
 				local dstCheck = #(pedCoords - actionData["position"])
 
 				if dstCheck <= 10.0 then
-					sleepThread = 5
+					sleepThread = 6
 
 					local draw = CanDraw(action)
 
@@ -119,6 +121,6 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		Citizen.Wait(sleepThread)
+		Wait(sleepThread)
 	end
 end)
