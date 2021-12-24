@@ -111,8 +111,12 @@ AddEventHandler('esx_spectate:leavespectate', function()
 end)
 
 RegisterNUICallback('select', function(data, cb)
-	spectate(data.id)
 	SetNuiFocus(false)
+	ESX.TriggerServerCallback('esxbalkan_admin:provjerapermisije', function(moze)
+		if moze then
+			spectate(data.id)		
+		end
+	end)
 end)
 
 RegisterNUICallback('close', function(data, cb)
