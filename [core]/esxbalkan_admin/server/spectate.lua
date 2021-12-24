@@ -23,6 +23,18 @@ ESX.RegisterServerCallback('esx_spectate:getPlayerData', function(source, cb, id
 	cb(xPlayer)
 end)
 
+ESX.RegisterServerCallback('esxbalkan_admin:provjerapermisije', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if xPlayer.getGroup() ~= 'user' then
+		cb(true, false)
+	else
+		print(('esxbalkan_admin %s je pokusao da specuje osobu a nema permisiju!'):format(xPlayer.identifier))
+		DropPlayer(source, 'esxbalkan_admin: dobar pokusaj cheatovanja retarde :) Protected by ESX-Balkan team.')
+		cb(false)
+	end
+end)
+
 RegisterNetEvent('esx_spectate:kick')
 AddEventHandler('esx_spectate:kick', function(target, msg)
 	local xPlayer = ESX.GetPlayerFromId(source)
