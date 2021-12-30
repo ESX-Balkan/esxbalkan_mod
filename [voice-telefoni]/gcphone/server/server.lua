@@ -79,35 +79,25 @@ function getIdentifierByPhoneNumber(phone_number)
 end
 
 function getUserTwitterAccount(source, _identifier)
+    Wait(30000) -- ako je first spawn da ne baca eror za firstName/lastName
     local _source = source
     local identifier = _identifier
     local xPlayer = ESX.GetPlayerFromId(_source)
 
-    MySQL.Async.fetchAll("SELECT * FROM users WHERE identifier = @identifier", {
+    local FirstLastName = xPlayer.variables.firstName.. ' '..xPlayer.variables.lastName
+    TriggerClientEvent('crew:getPlayerBank', _source, xPlayer, FirstLastName)
+
+    MySQL.Async.fetchScalar("SELECT identifier FROM twitter_accounts WHERE identifier = @identifier", {
         ['@identifier'] = identifier
-    }, function(result2)
-        local user = result2[1]
-
-        if user == nil then 
-            karakteribekle(xPlayer.source, identifier)
+    }, function(result)
+        if result ~= nil then
+            TriggerEvent('gcPhone:twitter_login', _source, result)
         else
-            local FirstLastName = user['firstname'] .. ' ' .. user['lastname']
-            
-            TriggerClientEvent('crew:getPlayerBank', _source, xPlayer, FirstLastName)
-
-            MySQL.Async.fetchScalar("SELECT identifier FROM twitter_accounts WHERE identifier = @identifier", {
-                ['@identifier'] = identifier
-            }, function(result)
-                if result ~= nil then
-                    TriggerEvent('gcPhone:twitter_login', _source, result)
-                else
-                    MySQL.Async.fetchAll("INSERT INTO twitter_accounts (identifier, username) VALUES (@identifier, @username)", { 
-                        ['@identifier'] = identifier,
-                        ['@username'] = FirstLastName
-                    }, function()
-                        TriggerEvent('gcPhone:twitter_login', _source, identifier)
-                    end)
-                end
+            MySQL.Async.fetchAll("INSERT INTO twitter_accounts (identifier, username) VALUES (@identifier, @username)", { 
+                ['@identifier'] = identifier,
+                ['@username'] = FirstLastName
+            }, function()
+                TriggerEvent('gcPhone:twitter_login', _source, identifier)
             end)
         end
     end)
