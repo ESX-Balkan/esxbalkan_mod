@@ -158,7 +158,7 @@ AddEventHandler(
               if coffre[i].name == item then
                 if (coffre[i].count >= count and count > 0) then
                   xPlayer.addInventoryItem(item, count)
-                  --sendToDiscord("Vadjenje Itema", GetPlayerName(source) .. " je izvadio " .. count .. item .. " auto je sa tablicama " .. plate)
+                  sendToDiscord("Vađenje Itema", " Igrac  **" ..GetPlayerName(_source).. '** je izvadio iz gepeka  ** x' ..count..' ' ..item..' \n Tablice: **' ..plate..'')
                   if (coffre[i].count - count) == 0 then
                     table.remove(coffre, i)
                   else
@@ -419,7 +419,7 @@ AddEventHandler(
               -- Checks passed, storing the item.
               store.set("coffre", coffre)
               xPlayer.removeInventoryItem(item, count)
-              --sendToDiscord("Stavljanje Itema", GetPlayerName(source) .. ' je stavio ' .. ' ' .. ESX.GetItemLabel(itemName))
+              sendToDiscord("Stavljanje Itema", " Igrac  **" ..GetPlayerName(_source).. '** je stavio u gepek  ** x' ..count..' ' ..item..' \n Tablice: **' ..plate..'')
               MySQL.Async.execute(
                 "UPDATE trunk_inventory SET owned = @owned WHERE plate = @plate",
                 {
@@ -618,20 +618,14 @@ function all_trim(s)
   end
 end
 
-function sendToDiscord(name,message, color)
-	local vreme = os.date("*t")
-	
-	local embeds = {
-		{
-			["title"]=message,
-			["type"]="rich",
-			["color"] =color,
-			["footer"]=  {
-		  ["text"]= "Vreme: " .. vreme.hour .. ":" .. vreme.min .. ":" .. vreme.sec,
-  
-		   },
-		}
-	} 
-	if message == nil or message == '' then return FALSE end
-	PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+function sendToDiscord(name, message)
+  local poruka = {
+      {
+          ["color"] = 56108,--
+          ["title"] = "".. name .."",
+          ["description"] = message,
+         
+      }
+    }
+  PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({username = "Logovi", embeds = poruka, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
 end
