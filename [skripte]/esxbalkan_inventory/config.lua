@@ -31,9 +31,6 @@ Config.PoliceShopLength = 2
 Config.Color = 2
 Config.WeaponColor = 1
 
-Config.WeaponLiscence = {x = 12.47, y = -1105.5, z = 29.8}
-Config.LicensePrice = 22500
-
 --Lokacije shopova
 Config.Shops = {
     RegularShop = {
