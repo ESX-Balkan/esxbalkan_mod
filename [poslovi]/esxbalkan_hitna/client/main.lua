@@ -186,12 +186,16 @@ function StartDistressSignal()
 end
 
 function SendDistressSignal()
-	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
+    local playerPed = PlayerPedId()
+    PedPosition        = GetEntityCoords(playerPed)
+    local PlayerCoords = { x = PedPosition.x, y = PedPosition.y, z = PedPosition.z }
 
-	ESX.ShowNotification(_U('distress_sent'))
-	TriggerServerEvent('esx_ambulancejob:onPlayerDistress')
+    ESX.ShowNotification(_U('distress_sent'))
+    TriggerServerEvent('esx_addons_gcphone:startCall', 'ambulance', 'Zove pomoc', PlayerCoords, {
+        PlayerCoords = { x = PedPosition.x, y = PedPosition.y, z = PedPosition.z },
+    })
 end
+--sad bi trebalo da salje signal
 
 function DrawGenericTextThisFrame()
 	SetTextFont(4)
