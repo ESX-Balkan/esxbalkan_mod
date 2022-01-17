@@ -595,7 +595,7 @@ RegisterCommand('setlvl', function(source, args)
 	if source == 0 or xPlayer.getGroup() == "superadmin" then
 		if args[1] ~= nil and args[2] ~= nil then 
 			setLevel(job, level, broj)	
-			print("^5Gang ^0" ..job.. "^5 was set to level: ^7" ..level.. "")
+			print("^5Mafija ^0" ..job.. "^5 je unapredjena na level: ^7" ..level.. "")
                         sendToDiscord3('Unapredjene Baze',  xPlayer.name ..' je postavio ' .. levelTabela[job].stats.level .. ' ' .. 'level na '  .. job )
 		end
 	else
