@@ -1,13 +1,8 @@
 local ESX = nil
-local cachedData = {}
-local CT = CreateThread
+cachedData = {}
 
-CT(function()
-	while not ESX do
-		TriggerEvent("esx:getSharedObject", function(library) ESX = library end)
-		Wait(100)
-	end
-
+CreateThread(function()
+	while not ESX do TriggerEvent("esx:getSharedObject", function(library) ESX = library end) Wait(100) end
 	if Config.VehicleMenu then -- ako je ukljeceno onda aktiviraj
         RegisterKeyMapping('+menigaraze', 'Policijski meni', 'keyboard', Config.VehicleMenuButton)
         RegisterCommand('+menigaraze', function()
@@ -18,13 +13,6 @@ CT(function()
     RegisterCommand('-menigaraze', function()
 	    ---mora biti prazno :)
     end, false)
-		--[[while true do
-			Wait(5)
-
-			if IsControlJustPressed(0, Config.VehicleMenuButton) then
-				OpenVehicleMenu()
-			end
-		end]]
 	end
 end)
 
@@ -38,7 +26,7 @@ AddEventHandler("esx:setJob", function(newJob)
 	ESX.PlayerData["job"] = newJob
 end)
 
-CT(function()
+CreateThread(function()
 	local CanDraw = function(action)
 		if action == "vehicle" then
 			if IsPedInAnyVehicle(PlayerPedId()) then
