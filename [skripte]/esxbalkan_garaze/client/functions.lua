@@ -1,3 +1,4 @@
+cachedData = {} -- nebi trebalo error izbacivat vise
 OpenGarageMenu = function()
     local currentGarage = cachedData["currentGarage"]
 
