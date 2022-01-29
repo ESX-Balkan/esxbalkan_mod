@@ -1105,7 +1105,7 @@ function OpenGetStocksMenu()
 			local item = items[i]
 			if item.count > 0 then
 				table.insert(elements, {
-					label = 'x' .. items[i].count .. ' ' .. items[i].label,
+					label = 'x' .. items[i].count .. ' ' .. items[i].name,
 					value = items[i].name
 				})
 			end
