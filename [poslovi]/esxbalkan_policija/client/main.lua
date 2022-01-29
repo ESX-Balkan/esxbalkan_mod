@@ -848,7 +848,7 @@ function OpenGetStocksMenu()
 
 		for i=1, #items, 1 do
 			table.insert(elements, {
-				label = 'x' .. items[i].count .. ' ' .. items[i].label,
+				label = 'x' .. items[i].count .. ' ' .. items[i].name,
 				value = items[i].name
 			})
 		end
