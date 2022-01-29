@@ -797,10 +797,6 @@ CREATE TABLE `rented_vehicles` (
   `owner` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `report` (
-  `z` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE `society_moneywash` (
   `id` int(11) NOT NULL,
   `identifier` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
