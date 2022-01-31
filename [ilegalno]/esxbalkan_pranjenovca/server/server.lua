@@ -6,7 +6,7 @@ RegisterServerEvent('esxbalkan_pranjenovca:pranjePara')
 AddEventHandler('esxbalkan_pranjenovca:pranjePara', function(amount)
   local xPlayer = ESX.GetPlayerFromId(source)
   local tax = 0.80
-  local distanca = #(GetEntityCoords(GetPlayerPed(source)) - PranjeKonfig.Zones.laundryMat.Pos)
+  local distanca = #(GetEntityCoords(GetPlayerPed(source)) - vector3(2619.4243, 1692.0577, 31.8694))--kordinati
   amount = ESX.Math.Round(tonumber(amount))
   washedCash = amount * tax
   washedTotal = ESX.Math.Round(tonumber(washedCash))
