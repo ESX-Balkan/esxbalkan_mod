@@ -32,12 +32,6 @@ AddEventHandler('esxbalkan_droge:sellDrug', function(itemName, amount)
 end)
 
 ESX.RegisterServerCallback('esxbalkan_droge:canPickUp', function(source, cb, item)
-	local xPlayer = ESX.GetPlayerFromId(source)
-	local xItem = xPlayer.getInventoryItem(item)
-
-	if xItem.weight ~= -1 and xItem.count >= xItem.weight then
-		cb(false)
-	else
-		cb(true)
-	end
+    local xPlayer = ESX.GetPlayerFromId(source)
+    cb(xPlayer.canCarryItem(item, 1))
 end)
