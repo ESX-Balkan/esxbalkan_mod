@@ -9,7 +9,7 @@ local hasAlreadyEnteredMarker	= nil
 local CurrentAction				= nil
 local CurrentActionMsg			= ''
 local CurrentActionData			= {}
-local player = GetPlayerPed(-1)
+local player = PlayerPedId()
 
 Citizen.CreateThread(function()
 	while ESX == nil do
