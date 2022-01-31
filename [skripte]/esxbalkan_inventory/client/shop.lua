@@ -52,14 +52,15 @@ Citizen.CreateThread(function()
                     end
                 end
             end
-            if IsInWeaponShopZone(coords) then
+             if IsInWeaponShopZone(coords) then
                 if IsControlJustReleased(0, Keys["E"]) then
-                   if Licenses['weapon'] ~= nil then
-                        OpenShopInv("weaponshop")
-                        Citizen.Wait(2000)
-                   else
-                       ESX.ShowNotification('Da biste mogli da kupujete oruzje, potrebna vam je dozvola za vatreno oružje')
-                   end
+                        ESX.TriggerServerCallback('esx_license:checkLicense', function(hasWeaponLicense)
+                            if hasWeaponLicense then
+                                OpenShopInv("weaponshop")
+                            else
+                                ESX.ShowNotification("Nemas dozvolu !")
+                            end
+                        end, GetPlayerServerId(PlayerId()), 'weapon')
                 end
             end
             if IsInPoliceShopZone(coords) then
