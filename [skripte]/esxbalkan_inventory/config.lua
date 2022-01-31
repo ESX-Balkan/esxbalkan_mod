@@ -118,9 +118,9 @@ Config.Shops = {
         },
 
         Items = {
-            { name = 'bread' , price = 1},
-            { name = 'water',price = 1 },
-            { name = 'phone',price = 1 },
+            { name = 'WEAPON_PISTOL' , price = 1},
+            { name = 'WEAPON_SNSPISTOL',price = 1 },
+            { name = 'WEAPON_STUNGUN',price = 1 },
         }
     },
 
@@ -131,9 +131,9 @@ Config.Shops = {
 
         },
         Items = {
-            { name = 'bread' , price = 1},
-            { name = 'water',price = 1 },
-            { name = 'phone',price = 1 },
+            { name = 'WEAPON_PISTOL' , price = 1},
+            { name = 'WEAPON_SNSPISTOL',price = 1 },
+            { name = 'WEAPON_STUNGUN',price = 1 },
         }
 }
 }
