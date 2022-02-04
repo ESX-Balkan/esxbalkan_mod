@@ -290,8 +290,8 @@ function OpenMobileMechanicActionsMenu()
 			end)
 		elseif data.current.value == 'hijack_vehicle' then
 			local playerPed = PlayerPedId()
-			local vehicle = ESX.Game.GetVehicleInDirection()
 			local coords = GetEntityCoords(playerPed)
+			local vehicle = ESX.Game.GetClosestVehicle(coords, false)
 
 			if IsPedSittingInAnyVehicle(playerPed) then
 				ESX.ShowNotification(_U('inside_vehicle'))
@@ -316,8 +316,8 @@ function OpenMobileMechanicActionsMenu()
 			end
 		elseif data.current.value == 'fix_vehicle' then
 			local playerPed = PlayerPedId()
-			local vehicle   = ESX.Game.GetVehicleInDirection()
-			local coords    = GetEntityCoords(playerPed)
+			local coords = GetEntityCoords(playerPed)
+			local vehicle = ESX.Game.GetClosestVehicle(coords, false)
 
 			if IsPedSittingInAnyVehicle(playerPed) then
 				ESX.ShowNotification(_U('inside_vehicle'))
@@ -344,8 +344,8 @@ function OpenMobileMechanicActionsMenu()
 			end
 		elseif data.current.value == 'clean_vehicle' then
 			local playerPed = PlayerPedId()
-			local vehicle   = ESX.Game.GetVehicleInDirection()
-			local coords    = GetEntityCoords(playerPed)
+			local coords = GetEntityCoords(playerPed)
+			local vehicle = ESX.Game.GetClosestVehicle(coords, false)
 
 			if IsPedSittingInAnyVehicle(playerPed) then
 				ESX.ShowNotification(_U('inside_vehicle'))
