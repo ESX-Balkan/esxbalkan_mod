@@ -13,17 +13,7 @@ Citizen.CreateThread(function()
 
 			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
 
-				if Config.LicenseEnable then
-					ESX.TriggerServerCallback('esx_license:checkLicense', function(hasProcessingLicense)
-						if hasProcessingLicense then
-							Processlsd()
-						else
-							OpenBuyLicenseMenu('lsd_processing')
-						end
-					end, GetPlayerServerId(PlayerId()), 'lsd_processing')
-				else
-					Processlsd()
-				end
+				Processlsd()
 
 			end
 		else
@@ -67,17 +57,7 @@ Citizen.CreateThread(function()
 
 			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
 
-				if Config.LicenseEnable then
-					ESX.TriggerServerCallback('esx_license:checkLicense', function(hasProcessingLicense)
-						if hasProcessingLicense then
-							Processthionylchloride()
-						else
-							OpenBuyLicenseMenu('thionylchloride_processing')
-						end
-					end, GetPlayerServerId(PlayerId()), 'thionylchloride_processing')
-				else
-					Processthionylchloride()
-				end
+				Processthionylchloride()
 
 			end
 		else
