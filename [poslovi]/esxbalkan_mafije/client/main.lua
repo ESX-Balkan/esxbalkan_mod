@@ -894,14 +894,31 @@ CreateThread(function()
 					OtvoriBrodSpawnMenu('car', CurrentActionData.station, CurrentActionData.part, CurrentActionData.partNum)
 				elseif CurrentAction == 'menu_boss_actions' then
 					ESX.UI.Menu.CloseAll()
-					TriggerEvent('esx_society:openBossMenu', PlayerData.job.name, function(data, menu)
-					menu.close()
-					CurrentAction  = 'menu_boss_actions'
-					CurrentActionMsg  = _U('open_bossmenu')
-					CurrentActionData = {}
-					end, { wash = Config.UkljuciPranje })
+					if Config.KoristiNUI == true then
+					    SetNuiFocus(true, true)
+							ESX.TriggerServerCallback('begijanes', function(data)
+							
+							SendNUIMessage({type = 'open', 
+							organizacija = PlayerData.job.label, 
+							organizacijarank = PlayerData.job.grade_label, 
+							pareKes = data.cash, 
+							pareFirma = data.society, 
+							pareBanka = data.bank,
+							radnici = elementi, 
+							imeRadnika = identifier,
+							radnicirank = PlayerData.job.grade_label,
+							})
+						end)
+				    else
+						TriggerEvent('esx_society:openBossMenu', PlayerData.job.name, function(data, menu)
+							menu.close()
+							CurrentAction  = 'menu_boss_actions'
+							CurrentActionMsg  = _U('open_bossmenu')
+							CurrentActionData = {}
+							end, { wash = Config.UkljuciPranje })
+					end
 				end
-				CurrentAction = nil
+				CurrentAction = nil		
 			end
 		else
 			Wait(1000)
@@ -1186,6 +1203,105 @@ function OpenPutStocksMenu()
 	end)
 end
 
+
+RegisterNUICallback("zatvori", function(data)
+    SetNuiFocus(false, false)
+    print("zatvorio")
+end)
+
+function refresh()
+	ESX.TriggerServerCallback('begijanes', function(data)
+		SendNUIMessage({type = 'open', 
+		organizacija = ESX.PlayerData.job.label, 
+		organizacijarank = ESX.PlayerData.job.grade_label,
+		pareKes = data.cash, 
+		pareFirma = data.society, 
+		pareBanka = data.bank,
+		})
+	end)
+end
+
+
+RegisterNUICallback("unaprijediClana", function(data)
+	local ident = data.identifier
+	local grade = tonumber(data.nowGrade)
+	TriggerServerEvent("esx_society:unaprijediClana", data.identifier, grade)
+end)
+
+
+RegisterNUICallback("degradirajClana", function(data)
+	local ident = data.identifier
+	local nowGrade = tonumber(data.nowGrade)
+    TriggerServerEvent("esx_society:downgradexd", ident, nowGrade)
+end)
+
+RegisterNUICallback("otkaz", function(data)
+	local ident = data.identifier
+	TriggerServerEvent("esx_society:otpustiClana", ident)
+end)
+
+
+
+
+RegisterNUICallback("stavinovac", function(data)
+	pare = tonumber(data.kolicinastavljanja)
+	if pare == nil then
+		ESX.ShowNotification("Niste unijeli kolicinu")
+	else
+		TriggerServerEvent('esx_society:depositMoney', PlayerData.job.name, pare)
+		refresh()
+	end
+end)
+
+RegisterNUICallback("izvadinovac", function(data)
+	kolicinavadjenja = tonumber(data.kolicinavadjenja)
+	if kolicinavadjenja == nil then
+		ESX.ShowNotification("Niste unijeli kolicinu")
+	else
+		TriggerServerEvent('esx_society:withdrawMoney', PlayerData.job.name, kolicinavadjenja)
+		refresh()
+	end
+end)
+
+
+RegisterNUICallback("listaclanovaopn", function(data)
+
+	ESX.TriggerServerCallback('esx_society:getEmployees', function(employees)
+
+		for i=1, #employees, 1 do
+			local gradeLabel = (employees[i].job.grade_label == '' and employees[i].job.label or employees[i].job.grade_label)
+
+			SendNUIMessage({type = 'listazaposlenih', 
+			firstname = employees[i].name,
+			lastname = employees[i].lastname,
+            grade_label = gradeLabel,
+			rod = employees[i].rod,
+			rank_label = employees[i].job.grade_label,
+			employeescount = #employees,
+			identifier = employees[i].identifier,
+			grade_number = employees[i].job.grade,
+			brojtelefona = employees[i].brojtelefona,
+			})
+		end
+	end, PlayerData.job.name)
+end)
+
+
+
+RegisterNUICallback("zaposliIgraca", function(data)
+	id = tonumber(data.id)
+	if id == nil then
+		ESX.ShowNotification("Nisi unio ID")
+	else
+		ESX.TriggerServerCallback('esx_society:setJobById', function()
+		   end, id, PlayerData.job.name, 0) --id, job, rank
+		   Core.SaveAll()
+	end
+end)
+
 AddEventHandler('onResourceStop', function(resource)
-	if resource == GetCurrentResourceName() then TriggerEvent('esxbalkan_mafije:odvezivanje') end
+	if resource == GetCurrentResourceName() then 
+	TriggerEvent('esxbalkan_mafije:odvezivanje')
+	SetNuiFocus(false, false)
+	end
 end)
