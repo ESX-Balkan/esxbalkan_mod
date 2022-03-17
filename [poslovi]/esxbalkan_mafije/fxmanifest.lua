@@ -25,3 +25,12 @@ dependencies {
 	'esxbalkan_society',
 	'mysql-async'
 }
+ui_page 'html/index.html'
+files {
+    "html/*.png",
+    "html/index.html",
+    "html/style.css",
+    "html/jos-neki-js.js.js",
+    "html/app.js",
+	"html/assets/*.png"
+}
