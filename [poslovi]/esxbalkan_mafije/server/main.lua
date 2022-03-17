@@ -621,6 +621,205 @@ ESX.RegisterServerCallback('esxbalkan_mafije:getLvL', function(source, cb, job)
 	cb(tabela)
 end)
 
+
+
+function getAccounts(data, xPlayer)
+	local result = {}
+	for i=1, #data do
+		if(data[i] ~= 'money') then
+			if(data[i] == 'black_money') then
+				result[i] = nil
+			else
+				result[i] = xPlayer.getAccount(data[i])['money']
+			end
+
+		else
+			result[i] = xPlayer.getMoney()
+		end
+	end
+	return result
+end
+
+function tableIncludes(table, data)
+	for _,v in pairs(table) do
+		if v == data then
+			return true
+		end
+	end
+	return false
+end
+
+local permisije = {
+	'boss'
+}
+
+ESX.RegisterServerCallback('begijanes', function(source, cb)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if xPlayer ~= nil then
+		local money,bank,black_money = table.unpack(getAccounts({'money', 'bank', 'black_money'}, xPlayer))
+
+		local society = nil
+		if tableIncludes(permisije, xPlayer.job.grade_name) then
+			TriggerEvent('esx_society:getSociety', xPlayer.job.name, function(data)
+				if data ~= nil then
+					TriggerEvent('esx_addonaccount:getSharedAccount', data.account, function(account)
+							society = account['money']
+					end)
+				end
+			end)
+		end
+	  cb({cash = money, bank = bank, society = society})
+	end
+end)
+
+local JobGrades = {}
+ESX.RegisterServerCallback('esx_society:setJobById', function(source, cb, id, job, grade)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	local isBoss = xPlayer.job.grade_name == 'boss'
+	local xTarget = ESX.GetPlayerFromId(id)
+	if isBoss then
+		if xTarget then
+		    if xTarget.getJob().name ~= xPlayer.getJob().name then
+		    	if xTarget.getJob().name == 'unemployed' then
+		    		xTarget.setJob(job, grade)
+					xTarget.showNotification('Dobili ste novi posao!')
+					xPlayer.showNotification('Dodali ste clana u organizaciji!')
+					local sql = string.format(
+						"UPDATE users SET job = '%s', job_grade = 0 WHERE identifier = '%s'",job, ident
+					)
+						MySQL.Sync.execute(sql, {})
+		    	else
+					xPlayer.showNotification('Taj igrac je u nekoj drugoj organizaciji')
+		    	end
+			else
+				xPlayer.showNotification('Taj igrac je vec u vasoj organizaciji')
+			end
+		else
+			xPlayer.showNotification('Unijeli ste pogresan ID igraca')
+		end
+	end
+end)
+
+RegisterNetEvent("esx_society:otpustiClana", function(ident)
+	local srcPlayer = ESX.GetPlayerFromIdentifier(ident)
+	local xPlayer = ESX.GetPlayerFromId(source)
+	if xPlayer.getIdentifier() == ident then
+	   TriggerClientEvent('esx:showNotification', source, 'Ne mozes sebi dati otkaz')
+	else
+	if srcPlayer then
+		srcPlayer.setJob("unemployed", 0)
+		local sql = string.format(
+			"UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = '%s'", ident
+		)
+			MySQL.Sync.execute(sql, {})
+	else
+		local sql = string.format(
+			"UPDATE users SET job = 'unemployed', job_grade = 0 WHERE identifier = '%s'", ident
+		)
+
+			MySQL.Sync.execute(sql, {})
+			print("do si otkaz frajeru sa identifierom "..ident)
+	end
+end
+end)
+
+
+RegisterNetEvent("esx_society:downgradexd", function(ident, nowGrade)
+
+	local srcPlayer = ESX.GetPlayerFromIdentifier(ident)
+	local xPlayer = ESX.GetPlayerFromId(source)
+   if nowGrade == 0 then
+	TriggerClientEvent('esx:showNotification', source, 'Clan trenutno ima najmanji rank')
+   else
+	    if srcPlayer then
+	    	if (srcPlayer.getJob().grade - 1) >= 0 then
+	    		srcPlayer.setJob(srcPlayer.getJob().name, srcPlayer.getJob().grade - 1)
+    
+	    		local sql = string.format(
+	    			"UPDATE users SET job_grade = job_grade - 1 WHERE identifier = '%s'", ident
+	    		)
+    
+	    		MySQL.Sync.execute(sql, {})
+	    	end
+	    else
+	    		local sql = string.format(
+	    			"UPDATE users SET job_grade = job_grade - 1 WHERE identifier = '%s'", ident
+	    		)
+    
+	    		MySQL.Sync.execute(sql, {})
+	    end
+	end
+end)
+
+
+ESX.RegisterServerCallback('esx_society:downgradelal', function(source, cb, identifier, job, grade)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local isBoss = xPlayer.job.grade_name == 'boss'
+
+    if isBoss then
+        if not Jobs[job] then print("job ne postoji") return end
+        if not Jobs[job][grade] then print("job_grade ne postoji") return end
+
+        local xTarget = ESX.GetPlayerFromIdentifier(identifier)
+        if xTarget then
+            xTarget.setJob(job, grade)
+
+            if type == 'hire' then
+                xTarget.showNotification(_U('you_have_been_hired', job))
+            elseif type == 'promote' then
+                xTarget.showNotification(_U('you_have_been_promoted'))
+            elseif type == 'fire' then
+                xTarget.showNotification(_U('you_have_been_fired', xTarget.getJob().label))
+            end
+
+            cb()
+        else
+            MySQL.Async.execute('UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier', {
+                ['@job']        = job,
+                ['@job_grade']  = grade,
+                ['@identifier'] = identifier
+            }, function(rowsChanged)
+                cb()
+            end)
+        end
+    else
+        print(('esx_society: %s attempted to setJob'):format(xPlayer.identifier))
+        cb()
+    end
+end)
+
+
+
+RegisterNetEvent("esx_society:unaprijediClana", function(ident, grade)
+
+	local maxGrade = -1
+	local nowGrade = tonumber(grade)
+
+	local aPlayer = ESX.GetPlayerFromIdentifier(ident)
+	local xPlayer = ESX.GetPlayerFromId(source)
+
+	if nowGrade == 3 then
+		TriggerClientEvent('esx:showNotification', source, 'Maksimalan rank je Sef')
+	else
+	    if aPlayer then
+	    		aPlayer.setJob(aPlayer.getJob().name, nowGrade + 1)
+    
+	    		local sql = string.format(
+	    			"UPDATE users SET job_grade = job_grade + 1 WHERE identifier = '%s'", ident
+	    		)
+    
+	    			MySQL.Sync.execute(sql, {})
+	    else
+	    		local sql = string.format(
+	    			"UPDATE users SET job_grade = job_grade + 1 WHERE identifier = '%s'", ident
+	    		)
+    
+	    			MySQL.Sync.execute(sql, {})
+	    end
+	end
+end)
+
 ---------------------------------------------------------------------NE DIRAJTE!-------------------------------------------------------------------------------------
 
 if getajresourcename ~= "esxbalkan_mafije" then
