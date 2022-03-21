@@ -7,11 +7,12 @@ Config.MarkerAuto = { x = 3.0, y = 3.0, z = 3.0 }
 Config.MarkerColor  = { r = 50, g = 50, b = 204 }
 Config.EnableESXIdentity  = true -- ako koristite esx_identity
 Config.Limit = false -- Dali koristite limit? ako je true onda ce biti limit u sefovima i u pretrazivanju igraca, ako je false onda je tezina itema!
+Config.KoristiNUI = true --- ako hocete da koristite nui stavite true ako necete stavite false 
 Config.Webhuk = "" -- Ovdje dodajete svoj wehuk za mafije da imate logove itd :)
 Config.UkljuciPranje = true -- Ovdje mozete iskljuciti pranje novca kao sef...
 Config.Locale  = 'hr'
 Config.Levelanje = false -- Ovo stavite na true ako želite da mafije idu po levelima
-Config.Webhuk = "https://discord.com/api/webhooks/915984376221802566/o6m70ZdezJODlP2DFnyCVf3q-JGoI2g3ZTqqklcfj_SEr07a7Pix67SII16kp0Caoowk" -- Ovdje dodajete svoj wehuk za mafije da imate logove itd :)
+Config.Webhuk = "" -- Ovdje dodajete svoj wehuk za mafije da imate logove itd :)
 Config.lvl1 = 25000 -- ovo je cijena za upgrade na lvl 1, otkljucava sef
 Config.lvl2 = 50000 -- ovo je cijena za upgrade na lvl 2, shop za oruzija
 Config.lvl3 = 75000 -- ovo je cijena za upgrade na lvl 3, shop za oruzija
