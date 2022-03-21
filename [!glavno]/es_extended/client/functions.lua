@@ -568,10 +568,10 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 			color2    = colorSecondary,
 			customPrimaryColor = customPrimaryColor,
 			customSecondaryColor = customSecondaryColor,
-			color1Custom  = table.pack(GetVehicleCustomPrimaryColour(vehicle)),
-			color2Custom = table.pack(GetVehicleCustomSecondaryColour(vehicle)),
-			color1Type = GetVehicleModColor_1(vehicle),
-			color2Type  = GetVehicleModColor_2(vehicle),
+			color1Custom      = table.pack(GetVehicleCustomPrimaryColour(vehicle)),
+			color2Custom      = table.pack(GetVehicleCustomSecondaryColour(vehicle)),
+			color1Type        = GetVehicleModColor_1(vehicle),
+			color2Type        = GetVehicleModColor_2(vehicle),
 
 			pearlescentColor = pearlescentColor,
 			dashboardColor = dashboardColor,
@@ -582,7 +582,14 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 			wheels = GetVehicleWheelType(vehicle),
 			windowTint = GetVehicleWindowTint(vehicle),
 			xenonColor = GetVehicleXenonLightsColour(vehicle),
-			neonEnabled = {IsVehicleNeonLightEnabled(vehicle, 0),IsVehicleNeonLightEnabled(vehicle, 1),IsVehicleNeonLightEnabled(vehicle, 2),IsVehicleNeonLightEnabled(vehicle, 3)},
+
+			neonEnabled = {
+				IsVehicleNeonLightEnabled(vehicle, 0),
+				IsVehicleNeonLightEnabled(vehicle, 1),
+				IsVehicleNeonLightEnabled(vehicle, 2),
+				IsVehicleNeonLightEnabled(vehicle, 3)
+			},
+
 			neonColor         = table.pack(GetVehicleNeonLightsColour(vehicle)),
 			extras            = extras,
 			tyreSmokeColor    = table.pack(GetVehicleTyreSmokeColor(vehicle)),
@@ -647,13 +654,14 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 		local pearlescentColor, wheelColor = GetVehicleExtraColours(vehicle)
 		SetVehicleModKit(vehicle, 0)
 		SetVehicleAutoRepairDisabled(vehicle, true)
+
 		if props.plate then SetVehicleNumberPlateText(vehicle, props.plate) end
 		if props.plateIndex then SetVehicleNumberPlateTextIndex(vehicle, props.plateIndex) end
 		if props.bodyHealth then SetVehicleBodyHealth(vehicle, props.bodyHealth + 0.0) end
 		if props.engineHealth then SetVehicleEngineHealth(vehicle, props.engineHealth + 0.0) end
 		if props.tankHealth then SetVehiclePetrolTankHealth(vehicle, props.tankHealth + 0.0) end
 		--if props.fuelLevel then SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0) end
-		if props.fuelLevel then--##FIXANO TINKY
+		if props.fuelLevel then--##FIXED
 			SetVehicleFuelLevel(vehicle, props.fuelLevel + 0.0)
 			DecorSetFloat(vehicle, "_FUEL_LEVEL", props.fuelLevel + 0.0)
 		end
