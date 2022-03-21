@@ -1,8 +1,14 @@
-local ESX = nil
 cachedData = {}
+ESX = nil
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
+end)
 
 CreateThread(function()
-	while not ESX do TriggerEvent("esx:getSharedObject", function(library) ESX = library end) Wait(100) end
 	if Config.VehicleMenu then -- ako je ukljeceno onda aktiviraj
         RegisterKeyMapping('+menigaraze', 'Policijski meni', 'keyboard', Config.VehicleMenuButton)
         RegisterCommand('+menigaraze', function()
