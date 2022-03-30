@@ -557,7 +557,7 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 
 		for i = 0, 7 do
 			if not IsVehicleWindowIntact(vehicle, i) then
-				windows += 1
+				windows = windows + 1
 				damage.windows[windows] = i
 			end
 		end
@@ -566,7 +566,7 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 
 		for i = 0, 5 do
 			if IsVehicleDoorDamaged(vehicle, i) then
-				doors += 1
+				doors = doors + 1
 				damage.doors[doors] = i
 			end
 		end
@@ -582,7 +582,7 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 
 		for i = 0, 3 do
 			if IsVehicleNeonLightEnabled(vehicle, i) then
-				neonCount += 1
+				neonCount = neonCount + 1
 				neons[neonCount] = i
 			end
 		end
