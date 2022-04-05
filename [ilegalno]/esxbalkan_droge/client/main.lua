@@ -27,25 +27,22 @@ Citizen.CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
+RegisterKeyMapping('+prodavacdroge', 'droge E', 'keyboard', 'E')
+-- Main thread
+RegisterCommand('-prodavacdroge', function()
+    ---prazno mora biti
+end, false)
+RegisterCommand('+prodavacdroge', function()
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.DrugDealer.coords, true) < 1.50 then
+		if #(coords - Config.CircleZones.DrugDealer.coords) < 1.50 then
 			if not menuOpen then
 				ESX.ShowHelpNotification(_U('dealer_prompt'))
-
-				if IsControlJustReleased(0, Keys['E']) then
-					wasOpen = true
-					OpenDrugShop()
-				end
-			else
-				Citizen.Wait(500)
 			end
+				wasOpen = true
+				OpenDrugShop()	
 		end
-	end
 end)
 
 function OpenDrugShop()
