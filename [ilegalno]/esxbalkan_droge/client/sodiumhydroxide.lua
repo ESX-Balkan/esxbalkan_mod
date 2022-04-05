@@ -1,16 +1,13 @@
 local spawnedSodiumHydroxideBarrels = 0
 local SodiumHydroxideBarrels = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
-		local coords = GetEntityCoords(PlayerPedId())		
+		Wait(700)
+		local coords = GetEntityCoords(PlayerPedId())
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.SodiumHydroxideFarm.coords, true) < 50 then
+		if #(coords - Config.CircleZones.SodiumHydroxideFarm.coords) < 50 then
 			SpawnSodiumHydroxideBarrels()
-			Citizen.Wait(500)
-		else
-			Citizen.Wait(500)
 		end
 	end
 end)
@@ -23,7 +20,7 @@ Citizen.CreateThread(function()
 		local nearbyObject3, nearbyID3
 
 		for i=1, #SodiumHydroxideBarrels, 1 do
-			if GetDistanceBetweenCoords(coords, GetEntityCoords(SodiumHydroxideBarrels[i]), false) < 1 then
+			if #(coords - GetEntityCoords(SodiumHydroxide[i])) < 1 then
 				nearbyObject3, nearbyID3 = SodiumHydroxideBarrels[i], i
 			end
 		end
@@ -97,12 +94,12 @@ function ValidateSodiumHydroxideCoord(plantCoord)
 		local validate2 = true
 
 		for k, v in pairs(SodiumHydroxideBarrels) do
-			if GetDistanceBetweenCoords(plantCoord, GetEntityCoords(v), true) < 5 then
+			if #(coords - GetEntityCoords(v)) < 5 then
 				validate2 = false
 			end
 		end
 
-		if GetDistanceBetweenCoords(plantCoord, Config.CircleZones.SulfuricAcidFarm.coords, false) > 50 then
+		if #(coords -Config.CircleZones.SulfuricAcidFarm.coords) > 50 then
 			validate2 = false
 		end
 
