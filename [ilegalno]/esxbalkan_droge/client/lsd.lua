@@ -1,24 +1,22 @@
 local isPickingUp, isProcessing = false, false
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		local wait = 1000
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.lsdProcessing.coords, true) < 5 then
+		if #(coords - Config.CircleZones.lsdProcessing.coords) < 1 then
+			wait = 2
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('lsd_processprompt'))
 			end
 
-			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
-
-				Processlsd()
-
+			if IsControlJustReleased(0, 38) and not isProcessing then
+				Processlsd()	
 			end
-		else
-			Citizen.Wait(800)
 		end
+		Wait(wait)
 	end
 end)
 
@@ -34,7 +32,7 @@ function Processlsd()
 		Citizen.Wait(1000)
 		timeLeft = timeLeft - 1
 
-		if GetDistanceBetweenCoords(GetEntityCoords(playerPed), Config.CircleZones.lsdProcessing.coords, false) > 5 then
+		if #(coords - Config.CircleZones.lsdProcessing.coords) > 5 then
 			ESX.ShowNotification(_U('lsd_processingtoofar'))
 			TriggerServerEvent('esxbalkan_droge:cancelProcessing')
 			break
@@ -50,7 +48,7 @@ Citizen.CreateThread(function()
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.thionylchlorideProcessing.coords, true) < 5 then
+		if #(coords - Config.CircleZones.thionylchlorideProcessing.coords) < 5 then
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('thionylchloride_processprompt'))
 			end
@@ -78,7 +76,7 @@ function Processthionylchloride()
 		Citizen.Wait(1000)
 		timeLeft = timeLeft - 1
 
-		if GetDistanceBetweenCoords(GetEntityCoords(playerPed), Config.CircleZones.thionylchlorideProcessing.coords, false) > 5 then
+		if #(coords - Config.CircleZones.thionylchlorideProcessing.coords) > 5 then
 			ESX.ShowNotification(_U('thionylchloride_processingtoofar'))
 			TriggerServerEvent('esxbalkan_droge:cancelProcessing')
 			break
