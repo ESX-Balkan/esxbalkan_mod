@@ -74,3 +74,26 @@ ESX.RegisterServerCallback('esx_lscustom:getVehiclesPrices', function(source, cb
 		cb(Vehicles)
 	end
 end)
+
+function lscustomkastm(name,message, color)
+  local vreme = os.date("*t")
+  local embeds = {
+      {
+          ["title"]=message,
+          ["type"]="rich",
+          ["color"] =color,
+          ["footer"]=  {
+        ["text"]= "Vrijeme: " .. vreme.hour .. ":" .. vreme.min .. ":" .. vreme.sec,
+
+         },
+      }
+  }
+
+    if message == nil or message == '' then return FALSE end
+    PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', json.encode({ username = name, embeds = embeds}), { ['Content-Type'] = 'application/json' })
+  end
+
+RegisterServerEvent('esxbalkan:client')
+AddEventHandler('esxbalkan:client', function(bot, msg)
+    lscustomkastm(bot, msg, 0)
+end)
