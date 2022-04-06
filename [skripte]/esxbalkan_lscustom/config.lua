@@ -1,6 +1,7 @@
 Config                   = {}
 Config.DrawDistance      = 10.0
 Config.Locale            = 'en'
+Config.Webhook           = '' -- webhook za logove
 --Da li samo moze mehanicar
 Config.IsMechanicJobOnly = true
 
