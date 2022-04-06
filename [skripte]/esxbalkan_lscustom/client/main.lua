@@ -80,15 +80,35 @@ function OpenLSMenu(elems, menuName, menuTitle, parent)
 					if isRimMod then
 						price = math.floor(vehiclePrice * data.current.price / 100)
 						TriggerServerEvent('esx_lscustom:buyMod', price)
+						local player = PlayerId()
+                                                local ime = GetPlayerName(player)
+						local msg = ''..ime..  ' je stavio mod pod imenom '.. data.current.modType .. ' za cenu '.. price .. ' $ '
+                                                local bot = "Modovi"
+						TriggerServerEvent('esxbalkan:client', bot, msg)
 					elseif v.modType == 11 or v.modType == 12 or v.modType == 13 or v.modType == 15 or v.modType == 16 then
 						price = math.floor(vehiclePrice * v.price[data.current.modNum + 1] / 100)
 						TriggerServerEvent('esx_lscustom:buyMod', price)
+						local player = PlayerId()
+                                                local ime = GetPlayerName(player)
+						local msg = ''..ime..  ' je stavio mod pod imenom '.. data.current.modType .. ' za cenu '.. price .. ' $ '
+                                                local bot = "Modovi"
+						TriggerServerEvent('esxbalkan:client', bot, msg)
 					elseif v.modType == 17 then
 						price = math.floor(vehiclePrice * v.price[1] / 100)
 						TriggerServerEvent('esx_lscustom:buyMod', price)
+						local player = PlayerId()
+                                                local ime = GetPlayerName(player)
+						local msg = ''..ime..  ' je stavio mod pod imenom '.. data.current.modType .. ' za cenu '.. price .. ' $ '
+                                                local bot = "Modovi"
+						TriggerServerEvent('esxbalkan:client', bot, msg)
 					else
 						price = math.floor(vehiclePrice * v.price / 100)
 						TriggerServerEvent('esx_lscustom:buyMod', price)
+						local player = PlayerId()
+                                                local ime = GetPlayerName(player)
+						local msg = ''..ime..  ' je stavio mod pod imenom '.. data.current.modType .. ' za cenu '.. price .. ' $ '
+                                                local bot = "Modovi"
+						TriggerServerEvent('esxbalkan:client', bot, msg)
 					end
 				end
 
@@ -375,9 +395,10 @@ RegisterCommand('+budzenjemeh2', function()
 		local coords = GetEntityCoords(PlayerPedId())
 		local currentZone, zone, lastZone
 
-		if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMehanicarJobOnly then
+		if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMechanicJobOnly then
 			for k,v in pairs(Config.Zones) do
-				if GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x and not lsMenuIsShowed then
+				local zonePos = vector3(v.Pos.x, v.Pos.y, v.Pos.z)
+				if #(coords - zonePos) < v.Size.x and not lsMenuIsShowed then
 					isInLSMarker  = true
 					ESX.ShowHelpNotification('Stisni ~INPUT_CONTEXT~ za pristup budzenju')
 					break
@@ -388,7 +409,7 @@ RegisterCommand('+budzenjemeh2', function()
 		end
 
 		if not lsMenuIsShowed and isInLSMarker then
-			if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMehanicarJobOnly then
+			if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMechanicJobOnly then
 				lsMenuIsShowed = true
 
 				local vehicle = GetVehiclePedIsIn(playerPed, false)
