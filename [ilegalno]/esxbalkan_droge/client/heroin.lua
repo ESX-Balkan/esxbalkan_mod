@@ -5,39 +5,32 @@ local isPickingUp, isProcessing = false, false
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Citizen.Wait(700)
 		local coords = GetEntityCoords(PlayerPedId())
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.HeroinField.coords, true) < 50 then
+		if #(coords - Config.CircleZones.HeroinField.coords) < 50 then
 			SpawnPoppyPlants()
-			Citizen.Wait(500)
-		else
-			Citizen.Wait(500)
 		end
 	end
 end)
 
--- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-
-		Citizen.Wait(5)
-
+		local wait = 1000
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.HeroinProcessing.coords, true) < 5 then
+		if #(coords - Config.CircleZones.WeedProcessing.coords) < 1 then
+			wait = 2
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('heroin_processprompt'))
 			end
 
-			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
-				
-				if CurrentAction == 'shop_menu' then
-					ProcessHeroin()
-				end			
+			if IsControlJustReleased(0, 38) and not isProcessing then
+				ProcessHeroin()	
 			end
 		end
+		Wait(wait)
 	end
 end)
 
@@ -53,7 +46,7 @@ function ProcessHeroin()
 		Citizen.Wait(1000)
 		timeLeft = timeLeft - 1
 
-		if GetDistanceBetweenCoords(GetEntityCoords(playerPed), Config.CircleZones.HeroinProcessing.coords, false) > 5 then
+		if #(GetEntityCoords(playerPed) - Config.CircleZones.HeroinProcessing.coords) < 5 then
 			ESX.ShowNotification(_U('heroin_processingtoofar'))
 			TriggerServerEvent('esxbalkan_droge:cancelProcessing')
 			break
@@ -71,7 +64,7 @@ Citizen.CreateThread(function()
 		local nearbyObject, nearbyID
 
 		for i=1, #PoppyPlants, 1 do
-			if GetDistanceBetweenCoords(coords, GetEntityCoords(PoppyPlants[i]), false) < 1 then
+			if #(coords - GetEntityCoords(PoppyPlants[i])) < 1 then
 				nearbyObject, nearbyID = PoppyPlants[i], i
 			end
 		end
@@ -145,12 +138,12 @@ function ValidateHeroinCoord(plantCoord)
 		local validate = true
 
 		for k, v in pairs(PoppyPlants) do
-			if GetDistanceBetweenCoords(plantCoord, GetEntityCoords(v), true) < 5 then
+			if #(plantCoord - GetEntityCoords(v)) < 5 then
 				validate = false
 			end
 		end
 
-		if GetDistanceBetweenCoords(plantCoord, Config.CircleZones.HeroinField.coords, false) > 50 then
+		if #(plantCoord - Config.CircleZones.HeroinField.coords) < 50 then
 			validate = false
 		end
 
