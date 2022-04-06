@@ -1,26 +1,25 @@
 local isPickingUp, isProcessing = false, false
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		local wait = 1000
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.MethProcessing.coords, true) < 5 then
+		if #(coords - Config.CircleZones.MethProcessing.coords) < 1 then
+			wait = 2
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('meth_processprompt'))
 			end
 
-			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
-
-				ProcessMeth()
-
+			if IsControlJustReleased(0, 38) and not isProcessing then
+				ProcessMeth()	
 			end
-		else
-			Citizen.Wait(500)
 		end
+		Wait(wait)
 	end
 end)
+
 
 function ProcessMeth()
 	isProcessing = true
@@ -34,7 +33,7 @@ function ProcessMeth()
 		Citizen.Wait(1000)
 		timeLeft = timeLeft - 1
 
-		if GetDistanceBetweenCoords(GetEntityCoords(playerPed), Config.CircleZones.MethProcessing.coords, false) > 5 then
+		if #(GetEntityCoords(playerPed) - Config.CircleZones.MethProcessing.coords) < 5 then
 			ESX.ShowNotification(_U('meth_processingtoofar'))
 			TriggerServerEvent('esxbalkan_droge:cancelProcessing')
 			break
