@@ -3,37 +3,34 @@ local wasOpen = false
 local SpawnedChemicals = 0
 local Chemicals = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(700)
 		local coords = GetEntityCoords(PlayerPedId())
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.ChemicalsField.coords, true) < 50 then
+		if #(coords - Config.CircleZones.ChemicalsField.coords) < 50 then
 			SpawnChemicals()
-			Citizen.Wait(500)
-		else
-			Citizen.Wait(500)
 		end
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local wait = 1000
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.ChemicalsConvertionMenu.coords, true) < 5 then
-			if not menuOpen then
+		if #(coords - Config.CircleZones.ChemicalsConvertionMenu.coords) < 1 then
+			wait = 2
+			if not isProcessing then
 				ESX.ShowHelpNotification(_U('chemicals_prompt'))
+			end
 
-				if IsControlJustReleased(0, Keys['E']) then
-						OpenChemicalsMenu()
-				end
-			else
-				Citizen.Wait(5500)
+			if IsControlJustReleased(0, 38) and not isProcessing then
+				OpenChemicalsMenu()
 			end
 		end
+		Wait(wait)
 	end
 end)
 
