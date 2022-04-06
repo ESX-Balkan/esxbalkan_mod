@@ -395,7 +395,7 @@ RegisterCommand('+budzenjemeh2', function()
 		local coords = GetEntityCoords(PlayerPedId())
 		local currentZone, zone, lastZone
 
-		if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMechanicJobOnly then
+		if ESX.PlayerData.job and ESX.PlayerData.job.name == 'mechanic' or not Config.IsMechanicJobOnly then
 			for k,v in pairs(Config.Zones) do
 				local zonePos = vector3(v.Pos.x, v.Pos.y, v.Pos.z)
 				if #(coords - zonePos) < v.Size.x and not lsMenuIsShowed then
@@ -409,7 +409,7 @@ RegisterCommand('+budzenjemeh2', function()
 		end
 
 		if not lsMenuIsShowed and isInLSMarker then
-			if (PlayerData.job and PlayerData.job.name == 'mechanic') or not Config.IsMechanicJobOnly then
+			if ESX.PlayerData.job and ESX.PlayerData.job.name == 'mechanic' or not Config.IsMechanicJobOnly then
 				lsMenuIsShowed = true
 
 				local vehicle = GetVehiclePedIsIn(playerPed, false)
