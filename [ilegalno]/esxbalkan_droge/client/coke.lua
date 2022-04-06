@@ -3,41 +3,34 @@ local CocaPlants = {}
 local isPickingUp, isProcessing = false, false
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Wait(700)
 		local coords = GetEntityCoords(PlayerPedId())
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.CokeField.coords, true) < 50 then
+		if #(coords - Config.CircleZones.CokeField.coords) < 50 then
 			SpawnCocaPlants()
-			Citizen.Wait(500)
-		else
-			Citizen.Wait(500)
 		end
 	end
 end)
 
--- Key controls
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-
-		Citizen.Wait(0)
-
+		local wait = 1000
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if GetDistanceBetweenCoords(coords, Config.CircleZones.CokeProcessing.coords, true) < 5 then
+		if #(coords - Config.CircleZones.CokeProcessing.coords) < 1 then
+			wait = 2
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('coke_processprompt'))
 			end
 
-			if IsControlJustReleased(0, Keys['E']) and not isProcessing then
-				
-				if CurrentAction == 'shop_menu' then
-					ProcessCoke()
-				end			
+			if IsControlJustReleased(0, 38) and not isProcessing then
+				ProcessCoke()
 			end
 		end
+		Wait(wait)
 	end
 end)
 
