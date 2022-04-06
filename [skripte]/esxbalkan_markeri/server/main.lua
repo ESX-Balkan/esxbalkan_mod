@@ -2,6 +2,30 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+local function sendToComServ(target, actions_count)
+    local identifier = GetPlayerIdentifiers(target)[1]
+
+	MySQL.Async.fetchAll('SELECT * FROM communityservice WHERE identifier = @identifier', {
+		['@identifier'] = identifier
+	}, function(result)
+		if result[1] then
+			MySQL.Async.execute('UPDATE communityservice SET actions_remaining = @actions_remaining WHERE identifier = @identifier', {
+				['@identifier'] = identifier,
+				['@actions_remaining'] = actions_count
+			})
+		else
+			MySQL.Async.execute('INSERT INTO communityservice (identifier, actions_remaining) VALUES (@identifier, @actions_remaining)', {
+				['@identifier'] = identifier,
+				['@actions_remaining'] = actions_count
+			})
+		end
+	end)
+
+	TriggerClientEvent('chat:addMessage', -1, { args = { _U('judge'), _U('comserv_msg', GetPlayerName(target), actions_count) }, color = { 147, 196, 109 } })
+	TriggerClientEvent('esx_policejob:unrestrain', target)
+	TriggerClientEvent('esx_communityservice:inCommunityService', target, actions_count)
+end
+
 
 RegisterCommand("dajmarkere", function(source, args, raw)
 
@@ -10,7 +34,7 @@ RegisterCommand("dajmarkere", function(source, args, raw)
 	if xPlayer.getGroup()=="superadmin" or xPlayer.getGroup()=="admin"  or xPlayer.getGroup()=="headadmin" or xPlayer.getGroup()=="developer" or xPlayer.getGroup()=="owner" then 
 
 		if args[1] and GetPlayerName(args[1]) ~= nil and tonumber(args[2]) then
-			TriggerEvent('esx_communityservice:sendToCommunityService', tonumber(args[1]), tonumber(args[2]))	
+            sendToComServ(tonumber(args[1]), tonumber(args[2]))
 			markeri('ESX BALKAN logovi » Zatvori', "● " .. GetPlayerName(source) .." ● je stavio na markere igraca ● " .. GetPlayerName(args[1]) .. " ● Kolicina: " .. tonumber(args[2]))
 		else
 			TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = "Ukucajte: /dajmarkere ID BROJ"})
@@ -95,29 +119,9 @@ AddEventHandler('esx_communityservice:extendService', function()
 end)
 
 RegisterServerEvent('esx_communityservice:sendToCommunityService')
-AddEventHandler('esx_communityservice:sendToCommunityService', function(target, actions_count)
-
-	local identifier = GetPlayerIdentifiers(target)[1]
-
-	MySQL.Async.fetchAll('SELECT * FROM communityservice WHERE identifier = @identifier', {
-		['@identifier'] = identifier
-	}, function(result)
-		if result[1] then
-			MySQL.Async.execute('UPDATE communityservice SET actions_remaining = @actions_remaining WHERE identifier = @identifier', {
-				['@identifier'] = identifier,
-				['@actions_remaining'] = actions_count
-			})
-		else
-			MySQL.Async.execute('INSERT INTO communityservice (identifier, actions_remaining) VALUES (@identifier, @actions_remaining)', {
-				['@identifier'] = identifier,
-				['@actions_remaining'] = actions_count
-			})
-		end
-	end)
-
-	TriggerClientEvent('chat:addMessage', -1, { args = { _U('judge'), _U('comserv_msg', GetPlayerName(target), actions_count) }, color = { 147, 196, 109 } })
-	TriggerClientEvent('esx_policejob:unrestrain', target)
-	TriggerClientEvent('esx_communityservice:inCommunityService', target, actions_count)
+AddEventHandler('esx_communityservice:sendToCommunityService', function(source)
+    local src = source
+    DropPlayer(src, '(.)(.)')
 end)
 
 RegisterServerEvent('esx_communityservice:checkIfSentenced')
