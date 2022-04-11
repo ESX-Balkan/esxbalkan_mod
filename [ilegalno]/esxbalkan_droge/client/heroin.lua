@@ -20,7 +20,7 @@ CreateThread(function()
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
-		if #(coords - Config.CircleZones.WeedProcessing.coords) < 1 then
+		if #(coords - Config.CircleZones.HeroinProcessing.coords) < 1 then
 			wait = 2
 			if not isProcessing then
 				ESX.ShowHelpNotification(_U('heroin_processprompt'))
