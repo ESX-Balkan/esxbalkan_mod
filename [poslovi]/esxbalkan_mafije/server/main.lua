@@ -905,3 +905,9 @@ Citizen.CreateThread(function()
 
 	]])
 end)
+
+if Config.OxInventory then
+	for k,v in pairs(Config.Mafije) do
+		exports.ox_inventory:RegisterStash('society_' .. k, 'society_' .. k, 50, 200000)
+	end
+end
