@@ -285,6 +285,10 @@ ESX.RegisterUsableItem = function(item, cb)
 	ESX.UsableItemsCallbacks[item] = cb
 end
 
+function ESX.GetJobs()
+	return ESX.Jobs
+end
+
 ESX.UseItem = function(source, item)
 	ESX.UsableItemsCallbacks[item](source, item)
 end
