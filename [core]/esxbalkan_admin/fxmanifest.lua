@@ -12,7 +12,7 @@ server_scripts {
     'server/spectate.lua',
     'config.lua',
 	'@async/async.lua',
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 }
 
 shared_scripts {

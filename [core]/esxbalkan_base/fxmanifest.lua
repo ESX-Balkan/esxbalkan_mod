@@ -5,7 +5,7 @@ description 'Skripta koja je srce servera'
 version '0.0.1'
 
 server_scripts {
-    "@mysql-async/lib/MySQL.lua",
+    "@oxmysql/lib/MySQL.lua",
     '@es_extended/locale.lua',  
     'locales/en.lua',  	
 	'config.lua',

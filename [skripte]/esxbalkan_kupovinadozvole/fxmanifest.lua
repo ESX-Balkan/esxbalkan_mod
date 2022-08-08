@@ -6,7 +6,7 @@ description 'ESX-Balkan kupovina dozvola za oruzije'
 shared_script '@es_extended/imports.lua'
 
 server_scripts {
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'config.lua',
     'server.lua'
 }

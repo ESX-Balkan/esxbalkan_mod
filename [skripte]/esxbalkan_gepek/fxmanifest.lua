@@ -5,7 +5,7 @@ version '1.2.1'
 
 server_scripts {
   "@async/async.lua",
-  "@mysql-async/lib/MySQL.lua",
+  "@oxmysql/lib/MySQL.lua",
   "@es_extended/locale.lua",
   "locales/en.lua",
   "config.lua",
