@@ -15,7 +15,7 @@ end)
 CreateThread(function()
     local id = PlayerId()
     while true do
-        Citizen.Wait(3)
+        Wait(3)
         DisablePlayerVehicleRewards(id) -- DISABLEOVANJE DOBJANJA ORUZIJA U VOZILIMA
         SetVehicleDensityMultiplierThisFrame(0.15) ---NPC KONTROLA
 	    SetRandomVehicleDensityMultiplierThisFrame(0.15) ---NPC KONTROLA

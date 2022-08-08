@@ -46,7 +46,7 @@ function Start(text, duration, linear)
 
     while Run do
         DisableControls(options)
-        Citizen.Wait(1)
+        Wait(1)
     end
 end
 
@@ -115,12 +115,12 @@ function Custom(options, static)
             end
 
             DisableControls(options)
-            Citizen.Wait(1)
+            Wait(1)
         end
 
         StopAnimation()
     else
-        Citizen.CreateThread(function()
+        CreateThread(function()
             while Run do
 
                 if IsControlJustPressed(0, Config.CancelKey) and options.canCancel then
@@ -129,7 +129,7 @@ function Custom(options, static)
                 end
 
                 DisableControls(options)
-                Citizen.Wait(0)
+                Wait(0)
             end
         end)
     end   
@@ -253,7 +253,7 @@ function PlayAnimation()
     if Animation ~= nil then
         local player = PlayerPedId()
         if DoesEntityExist( player ) and not IsEntityDead( player ) then  
-            Citizen.CreateThread(function()
+            CreateThread(function()
                 if Animation.scenario ~= nil then
                     TaskStartScenarioInPlace(player, Animation.scenario, 0, true)
                 else

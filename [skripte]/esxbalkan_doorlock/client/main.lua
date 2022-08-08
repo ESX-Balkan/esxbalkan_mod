@@ -29,7 +29,7 @@ else
 			if (not specificDoor or doorID == specificDoor) then
 				if data.doors then
 					for k,v in pairs(data.doors) do
-						if #(playerCoords - v.objCoords) < 30 then Citizen.Wait(1)
+						if #(playerCoords - v.objCoords) < 30 then Wait(1)
 							v.object = GetClosestObjectOfType(v.objCoords, 1.0, v.objHash, false, false, false)
 							if data.delete then
 								SetEntityAsMissionEntity(v.object, 1, 1)
@@ -51,7 +51,7 @@ else
 						elseif v.object then RemoveDoorFromSystem(v.doorHash) nearbyDoors[doorID] = nil end
 					end
 				elseif not data.doors then
-					if #(playerCoords - data.objCoords) < 30 then Citizen.Wait(2)
+					if #(playerCoords - data.objCoords) < 30 then Wait(2)
 						if data.slides then data.object = GetClosestObjectOfType(data.objCoords, 5.0, data.objHash, false, false, false) else
 							data.object = GetClosestObjectOfType(data.objCoords, 1.0, data.objHash, false, false, false)
 						end
@@ -117,7 +117,7 @@ else
 			isDrawing = true
 			SendNUIMessage({type = "display", x = x, y = y, text = text})
 			last_x, last_y, lasttext = x, y, text
-			Citizen.Wait(0)
+			Wait(0)
 		end
 	end
 
@@ -145,14 +145,14 @@ else
 									end
 								end
 							end
-							Citizen.Wait(5)
+							Wait(5)
 						end
 					end
 				end
 				if closestDoor.id then
 					while true do
 						if not paused and IsPauseMenuActive() then SendNUIMessage ({type = "hide"}) paused = true 
-						elseif paused then Citizen.Wait(20)
+						elseif paused then Wait(20)
 							if not IsPauseMenuActive() then lasttext, paused = '', false end
 						else
 							playerCoords = GetEntityCoords(ESX.PlayerData.ped)
@@ -189,13 +189,13 @@ else
 								end
 								break
 							end
-							Citizen.Wait(5)
+							Wait(5)
 						end
 					end
 					closestDoor = {}
 					doorSleep = 5
 				end
-				Citizen.Wait(doorSleep)
+				Wait(doorSleep)
 			end
 		end)
 	end
@@ -229,7 +229,7 @@ else
 			Config.DoorList[doorID].locked = locked
 			UpdateDoors(doorID)
 			while true do
-				Citizen.Wait(5)
+				Wait(5)
 				if Config.DoorList[doorID].doors then
 					for k, v in pairs(Config.DoorList[doorID].doors) do
 						if not IsDoorRegisteredWithSystem(v.doorHash) then return end -- If door is not registered end the loop
@@ -298,15 +298,15 @@ else
 	function loadAnimDict(dict)
 		while (not HasAnimDictLoaded(dict)) do
 			RequestAnimDict(dict)
-			Citizen.Wait(5)
+			Wait(5)
 		end
 	end
 
 	function dooranim()
-		Citizen.CreateThread(function()
+		CreateThread(function()
 			loadAnimDict("anim@heists@keycard@") 
 			TaskPlayAnim(ESX.PlayerData.ped, "anim@heists@keycard@", "exit", 8.0, 1.0, -1, 16, 0, 0, 0, 0)
-			Citizen.Wait(550)
+			Wait(550)
 			ClearPedTasks(ESX.PlayerData.ped)
 		end)
 	end
@@ -342,7 +342,7 @@ else
 		if closestDoor.id and not ESX.PlayerData.dead and not isCuffed then
 			local veh = GetVehiclePedIsIn(ESX.PlayerData.ped)
 			if veh then
-				Citizen.CreateThread(function()
+				CreateThread(function()
 					local counter = 0
 					local siren = IsVehicleSirenOn(veh)
 					repeat
@@ -350,7 +350,7 @@ else
 						SetHornEnabled(veh, false)
 						if not siren then SetVehicleSiren(veh, false) end
 						counter = counter + 1
-						Citizen.Wait(0)
+						Wait(0)
 					until (counter == 100)
 					SetHornEnabled(veh, true)
 				end)
@@ -400,7 +400,7 @@ else
 		local rayHandle, result, hit, endCoords, surfaceNormal, entityHit = StartShapeTestLosProbe(offset, destination, -1, ESX.PlayerData.ped, 0)
 		repeat
 			result, hit, endCoords, surfaceNormal, entityHit = GetShapeTestResult(rayHandle)
-			Citizen.Wait(0)
+			Wait(0)
 		until result ~= 1
 		if GetEntityType(entityHit) == 3 then return hit, entityHit else return false end
 	end
@@ -411,7 +411,7 @@ else
 			receivedDoorData = false
 			SetNuiFocus(true, true)
 			SendNUIMessage({type = "newDoorSetup", enable = true})
-			while receivedDoorData == false do Citizen.Wait(5) DisableAllControlActions(0) end
+			while receivedDoorData == false do Wait(5) DisableAllControlActions(0) end
 		end
 		--if not args[1] then print('/newdoor [doortype] [locked] [jobs]\nDoortypes: door, sliding, garage, double, doublesliding\nLocked: true or false\nJobs: Up to four can be added with the command') return end
 		if arg then doorType = arg.doortype else doorType = args[1] end
@@ -435,7 +435,7 @@ else
 						model = GetEntityModel(entity)
 						heading = GetEntityHeading(entity)
 					end
-				else Citizen.Wait(0) end
+				else Wait(0) end
 				if result then DrawInfos("Coordinates: " .. coords .. "\nHeading: " .. heading .. "\nHash: " .. model)
 			else DrawInfos("Aim at your desired door and shoot") end
 				if entity and IsControlPressed(0, 24) then break end
@@ -486,12 +486,12 @@ else
 							model[i] = GetEntityModel(object)
 							heading[i] = GetEntityHeading(object)
 						end
-					else Citizen.Wait(0) end
+					else Wait(0) end
 					if result then DrawInfos("Coordinates: " .. coords[i] .. "\nHeading: " .. heading[i] .. "\nHash: " .. model[i])
 				else DrawInfos("Aim at your desired door and shoot") end
 					if entity[i] and IsControlPressed(0, 24) then break end
 				end
-				Citizen.Wait(200)
+				Wait(200)
 			end
 			SetEntityDrawOutline(entity[1], false)
 			SetEntityDrawOutline(entity[2], false)
@@ -561,7 +561,7 @@ else
 	AddEventHandler('esx:playerLoaded', function(playerData)
 		ESX.PlayerLoaded = true
 		ESX.PlayerData = playerData
-		Citizen.CreateThread(DoorLoop)
+		CreateThread(DoorLoop)
 	end)
 
 	RegisterNetEvent('esx:onPlayerLogout')
@@ -570,5 +570,5 @@ else
 		ESX.PlayerData = {}
 	end)
 
-	if ESX.PlayerLoaded then Citizen.CreateThread(DoorLoop) end
+	if ESX.PlayerLoaded then CreateThread(DoorLoop) end
 end

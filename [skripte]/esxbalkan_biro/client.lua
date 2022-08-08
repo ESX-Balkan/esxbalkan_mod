@@ -1,9 +1,9 @@
 ESX = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
@@ -49,10 +49,10 @@ function OtvoriMeniPoslova()
 	end)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		
-		Citizen.Wait(0)
+		Wait(0)
 		for i=1, #Config.Biro, 1 do
 		local distance = #(GetEntityCoords(PlayerPedId()) - Config.Biro[i])
 		local letSleep = true
@@ -67,13 +67,13 @@ Citizen.CreateThread(function()
 			end
 		end
 		if letSleep then
-			Citizen.Wait(1000)
+			Wait(1000)
 		end
 	end
 end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	for i=1, #Config.Biro, 1 do
 		local blip = AddBlipForCoord(Config.Biro[i])
 

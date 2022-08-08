@@ -216,9 +216,9 @@ ObrisiVozilo = function()
 	if (vehicleSpeed > 45) then FreezeEntityPosition(vozilo, true) end
 	TaskLeaveVehicle(playerPed, vozilo, 0)
 	while IsPedInVehicle(playerPed, vozilo, true) do Wait(0) end
-	Citizen.Wait(500)
+	Wait(500)
 	NetworkFadeOutEntity(vozilo, true, true)
-	Citizen.Wait(100)
+	Wait(100)
 	ESX.Game.DeleteVehicle(vozilo)
 	ESX.ShowNotification("Uspiješno si parkirao ~b~vozilo~s~ u garažu.")
 end

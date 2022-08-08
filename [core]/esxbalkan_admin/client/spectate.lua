@@ -9,10 +9,10 @@ local PlayerDate = {}
 local ShowInfos = false
 ESX = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
@@ -48,7 +48,7 @@ function spectate(target)
 			})	
 		end
 
-		Citizen.CreateThread(function()
+		CreateThread(function()
 			if not DoesCamExist(cam) then
 				cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
 			end
@@ -134,7 +134,7 @@ RegisterNUICallback('kick', function(data, cb)
 	TriggerEvent('esx_spectate:spectate')
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
   	while true do
 		Wait(0)
 		if InSpectatorMode then

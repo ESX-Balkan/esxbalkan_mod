@@ -79,7 +79,7 @@ AddEventHandler("obrisizadan", function(source)
 end)
 RegisterServerEvent("obrisizadan2")
 AddEventHandler("obrisizadan2", function(source)
-Citizen.Wait(1500)
+Wait(1500)
     MySQL.Async.fetchAll('SELECT * FROM registracija WHERE tablice = tablice', {
     }, function(result)
         if result then

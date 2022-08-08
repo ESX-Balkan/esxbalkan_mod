@@ -14,7 +14,7 @@ local itemslist ={}
 local isHotbar = false
 local isDead = false
 
-Citizen.CreateThread(
+CreateThread(
     function()
         while ESX == nil do
             TriggerEvent(
@@ -23,10 +23,10 @@ Citizen.CreateThread(
                     ESX = obj
                 end
             )
-            Citizen.Wait(10)
+            Wait(10)
         end
 
-        Citizen.Wait(3000)
+        Wait(3000)
 	    toghud = true
     end
 )
@@ -113,9 +113,9 @@ RegisterCommand('+peta', function()
 end, false)
 
 function lockinv()
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while isInInventory do
-            Citizen.Wait(10)
+            Wait(10)
             DisableControlAction(0, 1, true) -- Disable pan
             DisableControlAction(0, 2, true) -- Disable tilt
             DisableControlAction(0, 24, true) -- Attack
@@ -163,7 +163,7 @@ function lockinv()
 end
 
 function getPlayerWeight()
-    Citizen.CreateThread(function()
+    CreateThread(function()
         ESX.TriggerServerCallback("conde_inventory:getPlayerInventoryWeight", function(cb)
             local playerweight = cb
             weight = playerweight
@@ -176,7 +176,7 @@ function getPlayerWeight()
 end
 
 function loadStatus()
-    Citizen.CreateThread(function()
+    CreateThread(function()
         local player = PlayerPedId()
         health = (GetEntityHealth(player) - 100)
         armour = GetPedArmour(player)
@@ -203,7 +203,7 @@ function loadStatus()
 end
 
 function loadItems()
-    Citizen.CreateThread(function()
+    CreateThread(function()
         ESX.TriggerServerCallback("conde_inventory:getPlayerInventory", function(data)
             items = {}
             fastItems = {}
@@ -382,7 +382,7 @@ function loadPlayerInventory()
     ItemsLoaded = false
     loadItems()
     while not ItemsLoaded or not StatusLoaded or not WeightLoaded do
-        Citizen.Wait(100)
+        Wait(100)
     end
 end
 
@@ -394,7 +394,7 @@ function showHotbar()
             fastItems = fastItemsHotbar,
             itemList = itemslist
         })
-        Citizen.Wait(1500)
+        Wait(1500)
         isHotbar = false
     end
 end
@@ -452,7 +452,7 @@ RegisterNUICallback(
                         closeInventory()
                         TriggerScreenblurFadeOut(1)
         else
-            Citizen.Wait(250)
+            Wait(250)
                         loadPlayerInventory()
         end
 
@@ -490,7 +490,7 @@ RegisterNUICallback("GiveItem", function(data, cb)
         ClearPedSecondaryTask(PlayerPedId())
         RequestAnimDict("mp_common")
         while (not HasAnimDictLoaded("mp_common")) do 
-            Citizen.Wait(10) 
+            Wait(10) 
         end
         TaskPlayAnim(PlayerPedId(),"mp_common","givetake1_a",100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0)
         SetCurrentPedWeapon(PlayerPedId(), 0xA2719263) 
@@ -499,12 +499,12 @@ RegisterNUICallback("GiveItem", function(data, cb)
             local bone = GetPedBoneIndex(PlayerPedId(), Config.PropList[data.item.name].bone)
             RequestModel(attachModel)
             while not HasModelLoaded(attachModel) do
-                Citizen.Wait(10)
+                Wait(10)
             end
             closestEntity = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
             AttachEntityToEntity(closestEntity, PlayerPedId(), bone, Config.PropList[data.item.name].x, Config.PropList[data.item.name].y, Config.PropList[data.item.name].z,
             Config.PropList[data.item.name].xR, Config.PropList[data.item.name].yR, Config.PropList[data.item.name].zR, 1, 1, 0, true, 2, 1)
-            Citizen.Wait(1500)
+            Wait(1500)
             if DoesEntityExist(closestEntity) then
                 DeleteEntity(closestEntity)
             end

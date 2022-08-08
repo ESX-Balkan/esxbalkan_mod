@@ -51,7 +51,7 @@ function newPhoneProp(myPedId)
 	deletePhone()
 	RequestModel(phoneModel)
 	while not HasModelLoaded(phoneModel) do
-		Citizen.Wait(500)
+		Wait(500)
 	end
 	phoneProp = CreateObject(GetHashKey(phoneModel), 1.0, 1.0, 1.0, 1, 1, 0)
 
@@ -112,7 +112,7 @@ function PhonePlayAnim (status, freeze, force)
 	TaskPlayAnim(myPedId, dict, anim, 3.0, -1, -1, flag, 0, false, false, false)
 
 	if status ~= 'out' and currentStatus == 'out' then
-		Citizen.Wait(380)
+		Wait(380)
 		newPhoneProp(myPedId)
 	end
 
@@ -122,7 +122,7 @@ function PhonePlayAnim (status, freeze, force)
 	currentStatus = status
 
 	if status == 'out' then
-		Citizen.Wait(180)
+		Wait(180)
 		deletePhone()
 		StopAnimTask(myPedId, lastDict, lastAnim, 1.0)
 	end
@@ -149,6 +149,6 @@ end
 function loadAnimDict(dict)
 	RequestAnimDict(dict)
 	while not HasAnimDictLoaded(dict) do
-		Citizen.Wait(1)
+		Wait(1)
 	end
 end

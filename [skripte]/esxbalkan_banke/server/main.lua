@@ -13,7 +13,7 @@ AddEventHandler('vb-banking:server:depositvb', function(amount, inMenu)
 	local _src = source
 	local _char = ESX.GetPlayerFromId(_src)
 	amount = tonumber(amount)
-	Citizen.Wait(50)
+	Wait(50)
 	if amount == nil or amount <= 0 or amount > _char.getMoney() then
 		TriggerClientEvent('chatMessage', _src, "^*^_Nemas toliko novca ili nisi lepo napisao iznos!")
 	else
@@ -32,7 +32,7 @@ AddEventHandler('vb-banking:server:withdrawvb', function(amount, inMenu)
 	local _base = 0
 	amount = tonumber(amount)
 	_base = _char.getAccount('bank').money
-	Citizen.Wait(100)
+	Wait(100)
 	if amount == nil or amount <= 0 or amount > _base then
 		TriggerClientEvent('chatMessage', _src, "Netacna cifra")
 	else

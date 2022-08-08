@@ -1,11 +1,11 @@
 ESX                         = nil
 PlayerData = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
 
   while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
@@ -40,7 +40,7 @@ AddEventHandler('esx:setJob', function(job)
 end)
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         Wait(60000)
         TriggerServerEvent('zona-update:s')
@@ -67,7 +67,7 @@ local moze = true
 local kordi = {}
 CreateThread(function()
     while true do
-        Citizen.Wait(1)
+        Wait(1)
         local ped = PlayerPedId()
         for k,v in pairs(blipovi) do
             if Vdist(GetEntityCoords(ped), v.mestozauzimanja.x,v.mestozauzimanja.y, v.mestozauzimanja.z ) < 100 then
@@ -102,7 +102,7 @@ end)
 
 CreateThread(function()
     while true do
-        Citizen.Wait(100)
+        Wait(100)
         local ped = PlayerPedId()
         if provera then
             if Vdist(GetEntityCoords(ped), mesto.x,mesto.y, mesto.z ) > 10 then
@@ -143,7 +143,7 @@ TriggerServerEvent('napravizonu', table.concat(args, ' '), json.encode(korde), w
 end, false)
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do 
         Wait(1)
         if debug then
@@ -158,7 +158,7 @@ Citizen.CreateThread(function()
         end
     end
 end)
-Citizen.CreateThread(function() -- strelice promeni korde
+CreateThread(function() -- strelice promeni korde
     while true do
         Wait(0)
         if debug then

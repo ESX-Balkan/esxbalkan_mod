@@ -1,7 +1,7 @@
 ---function createPhoneThread
 ---creates a phone thread to listen for key presses
 local function createPhoneThread()
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		local changed = false
 		while callChannel ~= 0 do
 			-- check if they're pressing voice keybinds

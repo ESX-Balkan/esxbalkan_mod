@@ -11,10 +11,10 @@ local CurrentActionMsg			= ''
 local CurrentActionData			= {}
 local player = PlayerPedId()
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
@@ -65,9 +65,9 @@ AddEventHandler('esxbalkan_pranjenovca:hasExitedMarker', function(zone)
 	ESX.UI.Menu.CloseAll()		
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local letSleep = true
 		local coords = GetEntityCoords(PlayerPedId())
 		local isInMarker	= false
@@ -100,14 +100,14 @@ Citizen.CreateThread(function()
 		end
 
 		if letSleep then
-			Citizen.Wait(1000)
+			Wait(1000)
 		end
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		
 		if CurrentAction ~= nil then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -119,7 +119,7 @@ Citizen.CreateThread(function()
 				CurrentAction = nil
 			end
 		else
-			Citizen.Wait(1000)
+			Wait(1000)
 		end
 	end
 end)

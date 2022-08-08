@@ -12,9 +12,9 @@ CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPe3 = PlayerPedId()
 		local coords = GetEntityCoords(playerPe3)
 		local nearbyObject3, nearbyID3
@@ -39,9 +39,9 @@ Citizen.CreateThread(function()
 					if canPickUp then
 						TaskStartScenarioInPlace(playerPe3, 'world_human_gardener_plant', 0, false)
 
-						Citizen.Wait(2000)
+						Wait(2000)
 						ClearPedTasks(playerPe3)
-						Citizen.Wait(1500)
+						Wait(1500)
 		
 						ESX.Game.DeleteObject(nearbyObject3)
 		
@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
 			end
 
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 
 	end
@@ -76,7 +76,7 @@ end)
 
 function SpawnSodiumHydroxideBarrels()
 	while spawnedSodiumHydroxideBarrels < 10 do
-		Citizen.Wait(0)
+		Wait(0)
 		local weedCoords2 = GenerateSodiumHydroxideCoords()
 
 		ESX.Game.SpawnLocalObject('prop_barrel_02a', weedCoords2, function(obj)
@@ -111,14 +111,14 @@ end
 
 function GenerateSodiumHydroxideCoords()
 	while true do
-		Citizen.Wait(1)
+		Wait(1)
 
 		local weed3CoordX, weed3CoordY
 
 		math.randomseed(GetGameTimer())
 		local modX3 = math.random(-7, 7)
 
-		Citizen.Wait(100)
+		Wait(100)
 
 		math.randomseed(GetGameTimer())
 		local modY3 = math.random(-7, 7)

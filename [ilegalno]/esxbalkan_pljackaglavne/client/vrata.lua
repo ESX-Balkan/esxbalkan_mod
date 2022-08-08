@@ -1,7 +1,7 @@
 ESX = nil
 
-Citizen.CreateThread(function()
-	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Citizen.Wait(0) end
+CreateThread(function()
+	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Wait(0) end
 end)
 
 local pozoviServer = TriggerServerEvent
@@ -23,7 +23,7 @@ AEH("esxGlavna:vault", function()
 
             SetEntityHeading(obj, rotation)
             count = count + 1
-            Citizen.Wait(10)
+            Wait(10)
         until count == 1100
     else
         repeat
@@ -31,7 +31,7 @@ AEH("esxGlavna:vault", function()
 
             SetEntityHeading(obj, rotation)
             count = count + 1
-            Citizen.Wait(10)
+            Wait(10)
         until count == 1100
     end
     print(count)
@@ -51,7 +51,7 @@ AEH("esxGlavna:vaultReset", function()
 
             SetEntityHeading(obj, rotation)
             brojka = brojka - 1
-            Citizen.Wait(10)
+            Wait(10)
         until brojka == 0
     else
         repeat
@@ -59,7 +59,7 @@ AEH("esxGlavna:vaultReset", function()
 
             SetEntityHeading(obj, rotation)
             brojka = brojka - 1
-            Citizen.Wait(10)
+            Wait(10)
         until brojka == 0
     end
     FreezeEntityPosition(obj, true)

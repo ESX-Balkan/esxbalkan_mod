@@ -56,7 +56,7 @@ Scully.RadioAnim = function(enable)
     if enable then
         RequestAnimDict(Scully.animDict)
         while not HasAnimDictLoaded(Scully.animDict) do
-            Citizen.Wait(0)
+            Wait(0)
         end
         radioProp = CreateObject(GetHashKey("prop_cs_hand_radio"), 0, 0, 0, true, true, true)
         AttachEntityToEntity(radioProp, Scully.source, GetPedBoneIndex(Scully.source, 28422), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 1, 0, 0, 2, 1)

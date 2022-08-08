@@ -4,8 +4,8 @@ TriggerEvent('esx:getSharedObject', function(obj)
     ESX = obj
 end)
 
-Citizen.CreateThread(function()
-    Citizen.Wait(0)
+CreateThread(function()
+    Wait(0)
     for k, v in pairs(Config.Ammo) do
         ESX.RegisterUsableItem(v.name, function(source)
             TriggerClientEvent('disc-ammo:useAmmoItem', source, v)

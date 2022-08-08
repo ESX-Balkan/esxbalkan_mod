@@ -10,11 +10,11 @@ local atbank = false
 -- MAIN THREAD
 --
 
-Citizen.CreateThread(function()
+CreateThread(function()
 
   while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
@@ -37,7 +37,7 @@ end, false)
 -- BLIPS
 --
 
-Citizen.CreateThread(function()
+CreateThread(function()
   for k,v in ipairs(Config.Zone["banke"])do
   local blip = AddBlipForCoord(v.x, v.y, v.z)
   SetBlipSprite (blip, 434)
@@ -51,7 +51,7 @@ Citizen.CreateThread(function()
   end
 end)
 
--- Citizen.CreateThread(function()
+-- CreateThread(function()
 --   for k,v in ipairs(Config.Zone["bankomati"])do
 --   local blip = AddBlipForCoord(v.x, v.y, v.z)
 --   SetBlipSprite (blip, v.id)
@@ -120,7 +120,7 @@ end)
 RegisterNUICallback('NUIFocusOff', function()
 	SetNuiFocus(false, false)
 	SendNUIMessage({type = 'closeAll'})
-  Citizen.Wait(500)
+  Wait(500)
   inMenu = false
 end)
 

@@ -51,7 +51,7 @@ weaponblacklist = {
 
 -- CODE --
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		Wait(3000)
 

@@ -265,7 +265,7 @@ local function createHttpHandler(options)
 
 			res.writeHead(statusCode, headers)
 
-			Citizen.CreateThread(function()
+			CreateThread(function()
 				if req.method ~= "HEAD" then
 					local cancelled = false
 
@@ -288,7 +288,7 @@ local function createHttpHandler(options)
 
 						startBytes = startBytes + blockSize
 
-						Citizen.Wait(0)
+						Wait(0)
 					end
 				end
 

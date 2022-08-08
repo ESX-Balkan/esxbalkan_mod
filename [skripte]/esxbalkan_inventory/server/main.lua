@@ -425,8 +425,8 @@ end
 	end
 end)
 
-Citizen.CreateThread(function()
-	Citizen.Wait(10)
+CreateThread(function()
+	Wait(10)
 	MySQL.Async.fetchAll('SELECT * FROM items WHERE LCASE(name) LIKE \'%weapon_%\'', {}, function(results)
 		for k, v in pairs(results) do
 			ESX.RegisterUsableItem(v.name, function(source)
@@ -479,7 +479,7 @@ ESX.RegisterServerCallback('conde-inventoryhud:getAmmoCount', function(source, c
 end)
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	for i = 1, #Config.Attachments do
 		ESX.RegisterUsableItem(Config.Attachments[i], function(source)
 			TriggerClientEvent("tqrp_inventoryhud:useAttach", source, Config.Attachments[i])

@@ -20,7 +20,7 @@ AddEventHandler('esxbalkan_pranjenovca:pranjePara', function(amount)
         opranePare("Pranje Para", '(' .. GetPlayerName(source) .. ')' .. xPlayer.name ..  " je oprao " .. washedTotal .. "$ prljavog kesa")
 
   elseif amount > 20000 and xPlayer.getAccount('black_money').money >= amount then
-      citizen.wait(20000)
+      Wait(20000)
       TriggerClientEvent("pNotify:SendNotification", xPlayer.source, {text = "Oprali ste " .. ESX.Math.GroupDigits(amount) .. " prljavog novca i dobili ste " .. ESX.Math.GroupDigits(washedTotal), type = "success", queue = "success", timeout = 2000, layout = "center"}) 
         xPlayer.addMoney(washedTotal)  
         opranePare("Pranje Para", '(' .. GetPlayerName(source) .. ')' .. xPlayer.name ..  " je oprao " .. washedTotal .. "$ prljavog kesa")

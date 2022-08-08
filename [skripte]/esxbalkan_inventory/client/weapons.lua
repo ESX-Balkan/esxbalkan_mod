@@ -1,11 +1,11 @@
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
+		Wait(10)
 	end
 	PlayerData = ESX.GetPlayerData()
 end)
@@ -143,13 +143,13 @@ function RemoveWeapon(weapon)
             loadAnimDict( "reaction@intimidation@cop@unarmed" )
         end
         TaskPlayAnim(playerPed, "reaction@intimidation@cop@unarmed", "outro", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
-		Citizen.Wait(100)
+		Wait(100)
     else
         if not HasAnimDictLoaded("reaction@intimidation@1h") then
             loadAnimDict( "reaction@intimidation@1h" )
         end
         TaskPlayAnimAdvanced(playerPed, "reaction@intimidation@1h", "outro", GetEntityCoords(playerPed, true), 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, -1, 50, 0, 0, 0)
-        Citizen.Wait(1600)
+        Wait(1600)
     end
     RemoveWeaponFromPed(playerPed, hash)
 	ClearPedTasks(playerPed)
@@ -173,7 +173,7 @@ function GiveWeapon(weapon)
             canFire = false
             disable()
             TaskPlayAnimAdvanced(playerPed, "reaction@intimidation@1h", "intro", GetEntityCoords(playerPed, true), 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, -1, 50, 0, 0, 0)
-            Citizen.Wait(1600)
+            Wait(1600)
             GiveWeaponToPed(playerPed, hash, 1, false, true)
             SetPedAmmo(playerPed, hash, 1000)
             ClearPedTasks(playerPed)
@@ -189,10 +189,10 @@ function GiveWeapon(weapon)
                 loadAnimDict( "rcmjosh4" )
             end
             TaskPlayAnim(playerPed, "rcmjosh4", "josh_leadout_cop2", 8.0, 2.0, -1, 48, 10, 0, 0, 0 )
-            Citizen.Wait(500)
+            Wait(500)
         else
             TaskPlayAnimAdvanced(playerPed, "reaction@intimidation@1h", "intro", GetEntityCoords(playerPed, true), 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, -1, 50, 0, 0, 0)          
-            Citizen.Wait(1600)
+            Wait(1600)
         end
         GiveWeaponToPed(playerPed, hash, 1, false, true)
         for i = 1, #currentWepAttachs do
@@ -215,7 +215,7 @@ function GiveWeapon(weapon)
     end
 end
 
---[[Citizen.CreateThread(function()
+--[[CreateThread(function()
     local sleep = 1500
     while true do
         local player = PlayerPedId()
@@ -233,14 +233,14 @@ end
         else
             sleep = 1500
         end
-        Citizen.Wait(sleep)
+        Wait(sleep)
     end
 end)]]
 
 function disable()
-	Citizen.CreateThread(function ()
+	CreateThread(function()
 		while not canFire do
-			Citizen.Wait(10)
+			Wait(10)
 			DisableControlAction(0, 25, true)
 			DisablePlayerFiring(player, true)
 		end
@@ -250,6 +250,6 @@ end
 function loadAnimDict(dict)
 	while (not HasAnimDictLoaded(dict)) do
 		RequestAnimDict(dict)
-		Citizen.Wait(10)
+		Wait(10)
 	end
 end

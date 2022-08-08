@@ -71,9 +71,9 @@ AddEventHandler('esx_status:update', function(status)
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while(true) do
-		Citizen.Wait(10 * 60 * 1000)
+		Wait(10 * 60 * 1000)
 		SaveData()
 	end
 end)

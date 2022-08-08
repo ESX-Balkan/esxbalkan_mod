@@ -30,7 +30,7 @@ function ProcessMeth()
 	local playerPed = PlayerPedId()
 
 	while timeLeft > 0 do
-		Citizen.Wait(1000)
+		Wait(1000)
 		timeLeft = timeLeft - 1
 
 		if #(GetEntityCoords(playerPed) - Config.CircleZones.MethProcessing.coords) < 5 then

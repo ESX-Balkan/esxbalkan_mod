@@ -1,6 +1,6 @@
 local targetPlayer
 
-Citizen.CreateThread(
+CreateThread(
     function()
         TriggerEvent(
             "chat:addSuggestion",

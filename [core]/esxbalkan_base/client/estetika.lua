@@ -12,13 +12,13 @@ mina.messages = {
 
 local timeout = mina.delay * 1000 * 60
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
     for i in pairs(mina.messages) do
         chat(i)
-        Citizen.Wait(timeout)
+        Wait(timeout)
     end
-    Citizen.Wait(3000)
+    Wait(3000)
 end
 end)
 
@@ -32,7 +32,7 @@ local blips = {
     -- {title="Opština", colour=27, id=475, x = -1082.65, y = -247.84, z = 37.76 }, --primjer  
   }
   
-  Citizen.CreateThread(function()
+  CreateThread(function()
       for _, info in pairs(blips) do
         info.blip = AddBlipForCoord(info.x, info.y, info.z)
         SetBlipSprite(info.blip, info.id)
@@ -51,7 +51,7 @@ function AddTextEntry(key, value)
 	Citizen.InvokeNative(GetHashKey("ADD_TEXT_ENTRY"), key, value)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
   AddTextEntry('PM_PANE_LEAVE', '~b~IZADJI SA SERVERA')
   AddTextEntry('PM_PANE_QUIT', '~b~NAPUSTI IGRICU')
   AddTextEntry('PM_SCR_MAP', '~b~MAPA')
