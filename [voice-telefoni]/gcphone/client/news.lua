@@ -7,7 +7,7 @@ AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 
     local blip = AddBlipForCoord(newsMenu)
     SetBlipSprite (blip, 135)
@@ -24,9 +24,9 @@ end)
 
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(wait)
+        Wait(wait)
         PlayerData = ESX.GetPlayerData()
         if PlayerData.job.name == Config.newsJobName then 
             local playerPed = PlayerPedId()

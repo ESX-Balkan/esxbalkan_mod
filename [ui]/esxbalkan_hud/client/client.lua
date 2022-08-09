@@ -1,13 +1,13 @@
 local ESX = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while ESX == nil do
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(100)
+        Wait(100)
     end
 
     while ESX.GetPlayerData().job == nil do
-        Citizen.Wait(100)
+        Wait(100)
     end
 
     ESX.PlayerData = ESX.GetPlayerData()
@@ -24,9 +24,9 @@ local seatbeltIsOn = false
 local currSpeed = 0.0
 local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(450)
+        Wait(450)
 
         local player = PlayerPedId()
         local vehicle = GetVehiclePedIsIn(player, false)
@@ -130,7 +130,7 @@ Citizen.CreateThread(function()
                 vehicleInfo['seatbelt']['status'] = seatbeltIsOn
     
             else
-                Citizen.Wait(1000)  -- Performance
+                Wait(1000)  -- Performance
     
                 vehicleCruiser = false
                 vehicleNailSpeed = 0
@@ -151,9 +151,9 @@ Citizen.CreateThread(function()
     end)
 
 
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while true do
-            Citizen.Wait(1500) -- 1000 default
+            Wait(1500) -- 1000 default
     
             local playerStatus
             local showPlayerStatus = 0
@@ -433,7 +433,7 @@ end)
 -- width = 0.183
 -- height = 0.32--0.354
 
--- Citizen.CreateThread(function()
+-- CreateThread(function()
 -- 	RequestStreamedTextureDict("circlemap", false)
 -- 	while not HasStreamedTextureDictLoaded("circlemap") do
 -- 		Wait(500)
@@ -452,7 +452,7 @@ end)
 --     SetRadarBigmapEnabled(false, false)
 
 --     while true do
---         Citizen.Wait(500)
+--         Wait(500)
 --         BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
 --         ScaleformMovieMethodAddParamInt(3)
 --         EndScaleformMovieMethod()

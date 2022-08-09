@@ -319,7 +319,7 @@ end
 -- cache talking status so we only send a nui message when its not the same as what it was before
 local lastTalkingStatus = false
 local lastRadioStatus = false
-Citizen.CreateThread(function()
+CreateThread(function()
 	TriggerEvent('chat:addSuggestion', '/mute', 'Mutes the player with the specified id', {
 		{ name = "player id", help = "the player to toggle mute" }
 	})

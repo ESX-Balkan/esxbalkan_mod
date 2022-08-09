@@ -29,7 +29,7 @@ function Processlsd()
 	local playerPed = PlayerPedId()
 
 	while timeLeft > 0 do
-		Citizen.Wait(1000)
+		Wait(1000)
 		timeLeft = timeLeft - 1
 
 		if #(coords - Config.CircleZones.lsdProcessing.coords) > 5 then
@@ -42,9 +42,9 @@ function Processlsd()
 	isProcessing = false
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
 
 			end
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 	end
 end)
@@ -73,7 +73,7 @@ function Processthionylchloride()
 	local playerPed = PlayerPedId()
 
 	while timeLeft > 0 do
-		Citizen.Wait(1000)
+		Wait(1000)
 		timeLeft = timeLeft - 1
 
 		if #(coords - Config.CircleZones.thionylchlorideProcessing.coords) > 5 then

@@ -353,7 +353,7 @@ function firstToUpper(str)
 end
 
 -- version check
--- Citizen.CreateThread( function()
+-- CreateThread(function()
 -- 		SetConvarServerInfo("JD_logs", "V"..Config.versionCheck)
 -- 		local vRaw = LoadResourceFile(GetCurrentResourceName(), 'version.json')
 -- 		if vRaw and Config.versionCheck then

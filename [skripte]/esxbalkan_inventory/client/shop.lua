@@ -14,41 +14,41 @@ Keys = {
 
 local Licenses = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(10)
+        Wait(10)
         player = PlayerPedId()
         coords = GetEntityCoords(player)
         if IsInRegularShopZone(coords) or IsInRobsLiquorZone(coords) or IsInIlegalShopZone(coords) or IsInYouToolZone(coords) or IsInPrisonShopZone(coords) or IsInWeaponShopZone(coords) or IsInPoliceShopZone(coords) then
             if IsInRegularShopZone(coords) then
                 if IsControlJustReleased(0, Keys["E"]) then
                     OpenShopInv("regular")
-                    Citizen.Wait(2000)
+                    Wait(2000)
                 end
             end
             if IsInIlegalShopZone(coords) then
                 if IsControlJustReleased(0, Keys["E"]) then
                     OpenShopInv("ilegal")
-                    Citizen.Wait(2000)
+                    Wait(2000)
                 end
             end
             if IsInRobsLiquorZone(coords) then
                 if IsControlJustReleased(0, Keys["E"]) then
                     OpenShopInv("robsliquor")
-                    Citizen.Wait(2000)
+                    Wait(2000)
                 end
             end
             if IsInYouToolZone(coords) then
                 if IsControlJustReleased(0, Keys["E"]) then
                     OpenShopInv("youtool")
-                    Citizen.Wait(2000)
+                    Wait(2000)
                 end
             end
             if IsInPrisonShopZone(coords) then
                 if ESX.GetPlayerData().job.name == 'police' then
                     if IsControlJustReleased(0, Keys["E"]) then
                         OpenShopInv("prison")
-                       Citizen.Wait(2000)
+                       Wait(2000)
                     end
                 end
             end
@@ -68,7 +68,7 @@ Citizen.CreateThread(function()
                     if ESX.GetPlayerData().job.name == "police" then
                 --    if Licenses['weapon'] ~= nil the
                         OpenShopInv("policeshop")
-                        Citizen.Wait(2000)
+                        Wait(2000)
                 --    else
                  --       exports['mythic_notify']:DoHudText('error', 'You need a Fire Arms license before you can buy weapons')
                  --   end
@@ -76,7 +76,7 @@ Citizen.CreateThread(function()
                 end
             end
         else
-            Citizen.Wait(1500)
+            Wait(1500)
         end
     end
 end)
@@ -239,7 +239,7 @@ function IsInPoliceShopZone(coords)
     return false
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     player = PlayerPedId()
     coords = GetEntityCoords(player)
     for k, v in pairs(Config.Shops.RegularShop.Locations) do
@@ -259,10 +259,10 @@ Citizen.CreateThread(function()
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     local sleep = 0
     while true do
-        Citizen.Wait(sleep)
+        Wait(sleep)
         player = PlayerPedId()
         coords = GetEntityCoords(player)
         if IsPedOnFoot(player) then
@@ -357,7 +357,7 @@ Citizen.CreateThread(function()
             end
             near = false
         else
-            Citizen.Wait(1500)
+            Wait(1500)
         end
     end
 end)

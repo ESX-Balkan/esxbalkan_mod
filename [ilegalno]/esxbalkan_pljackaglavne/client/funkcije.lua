@@ -18,8 +18,8 @@ EEEEEEEEEEEEEEEEEEEEEE SSSSSSSSSSSSSSS   XXXXXXX       XXXXXXX     BBBBBBBBBBBBB
 
 ESX = nil
 
-Citizen.CreateThread(function()
-	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Citizen.Wait(0) end
+CreateThread(function()
+	while ESX == nil do TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end) Wait(0) end
 end)
 
 
@@ -172,11 +172,11 @@ AEH('esxGlavna:ugasiLasere', function()
     end)
 end)
 
-Citizen.CreateThread(function()
-    Citizen.Wait(1)
+CreateThread(function()
+    Wait(1)
 
     while laseriUpaljeni do
-        Citizen.Wait(1)
+        Wait(1)
 
         laser1.onPlayerHit(function(playerBeingHit, hitPos)
             if playerBeingHit then
@@ -260,10 +260,10 @@ end)
 
 RegisterNetEvent('esxGlavna:pokreniPrikazivanjeTimera')
 AddEventHandler('esxGlavna:pokreniPrikazivanjeTimera', function()
-    Citizen.Wait(1)
+    Wait(1)
 
     while lootaUpperVault do
-        Citizen.Wait(1)
+        Wait(1)
 
 		crtaj2dtekst(0.95, 1.44, 1.0,1.0,0.35, 'Preostalo vrijeme: ' .. timer .. ' ~w~sekundi', 255, 255, 255, 255)
     end
@@ -271,7 +271,7 @@ end)
 
 RNE('esxGlavna:pokreni:gornjiVaultTimer')
 AEH('esxGlavna:pokreni:gornjiVaultTimer', function(kolicina)
-    Citizen.Wait(1)
+    Wait(1)
 
     timer = math.ceil(150)
     if timer <= 150 then
@@ -279,10 +279,10 @@ AEH('esxGlavna:pokreni:gornjiVaultTimer', function(kolicina)
     end
 
     pozoviClient('esxGlavna:pokreniPrikazivanjeTimera')
-    Citizen.Wait(1)
+    Wait(1)
 
         while lootaUpperVault do
-            Citizen.Wait(1)
+            Wait(1)
 
             timer = timer - 1
 			sansa = math.random(100)
@@ -297,7 +297,7 @@ AEH('esxGlavna:pokreni:gornjiVaultTimer', function(kolicina)
 				end
 
             end
-            Citizen.Wait(1000)
+            Wait(1000)
         end
 end)
 
@@ -508,13 +508,13 @@ local troliObjekti = {
     {  type = 'trolly', oldModel = 769923921, newModel = 2007413986, coords = vector3(309.07379, 224.3659, 96.688064), heading = 220, grab = false},
 }
 
-Citizen.CreateThread(function()
-    Citizen.Wait(1)
+CreateThread(function()
+    Wait(1)
 
     local spavanac = true
 
     while true do
-        Citizen.Wait(1)
+        Wait(1)
 
 
         for k,v in pairs(troliObjekti) do
@@ -537,7 +537,7 @@ Citizen.CreateThread(function()
         end
 
         if spavanac then
-            Citizen.Wait(1000)
+            Wait(1000)
         end
     end
 end)
@@ -584,7 +584,7 @@ function pocniLootat(index)
     bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), pedCo, true, false, false)
 
     while not NetworkHasControlOfEntity(sceneObject) do
-        Citizen.Wait(1)
+        Wait(1)
         NetworkRequestControlOfEntity(sceneObject)
     end
 
@@ -638,9 +638,9 @@ function pokaziModel(grabModel)
     AttachEntityToEntity(grabobj, ped, GetPedBoneIndex(ped, 60309), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 0, true)
     local startedGrabbing = GetGameTimer()
 
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while GetGameTimer() - startedGrabbing < 37000 do
-            Citizen.Wait(1)
+            Wait(1)
             DisableControlAction(0, 73, true)
             if HasAnimEventFired(ped, GetHashKey("CASH_APPEAR")) then
                 if not IsEntityVisible(grabobj) then
@@ -681,7 +681,7 @@ AEH('esxGlavna:lootajProp', function()
             
             pozoviServer('esxGlavna:propLoot')
 
-            Citizen.Wait(1000)
+            Wait(1000)
         else
             notifikacija('Ne mozete pokupiti vise koverti!')
         end
@@ -814,9 +814,9 @@ AEH('esxGlavna:postaviC4', function()
 
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do 
-        Citizen.Wait(1)
+        Wait(1)
 
         if mozeRaznijeti then
             ESX.ShowHelpNotification('Pritisni ~INPUT_DETONATE~ da razneses bravu!')
@@ -850,14 +850,14 @@ function loadModel(model)
     end
     while not HasModelLoaded(model) do
         RequestModel(model)
-        Citizen.Wait(0)
+        Wait(0)
     end
 end
 
 function loadAnimDict(dict)
     while not HasAnimDictLoaded(dict) do
         RequestAnimDict(dict)
-        Citizen.Wait(0)
+        Wait(0)
     end
 end
 
@@ -882,11 +882,11 @@ function plantajThermal()
     RequestModel("hei_p_m_bag_var22_arm_s")
     RequestNamedPtfxAsset("scr_ornate_heist")
     while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") and not HasModelLoaded("hei_p_m_bag_var22_arm_s") and not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
-        Citizen.Wait(50)
+        Wait(50)
     end
     local ped = PlayerPedId()
 
-    Citizen.Wait(100)
+    Wait(100)
     local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
     local bagscene = NetworkCreateSynchronisedScene(256.88, 220.27, 106.28, rotx, roty, rotz + 0.50, 2, false, false, 1065353216, 0, 1.3)
     local bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), 256.88, 220.27, 106.28,  true,  true, false)
@@ -909,14 +909,14 @@ function plantajThermal()
 
     SetFollowPedCamViewMode(4) -- seta ga u first person jer je gas
 
-    Citizen.Wait(1500)
+    Wait(1500)
     local x, y, z = table.unpack(GetEntityCoords(ped))
     local bomba = CreateObject(GetHashKey("hei_prop_heist_thermite"), 256.88, 220.27, 106.28 + 0.2,  true,  true, true)
 
     SetEntityCollision(bomba, false, true)
     AttachEntityToEntity(bomba, ped, GetPedBoneIndex(ped, 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true)
 
-    Citizen.Wait(4000)
+    Wait(4000)
     notifikacija('Postavili ste termalnu bombu!')
 
 
@@ -945,12 +945,12 @@ function plantajThermal()
 
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0)
-    Citizen.Wait(2000)
+    Wait(2000)
     ClearPedTasks(ped)
-    Citizen.Wait(2000)
+    Wait(2000)
 
     DeleteObject(bomba)
-    Citizen.Wait(9000)
+    Wait(9000)
 
     notifikacija('Vrata su se istopila!')
     notifikacija('Nastavite ka panelu za hakovanje!')
@@ -965,11 +965,11 @@ function plantajThermalDva()
     RequestModel("hei_p_m_bag_var22_arm_s")
     RequestNamedPtfxAsset("scr_ornate_heist")
     while not HasAnimDictLoaded("anim@heists@ornate_bank@thermal_charge") and not HasModelLoaded("hei_p_m_bag_var22_arm_s") and not HasNamedPtfxAssetLoaded("scr_ornate_heist") do
-        Citizen.Wait(50)
+        Wait(50)
     end
     local ped = PlayerPedId()
 
-    Citizen.Wait(100)
+    Wait(100)
     local rotx, roty, rotz = table.unpack(vec3(GetEntityRotation(PlayerPedId())))
     local bagscene = NetworkCreateSynchronisedScene(251.8756, 221.06, 101.83, rotx, roty, rotz + 0.50, 2, false, false, 1065353216, 0, 1.3)
     local bag = CreateObject(GetHashKey("hei_p_m_bag_var22_arm_s"), 251.8756, 221.06, 101.83,  true,  true, false)
@@ -992,14 +992,14 @@ function plantajThermalDva()
 
     SetFollowPedCamViewMode(4) -- seta ga u first person jer je gas
 
-    Citizen.Wait(1500)
+    Wait(1500)
     local x, y, z = table.unpack(GetEntityCoords(ped))
     local bomba = CreateObject(GetHashKey("hei_prop_heist_thermite"), 251.8756, 221.06, 101.83 + 0.2,  true,  true, true)
 
     SetEntityCollision(bomba, false, true)
     AttachEntityToEntity(bomba, ped, GetPedBoneIndex(ped, 28422), 0, 0, 0, 0, 0, 200.0, true, true, false, true, 1, true)
 
-    Citizen.Wait(4000)
+    Wait(4000)
     notifikacija('Postavili ste termalnu!')
 
 
@@ -1026,12 +1026,12 @@ function plantajThermalDva()
 
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_intro", 8.0, 8.0, 1000, 36, 1, 0, 0, 0)
     TaskPlayAnim(ped, "anim@heists@ornate_bank@thermal_charge", "cover_eyes_loop", 8.0, 8.0, 3000, 49, 1, 0, 0, 0)
-    Citizen.Wait(2000)
+    Wait(2000)
     ClearPedTasks(ped)
-    Citizen.Wait(2000)
+    Wait(2000)
 
     DeleteObject(bomba)
-    Citizen.Wait(9000)
+    Wait(9000)
 
     notifikacija('Vrata su se istopila!')
     
@@ -1056,7 +1056,7 @@ function hakovanje(kordinatePanela)
         or not HasModelLoaded("hei_prop_hst_laptop")
         or not HasModelLoaded("hei_p_m_bag_var22_arm_s")
         or not HasModelLoaded("hei_prop_heist_card_hack_02") do
-        Citizen.Wait(100)
+        Wait(100)
     end
     local ped = PlayerPedId()
     local targetPosition, targetRotation = (vec3(GetEntityCoords(ped))), vec3(GetEntityRotation(ped))
@@ -1089,11 +1089,11 @@ function hakovanje(kordinatePanela)
     NetworkAddEntityToSynchronisedScene(card, netScene3, animDict, "hack_exit_card", 4.0, -8.0, 1)
 
     SetPedComponentVariation(ped, 5, 0, 0, 0)
-    Citizen.Wait(200)
+    Wait(200)
     NetworkStartSynchronisedScene(netScene)
-    Citizen.Wait(6300)
+    Wait(6300)
     NetworkStartSynchronisedScene(netScene2)
-    Citizen.Wait(2000)
+    Wait(2000)
 
     TriggerEvent('open:minigame', function(uspjesno) 
 		if uspjesno then
@@ -1125,11 +1125,11 @@ function hakovanje(kordinatePanela)
 	end)
 
     while not hakovanjeZavrseno do
-        Citizen.Wait(1)
+        Wait(1)
     end
-    Citizen.Wait(1500)
+    Wait(1500)
     NetworkStartSynchronisedScene(netScene3)
-    Citizen.Wait(4600)
+    Wait(4600)
     NetworkStopSynchronisedScene(netScene3)
     DeleteObject(bag)
     DeleteObject(laptop)

@@ -47,7 +47,7 @@ RegisterNUICallback('getCarsValet', function(data)
     while not HasModelLoaded(driverhash) and RequestModel(driverhash) or not HasModelLoaded(vehhash) and RequestModel(vehhash) do
         RequestModel(driverhash)
         RequestModel(vehhash)
-        Citizen.Wait(0)
+        Wait(0)
     end
 
     SpawnVehicle(playerPos.x, playerPos.y, playerPos.z, vehhash, driverhash, data.props)
@@ -77,7 +77,7 @@ end
 function GoToTarget(x, y, z, vehicle, driver, vehhash, target)
     enroute = true
     while enroute do
-        Citizen.Wait(500)
+        Wait(500)
         local player = PlayerPedId()
         local playerPos = GetEntityCoords(player)
         SetDriverAbility(driver, 1.0)        -- values between 0.0 and 1.0 are allowed.
@@ -96,10 +96,10 @@ function GoToTarget(x, y, z, vehicle, driver, vehhash, target)
 end
 
 function GoToTargetWalking(x, y, z, vehicle, driver)
-    Citizen.Wait(500)
+    Wait(500)
     TaskWanderStandard(driver, 10.0, 10)
     TriggerServerEvent('gcPhone:finish')
-    Citizen.Wait(35000)
+    Wait(35000)
     DeletePed(mechPed)
     mechPed = nil
 end

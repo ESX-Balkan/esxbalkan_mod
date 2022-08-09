@@ -58,12 +58,12 @@ RegisterNUICallback('crewPhone_uberTrigger', function()
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		if uberBasladi and not paketNoktasi then
 			cooldown = math.random(10000,15000)
-			Citizen.Wait(cooldown) 
+			Wait(cooldown) 
 			if uberBasladi then
 				PlaySound(-1, "Menu_Accept", "Phone_SoundSet_Default", 0, 0, 1)
 				uberChoosenItem = math.random(1,#Config.uberItems)
@@ -101,11 +101,11 @@ function rewarduber()
     SendNUIMessage({event = 'updateSiparisStatus', status = false})
 end
 
-Citizen.CreateThread(function ()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		if uberBasladi and uberChoosenAdress ~= nil then
-			if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), Config.uberDelivery[uberChoosenAdress]["x"], Config.uberDelivery[uberChoosenAdress]["y"], Config.uberDelivery[uberChoosenAdress]["z"], true ) < 1.2 and paketNoktasi and not kapiCalindi then
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), Config.uberDelivery[uberChoosenAdress]["x"], Config.uberDelivery[uberChoosenAdress]["y"], Config.uberDelivery[uberChoosenAdress]["z"], true ) < 1.2 and paketNoktasi and not kapiCalindi then
 				Draw3DText2(Config.uberDelivery[uberChoosenAdress]["x"], Config.uberDelivery[uberChoosenAdress]["y"], Config.uberDelivery[uberChoosenAdress]["z"] + 0.3, tostring("~w~~g~[E]~w~ ".._U('uber_knock_door')))
 			
 				if(IsControlJustPressed(1, Keys["E"])) then
@@ -115,18 +115,18 @@ Citizen.CreateThread(function ()
 							kapiCalindi = true
 							npcEvdemi = math.random(1,2)
 							PlayAnimation(PlayerPedId(), "timetable@jimmy@doorknock@", "knockdoor_idle")
-							Citizen.Wait(3000)
+							Wait(3000)
 							
 							if npcEvdemi == 1 then
 								TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true)
-								Citizen.Wait(3000)
+								Wait(3000)
 								ClearPedTasks(PlayerPedId(-1))
 								delivery1 = false
 								paketNoktasi = false
 								rewarduber()
 							else
 								TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BUM_BIN", 0, true)
-								Citizen.Wait(3000)
+								Wait(3000)
 								ClearPedTasks(PlayerPedId(-1))
 								PlaceObjectOnGroundProperly(PackageDeliveryObject)
 								rewarduber()
@@ -143,11 +143,11 @@ end)
 
 PlayAnimation = function(ped, dict, anim, settings)
     if dict then
-        Citizen.CreateThread(function()
+        CreateThread(function()
             RequestAnimDict(dict)
 
             while not HasAnimDictLoaded(dict) do
-        Citizen.Wait(100)
+        Wait(100)
       end
 
       if settings == nil then

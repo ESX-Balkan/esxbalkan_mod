@@ -162,7 +162,7 @@ ESX.TriggerServerCallback = function(name, requestId, source, cb, ...)
 end
 
 local savePlayers = -1
-Citizen.CreateThread(function()
+CreateThread(function()
 	savePlayers = MySQL.Sync.store("UPDATE users SET `accounts` = ?, `job` = ?, `job_grade` = ?, `group` = ?, `position` = ?, `inventory` = ?, `loadout` = ? WHERE `identifier` = ?")
 end)
 

@@ -1,16 +1,16 @@
 
 -- ANTI MEELE TJ KUNDAK
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(3)
+        Wait(3)
         local ped = PlayerPedId()
         if IsPedArmed(ped, 6) then
           DisableControlAction(1, 140, true)
           DisableControlAction(1, 141, true)
           DisableControlAction(1, 142, true)
         else
-          Citizen.Wait(800)
+          Wait(800)
         end
     end
 end)
@@ -21,7 +21,7 @@ end)
 -- upozorenje = true
 -- local akojetrue = true
 
--- Citizen.CreateThread(function()
+-- CreateThread(function()
 --   while akojetrue do
 --     Wait(1000)
 

@@ -150,7 +150,7 @@ VehicleAction = function(vehicleEntity, action)
     local dstCheck = #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(vehicleEntity))
 
     while not NetworkHasControlOfEntity(vehicleEntity) do
-        Citizen.Wait(0)
+        Wait(0)
     
         NetworkRequestControlOfEntity(vehicleEntity)
     end
@@ -173,7 +173,7 @@ VehicleAction = function(vehicleEntity, action)
                 SetVehicleLights(vehicleEntity, 0)
             end
 
-            Citizen.Wait(300)
+            Wait(300)
         end
 
         StartVehicleHorn(vehicleEntity, 50, 1, false)
@@ -219,9 +219,9 @@ VehicleAction = function(vehicleEntity, action)
 
             cachedData["engineState"] = true
 
-            Citizen.CreateThread(function()
+            CreateThread(function()
                 while cachedData["engineState"] do
-                    Citizen.Wait(5)
+                    Wait(5)
 
                     SetVehicleUndriveable(vehicleEntity, true)
                 end
@@ -377,14 +377,14 @@ PutInVehicle = function()
 				TaskLeaveVehicle(PlayerPedId(), vehicle, 0)
 	
 				while IsPedInVehicle(PlayerPedId(), vehicle, true) do
-					Citizen.Wait(0)
+					Wait(0)
 				end
 	
-				Citizen.Wait(500)
+				Wait(500)
 	
 				NetworkFadeOutEntity(vehicle, true, true)
 	
-				Citizen.Wait(100)
+				Wait(100)
 	
 				ESX.Game.DeleteVehicle(vehicle)
 
@@ -519,7 +519,7 @@ HandleCamera = function(garage, toggle)
 
 	RenderScriptCams(1, 1, 750, 1, 1)
 
-	Citizen.Wait(500)
+	Wait(500)
 end
 
 DrawScriptMarker = function(markerData)
@@ -528,11 +528,11 @@ end
 
 PlayAnimation = function(ped, dict, anim, settings)
 	if dict then
-        Citizen.CreateThread(function()
+        CreateThread(function()
             RequestAnimDict(dict)
 
             while not HasAnimDictLoaded(dict) do
-                Citizen.Wait(100)
+                Wait(100)
             end
 
             if settings == nil then
@@ -599,7 +599,7 @@ WaitForModel = function(model)
 	end
 	
 	while not HasModelLoaded(model) do
-		Citizen.Wait(0)
+		Wait(0)
 
 		DrawScreenText("Ocitavanje modela " .. GetLabelText(GetDisplayNameFromVehicleModel(model)) .. "...", 255, 255, 255, 150)
 	end

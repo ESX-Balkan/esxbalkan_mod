@@ -28,7 +28,7 @@ RegisterCommand("laseri", function(src, args)
     creationEnabled = false
   end
 end)
-Citizen.CreateThread(function()
+CreateThread(function()
   TriggerEvent('chat:addSuggestion', '/laseri', '', {
     {name="command", help="{start, end, save} (required)"},
   })
@@ -37,7 +37,7 @@ end)
 function startCreation()
   if not creationEnabled then return end
   originPoints, targetPoints = {}, {}
-  Citizen.CreateThread(function()
+  CreateThread(function()
     while creationEnabled do
       if inOriginMode == true and IsControlJustReleased(0, 73) then -- X key to switch to target mode
         inOriginMode = false

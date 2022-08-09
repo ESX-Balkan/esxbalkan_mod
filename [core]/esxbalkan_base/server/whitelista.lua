@@ -25,7 +25,7 @@ function DiscordRequest(method, endpoint, jsondata)
     end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = FormattedToken})
 
     while data == nil do
-        Citizen.Wait(0)
+        Wait(0)
     end
 	
     return data
@@ -97,7 +97,7 @@ function IsRolePresent(user, role)
 	end
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	local guild = DiscordRequest("GET", "guilds/"..Permisije.GuildId, {})
 	if guild.code == 200 then
 		local data = json.decode(guild.data)

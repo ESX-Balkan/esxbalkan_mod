@@ -1,4 +1,4 @@
-Citizen.CreateThread(function()
+CreateThread(function()
 	local ESX = exports['es_extended']:getSharedObject()
 	local GUI, MenuType = {}, 'default'
 	GUI.Time = 0

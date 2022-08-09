@@ -27,7 +27,7 @@ RegisterCommand('+telefonzatvori', function()
 		CellCamActivate(false, false)
 		if firstTime == true then 
 			firstTime = false 
-			Citizen.Wait(2500)
+			Wait(2500)
 			displayDoneMission = true
 		end
 	end

@@ -4,14 +4,14 @@ local open = false
 local PlayerData = {}
 local disPlayerNames = 20
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
+		Wait(10)
 	end
 
 	PlayerData = ESX.GetPlayerData()
@@ -38,12 +38,12 @@ end)
 
 playerDistances = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     Wait(1000)
     while true do
-    Citizen.Wait(5)
+    Wait(5)
       if not idovi then
-        Citizen.Wait(2000)
+        Wait(2000)
       else
         for _, player in ipairs(GetActivePlayers()) do
           local ped = GetPlayerPed(player)
@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         for _, player in ipairs(GetActivePlayers()) do
             if GetPlayerPed(player) ~= PlayerPedId() then
@@ -73,7 +73,7 @@ Citizen.CreateThread(function()
                 playerDistances[player] = distance
             end
         end
-        Citizen.Wait(1500)
+        Wait(1500)
     end
 end)
 

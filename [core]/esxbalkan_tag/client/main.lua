@@ -2,10 +2,10 @@ ESX = nil
 local currentAdminPlayers = {}
 local visibleAdmins = {}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while ESX == nil do
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(0)
+        Wait(0)
     end
 end)
 
@@ -42,9 +42,9 @@ function drawText(x, y, z, text, scale) local onScreen, _x, _y = World3dToScreen
     DrawText(_x, _y)
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(Config.NearCheckWait)
+        Wait(Config.NearCheckWait)
         local ped = PlayerPedId()
         local pedCoords = GetEntityCoords(ped)
         for k, v in pairs(currentAdminPlayers) do
@@ -64,9 +64,9 @@ Citizen.CreateThread(function()
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(4)
+        Wait(4)
         for k, v in pairs(visibleAdmins) do
             local playerServerID = GetPlayerFromServerId(v.source)
             if playerServerID ~= -1 then

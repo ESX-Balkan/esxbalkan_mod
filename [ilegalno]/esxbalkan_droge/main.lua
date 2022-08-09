@@ -14,22 +14,22 @@ ESX = nil
 local menuOpen = false
 local wasOpen = false
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(100)
+		Wait(100)
 	end
 
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
@@ -42,7 +42,7 @@ Citizen.CreateThread(function()
 					OpenDrugShop()
 				end
 			else
-				Citizen.Wait(500)
+				Wait(500)
 			end
 		--[[else
 			if wasOpen then
@@ -50,7 +50,7 @@ Citizen.CreateThread(function()
 				ESX.UI.Menu.CloseAll()
 			end
 
-			Citizen.Wait(500)--]]
+			Wait(500)--]]
 		end
 	end
 end)
@@ -164,7 +164,7 @@ function CreateBlipCircle(coords, text, radius, color, sprite)
 	end
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	if Config.EnableMapsBlimps then
 		for k,zone in pairs(Config.CircleZones) do
 			if zone.enabled then

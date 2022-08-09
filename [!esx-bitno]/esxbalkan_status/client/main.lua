@@ -64,7 +64,7 @@ AddEventHandler('esx_status:load', function(status)
 
 	if Config.Display then TriggerEvent('esx_status:setDisplay', 0.5) end
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while ESX.PlayerLoaded do
 			for i=1, #Status, 1 do
 				Status[i].onTick()
@@ -84,7 +84,7 @@ AddEventHandler('esx_status:load', function(status)
 			end
 
 			TriggerEvent('esx_status:onTick', data)
-			Citizen.Wait(Config.TickTime)
+			Wait(Config.TickTime)
 		end
 	end)
 end)
@@ -154,10 +154,10 @@ AddEventHandler('esx_status:setDisplay', function(val)
 end)
 
 -- Pause menu disable hud display
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		if Config.Display then
-			Citizen.Wait(300)
+			Wait(300)
 
 			if IsPauseMenuActive() and not isPaused then
 				isPaused = true
@@ -166,7 +166,7 @@ Citizen.CreateThread(function()
 				isPaused = false 
 				TriggerEvent('esx_status:setDisplay', 0.5)
 			end
-		else Citizen.Wait(1000) end
+		else Wait(1000) end
 	end
 end)
 
@@ -178,9 +178,9 @@ AddEventHandler('esx:loadingScreenOff', function()
 end)
 
 -- Update server
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(Config.UpdateInterval)
+		Wait(Config.UpdateInterval)
 		if ESX.PlayerLoaded then TriggerServerEvent('esx_status:update', GetStatusData(true)) end
 	end
 end)

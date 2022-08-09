@@ -2,14 +2,14 @@ ESX                           = nil
 local ESXLoaded = false
 local robbing = false
 
-Citizen.CreateThread(function ()
+CreateThread(function()
     while ESX == nil do
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(250)
+        Wait(250)
     end
 
     while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(100)
+		Wait(100)
 	end
 
     ESXLoaded = true
@@ -138,7 +138,7 @@ AddEventHandler('loffe_robbery:rob', function(i)
                 SetEntityHeading(bag, Config.Shops[i].heading)
                 ApplyForceToEntity(bag, 3, vector3(0.0, 50.0, 0.0), 0.0, 0.0, 0.0, 0, true, true, false, false, true)
                 table.insert(objects, {bank = i, object = bag})
-                Citizen.CreateThread(function()
+                CreateThread(function()
                     while true do
                         Wait(5)
                         if DoesEntityExist(bag) then
@@ -203,7 +203,7 @@ function _CreatePed(hash, coords, heading)
     SetPedFleeAttributes(ped, 0, 0)
     return ped
 end
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         for i = 1, #peds do
             if IsPedDeadOrDying(peds[i]) then
@@ -213,7 +213,7 @@ Citizen.CreateThread(function()
         Wait(5010)
     end
 end)
-Citizen.CreateThread(function()
+CreateThread(function()
     while not ESXLoaded do Wait(100) end
     for i = 1, #Config.Shops do 
         peds[i] = _CreatePed(Config.Shopkeeper, Config.Shops[i].coords, Config.Shops[i].heading)
@@ -250,7 +250,7 @@ Citizen.CreateThread(function()
                             end
                             if canRob == true then
                                 robbing = true
-                                Citizen.CreateThread(function()
+                                CreateThread(function()
                                     while robbing do Wait(0) if IsPedDeadOrDying(peds[i]) then robbing = false end end
                                 end)
                                 loadDict('missheist_agency2ahands_up')

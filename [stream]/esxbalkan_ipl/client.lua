@@ -1,9 +1,9 @@
-Citizen.CreateThread(function()
+CreateThread(function()
 	OnEnterMp() -- required to load heist ipl?
 	RequestAllIpls()
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	for k,ipl in pairs(allIpls) do
 		loadInterior(ipl.coords, ipl.interiorsProps, ipl.interiorsPropColors)
 	end

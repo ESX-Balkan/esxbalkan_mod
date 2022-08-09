@@ -9,7 +9,7 @@ RegisterCommand('handsup', function()
   local igrac = PlayerPedId()
   RequestAnimDict(dict)
   while not HasAnimDictLoaded(dict) do
-    Citizen.Wait(100)
+    Wait(100)
   end
   
   if not IsEntityDead(igrac) and not handsup then
@@ -88,7 +88,7 @@ RegisterCommand('-pokazi', function()
 end, false)
 RegisterKeyMapping('+pokazi', 'Pokazi prstom', 'keyboard', 'b')
 local ukljucipokazivanjeprsta = true
-Citizen.CreateThread(function()
+CreateThread(function()
     Wait(800) -- cekaj malo :)
     while ukljucipokazivanjeprsta do -- bolje :) nego while true do
         Wait(15)

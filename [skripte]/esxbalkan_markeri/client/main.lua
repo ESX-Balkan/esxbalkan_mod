@@ -25,16 +25,16 @@ local vassour_net = nil
 local spatulamodel = "bkr_prop_coke_spatula_04"
 local spatula_net = nil
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
 
-Citizen.CreateThread(function()
-	Citizen.Wait(2000) --Wait for mysql-async
+CreateThread(function()
+	Wait(2000) --Wait for mysql-async
 	TriggerServerEvent('esx_communityservice:checkIfSentenced')
 end)
 
@@ -43,7 +43,7 @@ local propTabela = {}
 
 function spawnajPropove()
 	while spawnaniPropovi < actionsRemaining do
-		Citizen.Wait(0)
+		Wait(0)
 
 		for i=1, #availableActions do
 			local kordinataPropa = availableActions[i].coords
@@ -129,7 +129,7 @@ AddEventHandler('esx_communityservice:inCommunityService', function(actions_rema
 			ClearPedTasksImmediately(playerPed)
 		end
 
-		Citizen.Wait(20000)
+		Wait(20000)
 
 		if GetDistanceBetweenCoords(GetEntityCoords(playerPed), Config.ServiceLocation.x, Config.ServiceLocation.y, Config.ServiceLocation.z) > 45 then
 			ESX.Game.Teleport(playerPed, Config.ServiceLocation)
@@ -160,10 +160,10 @@ end)
 
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		:: start_over ::
-		Citizen.Wait(1)
+		Wait(1)
 
 		if actionsRemaining > 0 and isSentenced then
 			draw2dText( _U('remaining_msg', ESX.Math.Round(actionsRemaining)), { 0.175, 0.955 } )
@@ -236,7 +236,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		else
-			Citizen.Wait(1000)
+			Wait(1000)
 		end
 	end
 end)
@@ -324,7 +324,7 @@ function ApplyPrisonerSkin()
 
 	if DoesEntityExist(playerPed) then
 
-		Citizen.CreateThread(function()
+		CreateThread(function()
 
 			TriggerEvent('skinchanger:getSkin', function(skin)
 				if skin.sex == 0 then

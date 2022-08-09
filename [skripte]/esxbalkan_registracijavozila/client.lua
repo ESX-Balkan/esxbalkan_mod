@@ -2,18 +2,18 @@ ESX                           = nil
 
 
 
-Citizen.CreateThread(function ()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 end)
 
 ----
 
-Citizen.CreateThread(function ()
+CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Wait(0)
 		local sleep = true
     local distance = #(GetEntityCoords(PlayerPedId()) - Config.MestoRegistracije)
     if distance < 20 then
@@ -38,13 +38,13 @@ Citizen.CreateThread(function ()
 
   end
 	if sleep == true then
-		Citizen.Wait(1500)
+		Wait(1500)
 	end
 end
     end)
 
     local blip 
-    Citizen.CreateThread(function()
+    CreateThread(function()
     
             blip = AddBlipForCoord(Config.MestoRegistracije)
     

@@ -14,9 +14,9 @@ CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 
@@ -45,7 +45,7 @@ function ProcessWeed()
 	local playerPed = PlayerPedId()
 
 	while timeLeft > 0 do
-		Citizen.Wait(1000)
+		Wait(1000)
 		timeLeft = timeLeft - 1
 
 		if #(GetEntityCoords(playerPed) - Config.CircleZones.WeedProcessing.coords) > 4 then
@@ -58,9 +58,9 @@ function ProcessWeed()
 	isProcessing = false
 end
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		local playerPed = PlayerPedId()
 		local coords = GetEntityCoords(playerPed)
 		local nearbyObject, nearbyID
@@ -85,9 +85,9 @@ Citizen.CreateThread(function()
 					if canPickUp then
 						TaskStartScenarioInPlace(playerPed, 'world_human_gardener_plant', 0, false)
 
-						Citizen.Wait(2000)
+						Wait(2000)
 						ClearPedTasks(playerPed)
-						Citizen.Wait(1500)
+						Wait(1500)
 		
 						ESX.Game.DeleteObject(nearbyObject)
 		
@@ -105,7 +105,7 @@ Citizen.CreateThread(function()
 			end
 
 		else
-			Citizen.Wait(500)
+			Wait(500)
 		end
 
 	end
@@ -122,7 +122,7 @@ end)
 
 function SpawnWeedPlants()
 	while spawnedWeeds < 15 do
-		Citizen.Wait(0)
+		Wait(0)
 		local weedCoords = GenerateWeedCoords()
 
 		ESX.Game.SpawnLocalObject('prop_weed_02', weedCoords, function(obj)
@@ -157,14 +157,14 @@ end
 
 function GenerateWeedCoords()
 	while true do
-		Citizen.Wait(1)
+		Wait(1)
 
 		local weedCoordX, weedCoordY
 
 		math.randomseed(GetGameTimer())
 		local modX = math.random(-20, 20)
 
-		Citizen.Wait(100)
+		Wait(100)
 
 		math.randomseed(GetGameTimer())
 		local modY = math.random(-20, 20)

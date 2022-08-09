@@ -23,7 +23,7 @@ AddEventHandler('esxbalkan_droge:ChemicalsConvertionMenu', function(itemName, am
 		return
 	end
 	
-	Citizen.Wait(5000)
+	Wait(5000)
 
 	xPlayer.addInventoryItem(xItem.name, amount)
 

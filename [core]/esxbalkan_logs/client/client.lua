@@ -132,13 +132,13 @@ WeaponNames = {
 }
 
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	local DeathReason, Killer, DeathCauseHash, Weapon
 
 	while true do
-		Citizen.Wait(500)
+		Wait(500)
 		if IsEntityDead(GetPlayerPed(PlayerId())) then
-			Citizen.Wait(500)
+			Wait(500)
 			local PedKiller = GetPedSourceOfDeath(GetPlayerPed(PlayerId()))
 			local killername = GetPlayerName(PedKiller)
 			DeathCauseHash = GetPedCauseOfDeath(GetPlayerPed(PlayerId()))
@@ -199,7 +199,7 @@ Citizen.CreateThread(function()
 			Weapon = nil
 		end
 		while IsEntityDead(PlayerPedId()) do
-			Citizen.Wait(0)
+			Wait(0)
 		end
 	end
 end)

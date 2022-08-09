@@ -11,14 +11,14 @@ local entityWorld = nil
 local globalplate = nil
 local lastChecked = 0
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+		Wait(0)
 	end
 
 	while ESX.GetPlayerData().job == nil do
-		Citizen.Wait(10)
+		Wait(10)
 	end
 
 	PlayerData = ESX.GetPlayerData()
@@ -171,7 +171,7 @@ openmenuvehicle()
 GUI.Time = GetGameTimer()
 end, false)
 
-Citizen.CreateThread(
+CreateThread(
   function()
     while true do
       Wait(10)
