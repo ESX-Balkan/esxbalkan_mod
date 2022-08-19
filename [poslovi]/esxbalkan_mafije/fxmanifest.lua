@@ -23,9 +23,11 @@ dependencies {
 	'esxbalkan_addoninventory',
 	'esxbalkan_datastore',
 	'esxbalkan_society',
-	'mysql-async'
+	'oxmysql'
 }
+
 ui_page 'html/index.html'
+
 files {
     "html/*.png",
     "html/index.html",
