@@ -34,7 +34,7 @@ end)
 
 
 CreateThread(function()
-	Wait(2000) --Wait for mysql-async
+	Wait(2000) --Wait for oxmysql
 	TriggerServerEvent('esx_communityservice:checkIfSentenced')
 end)
 

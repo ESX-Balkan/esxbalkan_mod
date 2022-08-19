@@ -87,7 +87,7 @@ server_exports {
 }
 
 dependencies {
-	'mysql-async',
+	'oxmysql',
 	'async',
 	'spawnmanager',
 }
